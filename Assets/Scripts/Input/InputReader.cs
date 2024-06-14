@@ -14,10 +14,10 @@ namespace eXplorerJam.Input
         // Events
         public event Action<Vector2> MoveEvent;
         public event Action<bool> SprintEvent;
-        public event Action JumpEvent;
 
         // Local variables
         private Controls controls;
+        public bool Jump;
 
         private void OnEnable()
         {
@@ -46,9 +46,13 @@ namespace eXplorerJam.Input
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.phase == InputActionPhase.Started)
             {
-                JumpEvent?.Invoke();
+                Jump = true;
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                Jump = false;
             }
         }
     }
