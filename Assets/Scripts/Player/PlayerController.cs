@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
         Jump(); // Poll for jumping every frame
     }
 
+    #region Player Movement Mechanics
     /// <summary>
     /// Updates the player movement vector based on the input vector
     /// </summary>
@@ -93,6 +94,10 @@ public class PlayerController : MonoBehaviour
         isSprinting = sprinting;
     }
 
+    /// <summary>
+    /// Moves the player based on the input vector. The camera's current orientation is taken into account
+    /// As well as sprinting and jumping inputs
+    /// </summary>
     private void MovePlayer()
     { 
         // Store the player's movement input
@@ -120,6 +125,7 @@ public class PlayerController : MonoBehaviour
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
     }
+    #endregion
 
     #region Player Jump Mechanics
 
@@ -134,15 +140,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Grounded: {playerGrounded}, Sphere Position: {spherePosition}");
     }
 
-    private void OnDrawGizmos()
-    {
-        Vector3 spherePosition = new Vector3(transform.position.x,
-                                             transform.position.y - groundedOffset,
-                                             transform.position.z);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(spherePosition, groundedRadius);
-    }
     private void Jump()
     {
         if (playerGrounded)
@@ -184,6 +181,16 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Debug Helpers
+    // TODO: Delete these before submission
+    private void OnDrawGizmos()
+    {
+        Vector3 spherePosition = new Vector3(transform.position.x,
+                                             transform.position.y - groundedOffset,
+                                             transform.position.z);
 
-
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(spherePosition, groundedRadius);
+    }
+    #endregion
 }
