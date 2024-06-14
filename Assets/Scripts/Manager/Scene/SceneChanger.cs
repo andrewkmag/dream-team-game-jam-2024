@@ -19,13 +19,28 @@ public class SceneChanger : MonoBehaviour
             Destroy(this);
         }
     }
-    
-    public void ChangeScene(string sceneName)
+
+    #region UnityMethods
+
+    private void OnEnable()
+    {
+        ScenesScrObj.OnChange += ChangeScene;
+    }
+
+
+    private void OnDisable()
+    {
+        ScenesScrObj.OnChange -= ChangeScene;
+    }
+
+    #endregion
+
+    #region Methods
+
+    private static void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
-    
-    public void LoadSceneScrObj(ScenesScrObj scene)
-    {
-    }
+
+    #endregion
 }

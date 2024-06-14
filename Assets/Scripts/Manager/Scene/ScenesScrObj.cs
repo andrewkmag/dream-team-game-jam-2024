@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScenesScrObj : MonoBehaviour
+[CreateAssetMenu(fileName = "ScenesScrObj", menuName = "ScriptableObjects/SceneTransition")]
+public class ScenesScrObj : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Fields
+
+    [SerializeField] private string sceneName;
+
+    #endregion
+    
+    #region Events
+
+    public delegate void StartAction(string sceneName);
+    public static event StartAction OnChange;
+    
+    #endregion
+
+    #region Methods
+    
+    public void ChangeScene()
     {
-        
+        OnChange?.Invoke(sceneName);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 }
