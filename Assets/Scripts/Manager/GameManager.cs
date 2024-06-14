@@ -1,13 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Fields
+
     private static GameManager _instance;
     [SerializeField] private ScenesScrObj actualScene;
+    [SerializeField] private float gravity;
+
+    #endregion
+
+    #region Unity Methods
+
+    private void OnEnable()
+    {
+        ScenesScrObj.OnSceneChange += GetSceneValues;
+    }
+
+    private void OnDisable()
+    {
+        ScenesScrObj.OnSceneChange -= GetSceneValues;
+    }
+
+    private void Reset()
+    {
+        if (actualScene == null)
+        {
+            Debug.LogWarning($"Add a scriptable scene object to the Game Manager to Start");
+        }
+    }
 
     private void Awake()
     {
@@ -15,6 +36,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
+            GetSceneValues(actualScene);
         }
         else
         {
@@ -30,11 +52,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Reset()
+    #endregion
+
+    #region Methods
+
+    private void GetSceneValues(ScenesScrObj sceneSo)
     {
-        if (actualScene == null)
-        {
-            Debug.LogWarning($"Add a scriptable scene object to the Game Manager to Start");
-        }
+        actualScene = sceneSo;
+        gravity = sceneSo.Gravity;
     }
+
+    #endregion
 }

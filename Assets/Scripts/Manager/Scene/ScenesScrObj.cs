@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ScenesScrObj", menuName = "ScriptableObjects/SceneTransition")]
@@ -9,13 +7,25 @@ public class ScenesScrObj : ScriptableObject
 
     [SerializeField] private string sceneName;
     [SerializeField] private float transitionTime;
+    [SerializeField] private float gravity;
+    #endregion
+
+    #region Properties
+
+    public float Gravity
+    {
+        get => gravity;
+        set => gravity = value;
+    }
 
     #endregion
     
     #region Events
 
+    public delegate void StartSceneChange(ScenesScrObj sceneSo);
     public delegate void StartAction(string sceneName);
     public delegate void StartTransition(string sceneName, float transition);
+    public static event StartSceneChange OnSceneChange;
     public static event StartAction OnChange;
     public static event StartTransition OnTransition;
     
@@ -25,11 +35,13 @@ public class ScenesScrObj : ScriptableObject
     
     public void ChangeScene()
     {
+        OnSceneChange?.Invoke(this);
         OnChange?.Invoke(sceneName);
     }
     
     public void TransitionScene()
     {
+        OnSceneChange?.Invoke(this);
         OnTransition?.Invoke(sceneName,transitionTime);
     }
 

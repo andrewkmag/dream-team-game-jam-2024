@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: SampleScene
   transitionTime: 1
+  gravity: 10
