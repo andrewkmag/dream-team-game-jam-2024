@@ -13,9 +13,11 @@ namespace eXplorerJam.Input
     {
         // Events
         public event Action<Vector2> MoveEvent;
+        public event Action<bool> SprintEvent;
 
         // Local variables
         private Controls controls;
+        public bool Jump;
 
         private void OnEnable()
         {
@@ -33,6 +35,25 @@ namespace eXplorerJam.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnSprint(InputAction.CallbackContext context)
+        {
+            //read the sprint value as a bool (button press) and invoke sprintEvent
+            bool isSprinting = context.ReadValueAsButton();
+            SprintEvent?.Invoke(isSprinting);
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                Jump = true;
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                Jump = false;
+            }
         }
     }
 }
