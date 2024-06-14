@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 269496666}
   - component: {fileID: 269496665}
   - component: {fileID: 269496664}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19382463, y: -0.001646476, z: 0.00032529692, w: 0.9810348}
+  m_LocalRotation: {x: 0.19382486, y: -0.0006873318, z: 0.00013579725, w: 0.9810359}
   m_LocalPosition: {x: 0, y: 4.18, z: -6.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 612580626}
   m_Layer: 0
   m_Name: Virtual Camera
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,13 +582,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612580625}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19382463, y: -0.001646476, z: 0.00032529692, w: 0.9810348}
-  m_LocalPosition: {x: 0, y: 4.18, z: -6.7}
+  m_LocalRotation: {x: 0.19382486, y: -0.0006873318, z: 0.00013579725, w: 0.9810359}
+  m_LocalPosition: {x: 0, y: 3.1, z: -7.6099997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 765108001}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1433248333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711993519
 GameObject:
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 711993522}
   - component: {fileID: 711993521}
   - component: {fileID: 711993520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 1433248329}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,8 +877,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 1433248334}
   inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
+  cinemachineVirtualCamera: {fileID: 612580626}
   moveSpeed: 4
   sprintSpeed: 10
+  verticalTerminalSpeed: 50
+  gravity: -9.81
+  jumpHeight: 3
+  jumpTimeout: 0.3
+  fallTimeout: 0.15
+  playerGrounded: 1
+  groundedOffset: 0.7
+  groundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!136 &1433248330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -964,7 +976,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.08, z: 0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 612580627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1433248334
@@ -998,7 +1011,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
-  - {fileID: 612580627}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1433248333}
