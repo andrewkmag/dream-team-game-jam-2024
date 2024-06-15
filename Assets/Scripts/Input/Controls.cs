@@ -57,6 +57,15 @@ namespace eXplorerJam.Input
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Grapple"",
+                    ""type"": ""Button"",
+                    ""id"": ""36d813a5-9356-4af4-b360-1f5ffc13ecc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""67812702-6882-4705-8361-35732560b321"",
@@ -278,6 +287,17 @@ namespace eXplorerJam.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c050ba7d-04c7-47f7-9d54-c8f3843a2147"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Grapple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c4e8f72c-e98c-4356-9220-aa6c7a869655"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
@@ -336,6 +356,7 @@ namespace eXplorerJam.Input
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_Grapple = m_Player.FindAction("Grapple", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         }
 
@@ -401,6 +422,7 @@ namespace eXplorerJam.Input
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_Grapple;
         private readonly InputAction m_Player_Dash;
         public struct PlayerActions
         {
@@ -409,6 +431,7 @@ namespace eXplorerJam.Input
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @Grapple => m_Wrapper.m_Player_Grapple;
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
@@ -428,6 +451,9 @@ namespace eXplorerJam.Input
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Grapple.started += instance.OnGrapple;
+                @Grapple.performed += instance.OnGrapple;
+                @Grapple.canceled += instance.OnGrapple;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -444,6 +470,9 @@ namespace eXplorerJam.Input
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Grapple.started -= instance.OnGrapple;
+                @Grapple.performed -= instance.OnGrapple;
+                @Grapple.canceled -= instance.OnGrapple;
                 @Dash.started -= instance.OnDash;
                 @Dash.performed -= instance.OnDash;
                 @Dash.canceled -= instance.OnDash;
@@ -487,6 +516,7 @@ namespace eXplorerJam.Input
             void OnMove(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnGrapple(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
         }
     }

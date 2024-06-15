@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private grapple grapple;
 
     #endregion
 
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
         GroundedCheck(); // Check if the player is grounded
         MovePlayer(); // Poll for movement every frame
         Jump(); // Poll for jumping every frame
+        Grapple();
     }
 
     #endregion
@@ -284,6 +286,16 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    private void Grapple()
+    {
+
+        if (inputReader.Grapple == true)
+        {
+            grapple.StartGrapple();
+            
+        }
+        
+    }
     #region Debug Helpers
 
     // TODO: Delete these before submission
