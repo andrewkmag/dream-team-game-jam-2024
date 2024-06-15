@@ -16,20 +16,21 @@ namespace eXplorerJam.Input
         public event Action<bool> SprintEvent;
 
         // Local variables
-        private Controls controls;
-        public bool Jump;
+        private Controls _controls;
+        public bool jump;
+        public bool dash;
 
         private void OnEnable()
         {
             // Create a new instance of the controls and set up the callbacks
-            if (controls == null)
+            if (_controls == null)
             {
-                controls = new Controls();
-                controls.Player.SetCallbacks(this);
+                _controls = new Controls();
+                _controls.Player.SetCallbacks(this);
             }
 
             // Enable the Player action map
-            controls.Player.Enable();
+            _controls.Player.Enable();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -46,14 +47,22 @@ namespace eXplorerJam.Input
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Started)
+            jump = context.phase switch
             {
-                Jump = true;
-            }
-            else if (context.phase == InputActionPhase.Canceled)
+                InputActionPhase.Started => true,
+                InputActionPhase.Canceled => false,
+                _ => jump
+            };
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            dash = context.phase switch
             {
-                Jump = false;
-            }
+                InputActionPhase.Started => true,
+                InputActionPhase.Canceled => false,
+                _ => dash
+            };
         }
     }
 }

@@ -1,6 +1,8 @@
 using Cinemachine;
 using eXplorerJam.Input;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,55 +10,105 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    // Serialized fields
-    [Header("References")]
-    [SerializeField] private CharacterController characterController;
+    #region Serialized fields
+
+    [Header("References")] [SerializeField]
+    private CharacterController characterController;
+
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
+    #endregion
+
+    #region Not implemented
+
     // TODO: Implement the following fields
-    [Header("Settings")]
-    [Tooltip("Move speed of the character in m/s")]
-    [SerializeField] private float moveSpeed = 4.0f;
+    [Header("Settings")] [Tooltip("Move speed of the character in m/s")] [SerializeField]
+    private float moveSpeed = 4.0f;
 
-    [Tooltip("Sprint speed of the character in m/s")]
-    [SerializeField] private float sprintSpeed = 10.0f;
+    [Tooltip("Sprint speed of the character in m/s")] [SerializeField]
+    private float sprintSpeed = 6.0f;
 
-    [Tooltip("Terminal speed of the character in m/s")]
-    [SerializeField] private float verticalTerminalSpeed = 50f;
 
-    [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
-    [SerializeField] private float gravity = -9.81f;
+    [Tooltip("Terminal speed of the character in m/s")] [SerializeField]
+    private float verticalTerminalSpeed = 50f;
 
-    [Tooltip("Jump height of the character")]
-    [SerializeField] private float jumpHeight = 3.0f;
+    [Tooltip("The character uses its own gravity value. The engine default is -9.81f")] [SerializeField]
+    private float gravity = -9.81f;
+
+    [Tooltip("Dash speed of the character")] [SerializeField]
+    private float dashSpeed = 30.0f;
+
+    [Tooltip("Time required to pass before finishing the dash.")] [SerializeField]
+    private float dashTime = 0.1f;
+    
+    [Tooltip("Number of avaliable dashes")]
+    [SerializeField]
+    private int remainingDashes = MAX_DASHES;
+
+    [Tooltip("Time required to pass before being able to dash again. Set to 0f to instantly dash again")]
+    [SerializeField]
+    private float dashCooldown = 3.0f;
+    
+    [Tooltip("Time required to pass before being able to dash again. Set to 0f to instantly dash again")]
+    [SerializeField]
+    private float dashTimeout = 0.5f;
+
+    [Tooltip("Jump height of the character")] [SerializeField]
+    private float jumpHeight = 3.0f;
 
     [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
-    [SerializeField] private float jumpTimeout = 0.3f;
+    [SerializeField]
+    private float jumpTimeout = 0.3f;
 
-    [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
-    [SerializeField] private float fallTimeout = 0.15f;
+    [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")] [SerializeField]
+    private float fallTimeout = 0.15f;
 
     [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
-    [SerializeField] private bool playerGrounded = true;
+    [SerializeField]
+    private bool playerGrounded = true;
 
-    [Tooltip("Useful for rough ground")]
-    [SerializeField] private float groundedOffset = -0.14f;
+    [Tooltip("Number of avaliable jumps")]
+    [SerializeField]
+    private int remainingJumps = MAX_JUMPS;
 
-    [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
-    [SerializeField] private float groundedRadius = 0.5f;
+    [Tooltip("Useful for rough ground")] [SerializeField]
+    private float groundedOffset = -0.14f;
 
-    [Tooltip("What layers the character is considered grounded on")]
-    [SerializeField] private LayerMask GroundLayers;
+    [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")] [SerializeField]
+    private float groundedRadius = 0.5f;
 
-    // Local variables
+    [Tooltip("What layers the character is considered grounded on")] [SerializeField]
+    private LayerMask GroundLayers;
+
+    #endregion
+
+    #region Local variables
+
     private Vector2 previousMovementInput;
     private Transform virtualCameraTransform;
 
     private bool isSprinting;
+    private float dashTimeoutDelta;
+    private float dashCooldownDelta;
     private float jumpTimeoutDelta;
     private float fallTimeoutDelta;
     private float verticalSpeed;
+
+    #endregion
+
+    #region Constants
+
+    private const int MAX_JUMPS = 2;
+    private const int MAX_DASHES = 2;
+    private const int NO_REMAINING = 0;
+    private const float NO_TIME = 0f;
+    private const float ZERO_X = 0f;
+    private const float ZERO_Z = 0f;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -68,18 +120,23 @@ public class PlayerController : MonoBehaviour
         virtualCameraTransform = cinemachineVirtualCamera.transform;
 
         // Reset the timeouts
+        dashTimeoutDelta = dashTimeout;
+        dashCooldownDelta = dashCooldown;
         jumpTimeoutDelta = jumpTimeout;
         fallTimeoutDelta = fallTimeout;
     }
 
     private void Update()
     {
-        groundedCheck(); // Check if the player is grounded
+        GroundedCheck(); // Check if the player is grounded
         MovePlayer(); // Poll for movement every frame
         Jump(); // Poll for jumping every frame
     }
 
+    #endregion
+
     #region Player Movement Mechanics
+
     /// <summary>
     /// Updates the player movement vector based on the input vector
     /// </summary>
@@ -89,8 +146,8 @@ public class PlayerController : MonoBehaviour
         previousMovementInput = movementInput;
     }
 
-    private void HandleSprint(bool sprinting) 
-    { 
+    private void HandleSprint(bool sprinting)
+    {
         isSprinting = sprinting;
     }
 
@@ -99,7 +156,7 @@ public class PlayerController : MonoBehaviour
     /// As well as sprinting and jumping inputs
     /// </summary>
     private void MovePlayer()
-    { 
+    {
         // Store the player's movement input
         Vector3 desiredMoveDirection = new Vector3(previousMovementInput.x, 0, previousMovementInput.y);
 
@@ -124,54 +181,99 @@ public class PlayerController : MonoBehaviour
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
+        
+        if (inputReader.dash && dashTimeoutDelta <= NO_TIME && remainingDashes > NO_REMAINING)
+        {
+            Debug.Log("OSCAR: Try and dash");
+            remainingDashes--;
+            StartCoroutine(Dash(finalMoveDirection));
+                   
+            inputReader.dash = false;
+            dashTimeoutDelta = dashTimeout;
+            dashCooldownDelta = dashCooldown;
+        }
+        
+        if (dashTimeoutDelta >= NO_TIME)
+        {
+            dashTimeoutDelta -= Time.deltaTime;
+        }
+        if (dashCooldownDelta >= NO_TIME)
+        {
+            dashCooldownDelta -= Time.deltaTime;
+        }
+        else
+        {
+            if(remainingDashes>=MAX_DASHES) return;
+            remainingDashes++;
+            dashCooldownDelta = dashCooldown;
+        }
+        
     }
+
+    private IEnumerator Dash(Vector3 finalMoveDirection)
+    {
+        var startTime = Time.time;
+        while (Time.time < startTime+dashTime)
+        {
+            characterController.Move(finalMoveDirection * (moveSpeed * dashSpeed * Time.deltaTime) +
+                                     new Vector3(ZERO_X, verticalSpeed, ZERO_Z) * Time.deltaTime);
+            
+            yield return null;
+        }
+    }
+
     #endregion
 
     #region Player Jump Mechanics
 
-    private void groundedCheck()
+    private void GroundedCheck()
     {
-        Vector3 spherePosition = new Vector3(transform.position.x, 
-                                             transform.position.y - groundedOffset,
-                                             transform.position.z);
+        Vector3 spherePosition = new Vector3(transform.position.x,
+            transform.position.y - groundedOffset,
+            transform.position.z);
 
-        playerGrounded = Physics.CheckSphere(spherePosition, groundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+        playerGrounded =
+            Physics.CheckSphere(spherePosition, groundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
         Debug.Log($"Grounded: {playerGrounded}, Sphere Position: {spherePosition}");
     }
 
     private void Jump()
     {
-        if (playerGrounded)
+        if (!playerGrounded)
         {
-            if (verticalSpeed < 0.0f)
+            if (remainingJumps <= NO_REMAINING)
             {
-                verticalSpeed = -2f;
+                jumpTimeoutDelta = jumpTimeout;
             }
-
-            fallTimeoutDelta = fallTimeout;
-
-            if (inputReader.Jump && jumpTimeoutDelta <= 0.0f)
-            {
-                verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                inputReader.Jump = false;
-            }
-
-            if (jumpTimeoutDelta >= 0.0f)
-            {
-                jumpTimeoutDelta -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            jumpTimeoutDelta = jumpTimeout;
 
             if (fallTimeoutDelta >= 0.0f)
             {
                 fallTimeoutDelta -= Time.deltaTime;
             }
+        }
+        else
+        {
+            if (verticalSpeed < 0.0f)
+            {
+                verticalSpeed = -2f;
+                remainingJumps = MAX_JUMPS;
+            }
 
-            inputReader.Jump = false;
+            fallTimeoutDelta = fallTimeout;
+        }
+
+        if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
+        {
+            remainingJumps--;
+            verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            inputReader.jump = false;
+            jumpTimeoutDelta = jumpTimeout;
+        }
+
+        if (jumpTimeoutDelta >= 0.0f)
+        {
+            jumpTimeoutDelta -= Time.deltaTime;
         }
 
         if (verticalSpeed < verticalTerminalSpeed)
@@ -179,18 +281,21 @@ public class PlayerController : MonoBehaviour
             verticalSpeed += gravity * Time.deltaTime;
         }
     }
+
     #endregion
 
     #region Debug Helpers
+
     // TODO: Delete these before submission
     private void OnDrawGizmos()
     {
         Vector3 spherePosition = new Vector3(transform.position.x,
-                                             transform.position.y - groundedOffset,
-                                             transform.position.z);
+            transform.position.y - groundedOffset,
+            transform.position.z);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(spherePosition, groundedRadius);
     }
+
     #endregion
 }
