@@ -64,5 +64,10 @@ namespace eXplorerJam.Input
                 _ => dash
             };
         }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -27,10 +27,10 @@ public class Interact : MonoBehaviour
     {
         CheckIfInteractable();
 
-        // if(isInteracting == false)
-        //     isInteracting = true;
-        // else if (isInteracting == true)
-        //     isInteracting = false;
+        if(_isInteracting == false)
+            _isInteracting = true;
+        else if (_isInteracting == true)
+            _isInteracting = false;
     }
 
     #endregion
@@ -71,21 +71,6 @@ public class Interact : MonoBehaviour
             contextPrompt.SetActive(false);
         }
     }
-
-    private void CheckIfInteracting()
-    {
-        var ray = new Ray(playerCamRoot.position, playerCamRoot.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 5))
-        {
-            if (hit.collider.TryGetComponent(out IsInteractable interactable))
-            {
-                interactable.Interact(gameObject.transform);
-            }
-        }
-        _isInteracting = false;
-    }
-
     #endregion
 
 }
