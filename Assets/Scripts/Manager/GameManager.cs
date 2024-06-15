@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     [SerializeField] private ScenesScrObj actualScene;
     [SerializeField] private float gravity;
+    [SerializeField] private int[] planets;
 
     #endregion
 
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         actualScene = sceneSo;
         gravity = sceneSo.Gravity;
+        planets = sceneSo.Planets;
     }
 
     #endregion

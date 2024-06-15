@@ -8,6 +8,7 @@ public class ScenesScrObj : ScriptableObject
     [SerializeField] private string sceneName;
     [SerializeField] private float transitionTime;
     [SerializeField] private float gravity;
+    [SerializeField] private int[] planets;
     #endregion
 
     #region Properties
@@ -16,6 +17,12 @@ public class ScenesScrObj : ScriptableObject
     {
         get => gravity;
         set => gravity = value;
+    }
+    
+    public int[] Planets
+    {
+        get => planets;
+        set => planets = value;
     }
 
     #endregion

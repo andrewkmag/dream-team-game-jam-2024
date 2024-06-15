@@ -15,3 +15,4 @@ MonoBehaviour:
   sceneName: GameManagerTest
   transitionTime: 1
   gravity: 5
+  planets: 00000000000000000000000000000000
