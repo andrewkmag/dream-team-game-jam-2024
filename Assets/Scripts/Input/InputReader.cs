@@ -18,6 +18,7 @@ namespace eXplorerJam.Input
         // Local variables
         private Controls controls;
         public bool Jump;
+        public bool Grapple;
 
         private void OnEnable()
         {
@@ -55,5 +56,19 @@ namespace eXplorerJam.Input
                 Jump = false;
             }
         }
+
+        public void OnGrapple(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                Grapple = true;
+            }
+            else if(context.phase == InputActionPhase.Canceled) 
+            { 
+                Grapple = false; 
+            }
+        }
+
+
     }
 }

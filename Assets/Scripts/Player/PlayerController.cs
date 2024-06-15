@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private grapple grapple;
 
     // TODO: Implement the following fields
     [Header("Settings")]
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
         groundedCheck(); // Check if the player is grounded
         MovePlayer(); // Poll for movement every frame
         Jump(); // Poll for jumping every frame
+        Grapple();
     }
 
     #region Player Movement Mechanics
@@ -181,6 +183,16 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private void Grapple()
+    {
+
+        if (inputReader.Grapple == true)
+        {
+            grapple.StartGrapple();
+            
+        }
+        
+    }
     #region Debug Helpers
     // TODO: Delete these before submission
     private void OnDrawGizmos()
