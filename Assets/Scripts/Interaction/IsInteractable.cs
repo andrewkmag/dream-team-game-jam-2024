@@ -65,7 +65,6 @@ public abstract class IsInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         canInteract = false;
-        Debug.Log("Interacted with: " + gameObject.name);
         RestartInteract();
         //EndInteract(); //Use instead of StartCoroutine to avoid interacting again
     }
@@ -75,7 +74,6 @@ public abstract class IsInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         canInteract = false;
-        Debug.Log("Interacted with: " + gameObject.name);
         RestartInteract();
         //EndInteract(); //Use instead of StartCoroutine to avoid interacting again
     }

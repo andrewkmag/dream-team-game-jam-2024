@@ -19,6 +19,7 @@ namespace eXplorerJam.Input
         private Controls _controls;
         public bool jump;
         public bool dash;
+        public bool interact;
 
         private void OnEnable()
         {
@@ -67,7 +68,12 @@ namespace eXplorerJam.Input
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            throw new NotImplementedException();
+            interact = context.phase switch
+            {
+                InputActionPhase.Started => true,
+                InputActionPhase.Canceled => false,
+                _ => interact
+            };
         }
     }
 }
