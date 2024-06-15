@@ -27,7 +27,7 @@ public class Interact : MonoBehaviour
     #region Constants
 
     private const float INTERACTION_COOLDOWN = 0.5f;
-    private const float INTERACTION_DISTANCE = 5;
+    private const float INTERACTION_DISTANCE = 2.5f;
 
     #endregion
 
