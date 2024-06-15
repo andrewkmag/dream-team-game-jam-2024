@@ -1,6 +1,8 @@
 using Cinemachine;
 using eXplorerJam.Input;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -25,13 +27,32 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 4.0f;
 
     [Tooltip("Sprint speed of the character in m/s")] [SerializeField]
-    private float sprintSpeed = 10.0f;
+    private float sprintSpeed = 6.0f;
+
 
     [Tooltip("Terminal speed of the character in m/s")] [SerializeField]
     private float verticalTerminalSpeed = 50f;
 
     [Tooltip("The character uses its own gravity value. The engine default is -9.81f")] [SerializeField]
     private float gravity = -9.81f;
+
+    [Tooltip("Dash speed of the character")] [SerializeField]
+    private float dashSpeed = 30.0f;
+
+    [Tooltip("Time required to pass before finishing the dash.")] [SerializeField]
+    private float dashTime = 0.1f;
+    
+    [Tooltip("Number of avaliable dashes")]
+    [SerializeField]
+    private int remainingDashes = MAX_DASHES;
+
+    [Tooltip("Time required to pass before being able to dash again. Set to 0f to instantly dash again")]
+    [SerializeField]
+    private float dashCooldown = 3.0f;
+    
+    [Tooltip("Time required to pass before being able to dash again. Set to 0f to instantly dash again")]
+    [SerializeField]
+    private float dashTimeout = 0.5f;
 
     [Tooltip("Jump height of the character")] [SerializeField]
     private float jumpHeight = 3.0f;
@@ -46,11 +67,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
     [SerializeField]
     private bool playerGrounded = true;
-    
-    [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
+
+    [Tooltip("Number of avaliable jumps")]
     [SerializeField]
     private int remainingJumps = MAX_JUMPS;
-    
 
     [Tooltip("Useful for rough ground")] [SerializeField]
     private float groundedOffset = -0.14f;
@@ -69,6 +89,8 @@ public class PlayerController : MonoBehaviour
     private Transform virtualCameraTransform;
 
     private bool isSprinting;
+    private float dashTimeoutDelta;
+    private float dashCooldownDelta;
     private float jumpTimeoutDelta;
     private float fallTimeoutDelta;
     private float verticalSpeed;
@@ -78,7 +100,11 @@ public class PlayerController : MonoBehaviour
     #region Constants
 
     private const int MAX_JUMPS = 2;
-    private const int NO_JUMPS = 0;
+    private const int MAX_DASHES = 2;
+    private const int NO_REMAINING = 0;
+    private const float NO_TIME = 0f;
+    private const float ZERO_X = 0f;
+    private const float ZERO_Z = 0f;
 
     #endregion
 
@@ -94,6 +120,8 @@ public class PlayerController : MonoBehaviour
         virtualCameraTransform = cinemachineVirtualCamera.transform;
 
         // Reset the timeouts
+        dashTimeoutDelta = dashTimeout;
+        dashCooldownDelta = dashCooldown;
         jumpTimeoutDelta = jumpTimeout;
         fallTimeoutDelta = fallTimeout;
     }
@@ -153,6 +181,45 @@ public class PlayerController : MonoBehaviour
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
+        
+        if (inputReader.dash && dashTimeoutDelta <= NO_TIME && remainingDashes > NO_REMAINING)
+        {
+            Debug.Log("OSCAR: Try and dash");
+            remainingDashes--;
+            StartCoroutine(Dash(finalMoveDirection));
+                   
+            inputReader.dash = false;
+            dashTimeoutDelta = dashTimeout;
+            dashCooldownDelta = dashCooldown;
+        }
+        
+        if (dashTimeoutDelta >= NO_TIME)
+        {
+            dashTimeoutDelta -= Time.deltaTime;
+        }
+        if (dashCooldownDelta >= NO_TIME)
+        {
+            dashCooldownDelta -= Time.deltaTime;
+        }
+        else
+        {
+            if(remainingDashes>=MAX_DASHES) return;
+            remainingDashes++;
+            dashCooldownDelta = dashCooldown;
+        }
+        
+    }
+
+    private IEnumerator Dash(Vector3 finalMoveDirection)
+    {
+        var startTime = Time.time;
+        while (Time.time < startTime+dashTime)
+        {
+            characterController.Move(finalMoveDirection * (moveSpeed * dashSpeed * Time.deltaTime) +
+                                     new Vector3(ZERO_X, verticalSpeed, ZERO_Z) * Time.deltaTime);
+            
+            yield return null;
+        }
     }
 
     #endregion
@@ -175,11 +242,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!playerGrounded)
         {
-            if (remainingJumps <= NO_JUMPS)
+            if (remainingJumps <= NO_REMAINING)
             {
-                jumpTimeoutDelta = jumpTimeout;                
+                jumpTimeoutDelta = jumpTimeout;
             }
-            
+
             if (fallTimeoutDelta >= 0.0f)
             {
                 fallTimeoutDelta -= Time.deltaTime;
@@ -192,14 +259,15 @@ public class PlayerController : MonoBehaviour
                 verticalSpeed = -2f;
                 remainingJumps = MAX_JUMPS;
             }
+
             fallTimeoutDelta = fallTimeout;
         }
-        
-        if (inputReader.Jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_JUMPS)
+
+        if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
         {
             remainingJumps--;
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            inputReader.Jump = false;
+            inputReader.jump = false;
             jumpTimeoutDelta = jumpTimeout;
         }
 
