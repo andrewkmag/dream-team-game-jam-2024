@@ -6,7 +6,7 @@ public class Interactable : IsInteractable
 {
     #region Constants
 
-    private new const string CONTEXT_TEXT = "Press E to interact";
+    private const string CONTEXT_TEXT = "Press E to interact";
 
     #endregion
     

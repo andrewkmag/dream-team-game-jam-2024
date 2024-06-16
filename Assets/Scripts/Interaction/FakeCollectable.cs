@@ -6,7 +6,7 @@ public class FakeCollectable : IsInteractable
 {
     #region Constants
 
-    private new const string CONTEXT_TEXT = "Press E to collect";
+    private const string CONTEXT_TEXT = "Press E to collect";
 
     #endregion
     
