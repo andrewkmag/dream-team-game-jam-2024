@@ -201,6 +201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -321,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -667,6 +677,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -786,6 +801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -908,6 +928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1028,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1133,6 +1163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1254,6 +1289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1373,6 +1413,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1600,6 +1645,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1720,6 +1770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1946,6 +2001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Crouton_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9d6e00d423ae4f4ab9b6fc3d6da3979,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2019,6 +2079,78 @@ Transform:
   m_Children:
   - {fileID: 539933692}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &414273560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414273562}
+  - component: {fileID: 414273561}
+  m_Layer: 0
+  m_Name: Virtual Camera
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &414273561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414273560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 565559535}
+  m_Lens:
+    FieldOfView: 60
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 673031988}
+--- !u!4 &414273562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414273560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.19382484, y: -0.00082813785, z: 0.00016361654, w: 0.9810358}
+  m_LocalPosition: {x: 0, y: 3.1, z: -7.6100006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 673031988}
+  m_Father: {fileID: 565559535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &421298913
 PrefabInstance:
@@ -2097,6 +2229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2219,6 +2356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2339,6 +2481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_BreadSlice_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00c6371dc5c63dd45a00c5e3b7d27637,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2566,6 +2713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2685,6 +2837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2806,6 +2963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Loaf_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e3307aee43da7a4a95d0cf3ee03cd6b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3034,6 +3196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3155,6 +3322,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3198,6 +3370,319 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7410749046525818217, guid: 49e7cf827f33af4419ad5106c83f9cef, type: 3}
+--- !u!1 &565559526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565559535}
+  - component: {fileID: 565559534}
+  - component: {fileID: 565559533}
+  - component: {fileID: 565559532}
+  - component: {fileID: 565559531}
+  - component: {fileID: 565559530}
+  - component: {fileID: 565559529}
+  - component: {fileID: 565559528}
+  - component: {fileID: 565559527}
+  m_Layer: 0
+  m_Name: Player (1)
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &565559527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4558525c01fb65c48bec1890b0412955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: -1
+--- !u!120 &565559528
+LineRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 0.1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 0, g: 0.11449838, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MaskInteraction: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+  m_ApplyActiveColorSpace: 1
+--- !u!114 &565559529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9cdca7c5b6cdb43a7d4f912f93a93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 565559531}
+  inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
+  cinemachineVirtualCamera: {fileID: 414273561}
+  grapple: {fileID: 565559530}
+  moveSpeed: 4
+  sprintSpeed: 10
+  verticalTerminalSpeed: 50
+  gravity: -9.81
+  dashSpeed: 30
+  dashTime: 0.1
+  remainingDashes: 2
+  dashCooldown: 3
+  dashTimeout: 0.5
+  jumpHeight: 3
+  jumpTimeout: 0.3
+  fallTimeout: 0.15
+  playerGrounded: 1
+  remainingJumps: 2
+  groundedOffset: 0.7
+  groundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &565559530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6865345b32be5e4ea915d4ab31af0d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 565559531}
+  inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
+  wrist: {fileID: 565559535}
+  player: {fileID: 565559535}
+  isGrappable:
+    serializedVersion: 2
+    m_Bits: 64
+  maxGrappleDistance: 25
+  grappleDelayTime: 0.5
+  overshootYAxis: 5
+--- !u!143 &565559531
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &565559532
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &565559533
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &565559534
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &565559535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565559526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -2.7, y: 1.08, z: 40.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 414273562}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &575664317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3275,6 +3760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3396,6 +3886,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3558,6 +4053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3678,6 +4178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3800,6 +4305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Waffle_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7dd2c7c11231fb4d951514011e52d11,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3842,6 +4352,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.4173026, y: 2.8243775, z: 0.39228117}
   m_Center: {x: -1.6750901, y: -1.3749144, z: 0.19614059}
+--- !u!1 &673031987
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673031988}
+  - component: {fileID: 673031991}
+  - component: {fileID: 673031990}
+  - component: {fileID: 673031989}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &673031988
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673031987}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 414273562}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &673031989
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673031987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Damping: 0
+--- !u!114 &673031990
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673031987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damping: {x: 0, y: 0, z: 0}
+  ShoulderOffset: {x: 0, y: 4.5, z: -3.61}
+  VerticalArmLength: -1.4
+  CameraSide: 1
+  CameraDistance: 4
+  CameraCollisionFilter:
+    serializedVersion: 2
+    m_Bits: 0
+  IgnoreTag: 
+  CameraRadius: 0.2
+  DampingIntoCollision: 0
+  DampingFromCollision: 2
+--- !u!114 &673031991
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673031987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &676763629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3919,6 +4512,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4040,6 +4638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4236,6 +4839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4341,6 +4949,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Waffle_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba0fb9a997179664992474f4a63c656e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4461,6 +5074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4843,6 +5461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4963,6 +5586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Loaf_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e3307aee43da7a4a95d0cf3ee03cd6b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5085,6 +5713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5204,6 +5837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5326,6 +5964,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5447,6 +6090,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5567,6 +6215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5728,6 +6381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5847,6 +6505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5969,6 +6632,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6012,177 +6680,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7410749046525818217, guid: 49e7cf827f33af4419ad5106c83f9cef, type: 3}
---- !u!1 &1010442143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1010442149}
-  - component: {fileID: 1010442148}
-  - component: {fileID: 1010442147}
-  - component: {fileID: 1010442146}
-  - component: {fileID: 1010442145}
-  - component: {fileID: 1010442144}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1010442144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9cdca7c5b6cdb43a7d4f912f93a93f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 1010442145}
-  inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
-  cinemachineVirtualCamera: {fileID: 1570878801}
-  grapple: {fileID: 0}
-  moveSpeed: 4
-  sprintSpeed: 10
-  verticalTerminalSpeed: 50
-  gravity: -9.81
-  dashSpeed: 30
-  dashTime: 0.1
-  remainingDashes: 2
-  dashCooldown: 3
-  dashTimeout: 0.5
-  jumpHeight: 3
-  jumpTimeout: 0.3
-  fallTimeout: 0.15
-  playerGrounded: 1
-  remainingJumps: 2
-  groundedOffset: 0.7
-  groundedRadius: 0.5
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!143 &1010442145
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &1010442146
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1010442147
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b85e37b917935c74c9107e004e1ce3f0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1010442148
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1010442149
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010442143}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 13.1, y: 1.08, z: 34.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1570878802}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1020227382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6260,6 +6757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6382,6 +6884,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6503,6 +7010,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6623,6 +7135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Loaf_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e3307aee43da7a4a95d0cf3ee03cd6b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6764,6 +7281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Waffle_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba0fb9a997179664992474f4a63c656e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6883,6 +7405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7125,6 +7652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7351,6 +7883,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7470,6 +8007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7659,6 +8201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7764,6 +8311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Waffle_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba0fb9a997179664992474f4a63c656e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7884,6 +8436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8006,6 +8563,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8125,6 +8687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8247,6 +8814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Crouton_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9d6e00d423ae4f4ab9b6fc3d6da3979,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8366,6 +8938,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8646,6 +9223,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8765,6 +9347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8887,6 +9474,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9008,6 +9600,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9051,78 +9648,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8564185969854854457, guid: a2a406139f764b3408d4b9eebe22c47b, type: 3}
---- !u!1 &1570878800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1570878802}
-  - component: {fileID: 1570878801}
-  m_Layer: 0
-  m_Name: Virtual Camera
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1570878801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570878800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1010442149}
-  m_Follow: {fileID: 1010442149}
-  m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 1916943951}
---- !u!4 &1570878802
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570878800}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.2514776, y: -0.0006779737, z: 0.00017615633, w: 0.9678629}
-  m_LocalPosition: {x: 0, y: 5.0099998, z: -9.060001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1916943951}
-  m_Father: {fileID: 1010442149}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1584261163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9200,6 +9725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9322,6 +9852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_BreadSlice_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00c6371dc5c63dd45a00c5e3b7d27637,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9443,6 +9978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Waffle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7dd2c7c11231fb4d951514011e52d11,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9562,6 +10102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9771,8 +10316,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649543018}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00017615633, y: 0.9678629, z: -0.2514776, w: 0.0006779737}
-  m_LocalPosition: {x: 13.1, y: 6.0899997, z: 43.760002}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -2.7, y: 4.18, z: 48.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9855,6 +10400,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Spaceship_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54ee80eca3dfd1042bc5c3bbed5680e8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10097,6 +10647,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10217,6 +10772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10339,6 +10899,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Crouton_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9d6e00d423ae4f4ab9b6fc3d6da3979,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10458,6 +11023,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10805,6 +11375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10924,6 +11499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Crouton_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9d6e00d423ae4f4ab9b6fc3d6da3979,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11078,6 +11658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_Pretzel_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49e7cf827f33af4419ad5106c83f9cef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11198,6 +11783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11320,6 +11910,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11441,6 +12036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11518,103 +12118,6 @@ Transform:
   - {fileID: 471379403}
   m_Father: {fileID: 600597548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1916943950
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1916943951}
-  - component: {fileID: 1916943954}
-  - component: {fileID: 1916943953}
-  - component: {fileID: 1916943952}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1916943951
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916943950}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1570878802}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1916943952
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916943950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 6.41, z: -4.56}
-  VerticalArmLength: -1.4
-  CameraSide: 1
-  CameraDistance: 4.5
-  CameraCollisionFilter:
-    serializedVersion: 2
-    m_Bits: 0
-  IgnoreTag: 
-  CameraRadius: 0.2
-  DampingIntoCollision: 0
-  DampingFromCollision: 2
---- !u!114 &1916943953
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916943950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5006826
-  m_ScreenY: 0.49715507
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &1916943954
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916943950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1963470527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11692,6 +12195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11813,6 +12321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11986,6 +12499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Platform_BreadSlice_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00c6371dc5c63dd45a00c5e3b7d27637,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12107,6 +12625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12227,6 +12750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12346,6 +12874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_Cheerio_01 (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a406139f764b3408d4b9eebe22c47b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12468,6 +13001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12588,6 +13126,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Deco_PretzelStick_01 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e4fe0cbc419cb64da7339c96e61bab4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12605,7 +13148,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1649543023}
   - {fileID: 31311520}
-  - {fileID: 1010442149}
+  - {fileID: 565559535}
   - {fileID: 1855800841}
   - {fileID: 326846760}
   - {fileID: 600597548}
