@@ -17,6 +17,7 @@ namespace eXplorerJam.Input
 
         // Local variables
         private Controls _controls;
+        public bool Grapple;
         public bool jump;
         public bool dash;
         public bool interact;
@@ -66,6 +67,7 @@ namespace eXplorerJam.Input
             };
         }
 
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             interact = context.phase switch
@@ -74,6 +76,18 @@ namespace eXplorerJam.Input
                 InputActionPhase.Canceled => false,
                 _ => interact
             };
+        }
+
+        public void OnGrapple(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                Grapple = true;
+            }
+            else if(context.phase == InputActionPhase.Canceled) 
+            { 
+                Grapple = false; 
+            }
         }
     }
 }
