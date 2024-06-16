@@ -30,7 +30,9 @@ public class Enemy : MonoBehaviour
     private const int ONE_ELEMENT = 1;
     private const float NEGLIGIBLE_ANGLE_DIFF = 0.05f;
     private const int ZERO_INIT_ADJUSTMENT = 1;
+    private const float HALF_ANGLE = 0.5f;
 
+#if UNITY_EDITOR
     private const int FIRST_SPHERE = 0;
     private const int FIRST_LINE = 1;
     private const float FIRST_SPHERE_RAD = 0.5f;
@@ -38,11 +40,11 @@ public class Enemy : MonoBehaviour
     private const float FIRST_LINE_THICK = 4f;
     private const float LINE_THICK = 1f;
     private const int HANDLE_CONTROL = 0;
-    private const float HALF_ANGLE = 0.5f;
 
-    private readonly Color _firstNodeColor = new Color(0, 255, 0);
-    private readonly Color _nodesColor = new Color(0, 255, 0, 0.5f);
-    private readonly Color _viewAreaColor = new Color(0, 255, 255, 0.5f);
+    private readonly Color _firstHandleNodeColor = new Color(0, 255, 0);
+    private readonly Color _handlenodesColor = new Color(255, 255, 0, 0.5f);
+    private readonly Color _enemyfovHandleAreaColor = new Color(0, 255, 255, 0.5f);
+#endif
 
     #endregion
 
@@ -202,7 +204,7 @@ public class Enemy : MonoBehaviour
         var from = Quaternion.AngleAxis(-HALF_ANGLE * viewAngle, Vector3.up) * (
             forward - Vector3.Dot(forward, Vector3.up) * Vector3.up
         );
-        Handles.color = _viewAreaColor;
+        Handles.color = _enemyfovHandleAreaColor;
         Handles.DrawSolidArc(transform.position, enemyTransform.up, from, viewAngle, viewDistance);
 
         var previousPosition = waypoints[INITIAL_ARRAY].position;
@@ -212,7 +214,7 @@ public class Enemy : MonoBehaviour
             switch (index)
             {
                 case FIRST_SPHERE:
-                    Handles.color = _firstNodeColor
+                    Handles.color = _firstHandleNodeColor
                         ;
                     Handles.SphereHandleCap(HANDLE_CONTROL, waypoints[INITIAL_ARRAY].position, Quaternion.identity,
                         FIRST_SPHERE_RAD,
@@ -220,7 +222,7 @@ public class Enemy : MonoBehaviour
                     break;
                 case FIRST_LINE:
                     Handles.DrawLine(previousPosition, waypoint.position, FIRST_LINE_THICK);
-                    Handles.color = _nodesColor;
+                    Handles.color = _handlenodesColor;
                     break;
                 default:
                     Handles.SphereHandleCap(HANDLE_CONTROL, waypoint.position, Quaternion.identity, SPHERE_RAD,
