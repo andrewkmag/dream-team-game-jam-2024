@@ -65,8 +65,8 @@ public abstract class IsInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         canInteract = false;
-        RestartInteract();
-        //EndInteract(); //Use instead of StartCoroutine to avoid interacting again
+        //RestartInteract();//add after override if interaction needs to restart
+        //EndInteract(); //override and add instead of StartCoroutine to avoid interacting again
     }
 
     //interactedTarget sends the information of the player to the interacted object
@@ -74,8 +74,8 @@ public abstract class IsInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         canInteract = false;
-        RestartInteract();
-        //EndInteract(); //Use instead of StartCoroutine to avoid interacting again
+        //RestartInteract();//add after override if interaction needs to restart
+        //EndInteract(); //override and add instead of StartCoroutine to avoid interacting again
     }
 
     public virtual void Interact()

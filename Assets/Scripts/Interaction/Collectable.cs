@@ -24,7 +24,7 @@ public class Collectable : IsInteractable
 
     protected override void DoInteraction()
     {
-        if (!canInteract) return;
+        base.DoInteraction();
         EndInteract();
         Destroy(gameObject);
     }

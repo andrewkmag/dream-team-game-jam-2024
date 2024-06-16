@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : IsInteractable
+public class FakeCollectable : IsInteractable
 {
     #region Constants
 
-    private new const string CONTEXT_TEXT = "Press E to interact";
+    private new const string CONTEXT_TEXT = "Press E to collect";
 
     #endregion
     
@@ -25,7 +25,8 @@ public class Interactable : IsInteractable
     protected override void DoInteraction()
     {
         base.DoInteraction();
-        RestartInteract();
+        EndInteract();
+        gameObject.SetActive(false);
     }
 
     #endregion
