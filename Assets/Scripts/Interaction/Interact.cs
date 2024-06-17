@@ -59,13 +59,10 @@ public class Interact : MonoBehaviour
     private void CheckIfInteractable()
     {
         var ray = new Ray(playerCamRoot.position, playerCamRoot.forward);
-        Debug.Log("Oscar On interaction distance");
         if (Physics.Raycast(ray, out var hit, INTERACTION_DISTANCE))
         {
-            Debug.Log("Oscar On interaction distance");
             if (hit.collider.TryGetComponent(out IsInteractable interactable))
             {
-                Debug.Log("Oscar found interactable");
                 interactable.SetContextText(interactable.ContextText);
                 if (interactable.RequiresPlayer)
                 {
