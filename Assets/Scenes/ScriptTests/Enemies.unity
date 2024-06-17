@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 317206676}
   - component: {fileID: 317206675}
   m_Layer: 3
-  m_Name: Cube (3)
+  m_Name: collectable cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 317206674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.04, y: 0.83, z: 2.42}
+  m_LocalPosition: {x: -15.13, y: 0.83, z: 7.24}
   m_LocalScale: {x: 1.7071, y: 1.7071, z: 1.7071}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1130,6 +1130,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2791919101675461717, guid: 4ecb97c27c45d2e4cb5984fadd54fb6f,
+        type: 3}
+      propertyPath: actualScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 45cf662ecd1572a4187082afdad05039,
+        type: 2}
     - target: {fileID: 6686735912838168881, guid: 4ecb97c27c45d2e4cb5984fadd54fb6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1352,7 +1358,7 @@ GameObject:
   - component: {fileID: 682933172}
   - component: {fileID: 682933171}
   m_Layer: 3
-  m_Name: Cube (4)
+  m_Name: Interactable cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,7 +1456,7 @@ Transform:
   m_GameObject: {fileID: 682933170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 1.39, z: -2.85}
+  m_LocalPosition: {x: -13.45, y: 1.39, z: 11.45}
   m_LocalScale: {x: 2.778476, y: 2.778476, z: 2.778476}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4011,6 +4017,8 @@ SceneRoots:
   - {fileID: 592558458}
   - {fileID: 6444808731435217898}
   - {fileID: 1590968929}
+  - {fileID: 682933175}
+  - {fileID: 317206679}
   - {fileID: 941557007}
   - {fileID: 1688395440}
   - {fileID: 1049138540}
@@ -4019,5 +4027,3 @@ SceneRoots:
   - {fileID: 514979408}
   - {fileID: 594437780}
   - {fileID: 1794042932}
-  - {fileID: 682933175}
-  - {fileID: 317206679}
