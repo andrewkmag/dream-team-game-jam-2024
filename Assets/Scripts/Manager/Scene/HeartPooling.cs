@@ -38,12 +38,9 @@ public class HeartPooling : MonoBehaviour
 
     public HeartContainer[] GetPooledArray()
     {
-        Debug.Log($"Oscar {pooledObjects.Count}");
         var pooled = pooledObjects.ToArray();
-        Debug.Log($"Oscar {pooled.Length}");
         var pooledHCs = new List<HeartContainer>(pooled.Length);
         pooledHCs.AddRange(pooled.Select(po => po.GetComponent<HeartContainer>()));
-        Debug.Log($"Oscar {pooledHCs.Count}");
         return pooledHCs.ToArray();
     }
 
