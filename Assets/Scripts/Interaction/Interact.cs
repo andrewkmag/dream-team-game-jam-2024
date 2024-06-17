@@ -9,7 +9,6 @@ public class Interact : MonoBehaviour
     #region Serialized fields
 
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private Transform playerCamRoot;
 
     #endregion
 
@@ -58,7 +57,7 @@ public class Interact : MonoBehaviour
 
     private void CheckIfInteractable()
     {
-        var ray = new Ray(playerCamRoot.position, playerCamRoot.forward);
+        var ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out var hit, INTERACTION_DISTANCE))
         {
             if (hit.collider.TryGetComponent(out IsInteractable interactable))
