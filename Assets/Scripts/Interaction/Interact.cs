@@ -10,15 +10,12 @@ public class Interact : MonoBehaviour
 
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform playerCamRoot;
-    [SerializeField] private GameObject contextPrompt;
-    [SerializeField] private TextMeshProUGUI contextText;
 
     #endregion
 
     #region Fields
 
     private bool _busyInteracting;
-    private bool _iscontextPromptNotNull;
     private bool _promptNotNull;
     private bool _notNull;
 
@@ -33,21 +30,6 @@ public class Interact : MonoBehaviour
 
 
     #region Unity Methods
-
-    private void Start()
-    {
-        _notNull = contextPrompt != null;
-        _promptNotNull = contextPrompt != null;
-        _iscontextPromptNotNull = contextPrompt != null;
-    }
-
-    private void Awake()
-    {
-        if (contextText == null)
-        {
-            contextText = contextPrompt.GetComponent<TextMeshProUGUI>();
-        }
-    }
 
     private void Update()
     {
@@ -77,17 +59,14 @@ public class Interact : MonoBehaviour
     private void CheckIfInteractable()
     {
         var ray = new Ray(playerCamRoot.position, playerCamRoot.forward);
-
+        Debug.Log("Oscar On interaction distance");
         if (Physics.Raycast(ray, out var hit, INTERACTION_DISTANCE))
         {
+            Debug.Log("Oscar On interaction distance");
             if (hit.collider.TryGetComponent(out IsInteractable interactable))
             {
-                if (_promptNotNull && !contextPrompt.activeInHierarchy)
-                {
-                    contextPrompt.SetActive(true);
-                    contextText.text = interactable.ContextText;
-                }
-
+                Debug.Log("Oscar found interactable");
+                interactable.SetContextText(interactable.ContextText);
                 if (interactable.RequiresPlayer)
                 {
                     if (_busyInteracting == true)
@@ -99,14 +78,14 @@ public class Interact : MonoBehaviour
                         interactable.Interact();
                 }
             }
-            else if (_iscontextPromptNotNull && contextPrompt.activeInHierarchy)
+            else
             {
-                contextPrompt.SetActive(false);
+                ContextualUIManager.Instace.HideContextualText();                
             }
         }
-        else if (_notNull && contextPrompt.activeInHierarchy)
+        else
         {
-            contextPrompt.SetActive(false);
+            ContextualUIManager.Instace.HideContextualText();                
         }
     }
 

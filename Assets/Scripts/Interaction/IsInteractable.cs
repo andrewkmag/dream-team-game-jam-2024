@@ -34,10 +34,11 @@ public abstract class IsInteractable : MonoBehaviour
         yield return new WaitForSeconds(1);
         canInteract = true;
     }
-
-    protected void SetContextText(string context)
+    
+    public void SetContextText(string context)
     {
         ContextText = context;
+        ContextualUIManager.Instace.ShowContextualText(ContextText);
     }
     
     protected void RequiredPlayer()
@@ -48,7 +49,7 @@ public abstract class IsInteractable : MonoBehaviour
     protected void EndInteract()
     {
         canInteract = false;
-        ContextText = "";
+        ContextualUIManager.Instace.HideContextualText();
     }
     
     protected void RestartInteract()
@@ -65,17 +66,11 @@ public abstract class IsInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         canInteract = false;
-        //RestartInteract();//add after override if interaction needs to restart
-        //EndInteract(); //override and add instead of StartCoroutine to avoid interacting again
     }
-
-    //interactedTarget sends the information of the player to the interacted object
     protected virtual void DoInteraction(Transform interactedTarget)
     {
         if (!canInteract) return;
         canInteract = false;
-        //RestartInteract();//add after override if interaction needs to restart
-        //EndInteract(); //override and add instead of StartCoroutine to avoid interacting again
     }
 
     public virtual void Interact()

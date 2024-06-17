@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class ContextualUIManager : MonoBehaviour
 {
-    private static ContextualUIManager _instance;
-    
     [SerializeField] private GameObject ContextualTextPanel;
     [SerializeField] private TextMeshProUGUI ContextualText;
     
@@ -20,12 +18,14 @@ public class ContextualUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ContextualOptionTitle;
     [SerializeField] private TextMeshProUGUI ContextualOptionbtn1Text;
     [SerializeField] private TextMeshProUGUI ContextualOptionbtn2Text;
-    
+
+    public static ContextualUIManager Instace { get; private set; }
+
     private void Awake()
     {
-        if (_instance == null)
+        if (Instace == null)
         {
-            _instance = this;
+            Instace = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else
