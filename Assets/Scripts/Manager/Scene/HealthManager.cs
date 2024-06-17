@@ -1,41 +1,57 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private Transform heartContainersParent;
-    [SerializeField] private HeartPooling heartContainerPool;
-    [SerializeField] private int actualHearts;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+
+    private const int MIN_HEALTH=1;
+    private const int FIRST_INDEX=0;
     
-    private void Awake()
+    private void Start()
     {
-        actualHearts = 2;
+        if (maxHealth > HeartPooling.SharedInstance.amountToPool)
+            maxHealth = HeartPooling.SharedInstance.amountToPool;
         InitializeHeartContainers();
     }
     
     private void InitializeHeartContainers()
     {
-        if (actualHearts<=0) return;
-        for (var i = 0; i < actualHearts; i++)
+        if (currentHealth < MIN_HEALTH)
+            currentHealth = MIN_HEALTH;
+        for (var i = FIRST_INDEX; i < currentHealth; i++)
         {
-            AddHeartContainer();
+            AddHeartPooled();
         }
+    }
+
+    private void AddHeartPooled()
+    {
+        if (currentHealth>=maxHealth) return;
+        var go = HeartPooling.SharedInstance.GetPooledObject();
+        if (go == null) return;
+        go.transform.SetParent(heartContainersParent);
+        go.SetActive(true);
     }
 
     public void AddHeartContainer()
     {
-        
-        var newHeartContainer = heartContainerPool.GetObject();
-        newHeartContainer.transform.SetParent(heartContainersParent);
-        var heartContainer = newHeartContainer.GetComponent<HeartContainer>();
-        heartContainer.ID = heartContainersParent.childCount - 1;
-        actualHearts++;
+        if (currentHealth>=maxHealth) return;
+        var go = HeartPooling.SharedInstance.GetPooledObject();
+        if (go == null) return;
+        go.transform.SetParent(heartContainersParent);
+        go.SetActive(true);
+        currentHealth++;
     }
 
     public void RemoveHeartContainer()
     {
-        if (actualHearts <= 0) return;
-        var lastChild = heartContainersParent.GetChild(heartContainersParent.childCount - 1);
-        heartContainerPool.ReturnObject(lastChild.gameObject);
-        actualHearts--;
+        if (currentHealth<=MIN_HEALTH) return;
+        var go = HeartPooling.SharedInstance.GetPooledObjectToRemove();
+        if (go == null) return;
+        go.SetActive(false);
+        currentHealth--;
     }
 }

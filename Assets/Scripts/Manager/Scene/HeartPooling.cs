@@ -3,42 +3,49 @@ using UnityEngine;
 
 public class HeartPooling : MonoBehaviour
 {
-    [SerializeField] private GameObject heartContainer;
-    [SerializeField] private int initialSize = 3;
+    public List<GameObject> pooledObjects;
+    public GameObject objectToPool;
+    public int amountToPool;
 
-    private Queue<GameObject> _pool;
+    public static HeartPooling SharedInstance { get; private set; }
 
     private void Awake()
     {
-        _pool = new Queue<GameObject>();
-
-        for (var i = 0; i < initialSize; i++)
-        {
-            var obj = Instantiate(heartContainer);
-            obj.SetActive(false);
-            _pool.Enqueue(obj);
-        }
+        SharedInstance = this;
     }
 
-    public GameObject GetObject()
+    private void Start()
     {
-        if (_pool.Count > 0)
+        pooledObjects = new List<GameObject>();
+        for(var i = 0; i < amountToPool; i++)
         {
-            var obj = _pool.Dequeue();
-            obj.SetActive(true);
-            return obj;
-        }
-        else
-        {
-            var obj = Instantiate(heartContainer);
-            obj.SetActive(true);
-            return obj;
+            var tmp = Instantiate(objectToPool, transform, true);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
         }
     }
-
-    public void ReturnObject(GameObject obj)
+    
+    public GameObject GetPooledObject()
     {
-        obj.SetActive(false);
-        _pool.Enqueue(obj);
+        for(var i = 0; i < amountToPool; i++)
+        {
+            if(!pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
+        }
+        return null;
+    }
+    
+    public GameObject GetPooledObjectToRemove()
+    {
+        for(var i = amountToPool - 1; i >= 0; i--)
+        {
+            if(pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
+        }
+        return null;
     }
 }
