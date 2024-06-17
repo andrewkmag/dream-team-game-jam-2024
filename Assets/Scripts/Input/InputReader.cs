@@ -20,6 +20,7 @@ namespace eXplorerJam.Input
         public bool Grapple;
         public bool jump;
         public bool dash;
+        public bool interact;
 
         private void OnEnable()
         {
@@ -66,6 +67,17 @@ namespace eXplorerJam.Input
             };
         }
 
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            interact = context.phase switch
+            {
+                InputActionPhase.Started => true,
+                InputActionPhase.Canceled => false,
+                _ => interact
+            };
+        }
+
         public void OnGrapple(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Started)
@@ -77,7 +89,5 @@ namespace eXplorerJam.Input
                 Grapple = false; 
             }
         }
-
-
     }
 }
