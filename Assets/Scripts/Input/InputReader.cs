@@ -21,6 +21,7 @@ namespace eXplorerJam.Input
         public bool jump;
         public bool dash;
         public bool interact;
+        public bool pause;
 
         private void OnEnable()
         {
@@ -88,6 +89,16 @@ namespace eXplorerJam.Input
             { 
                 Grapple = false; 
             }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            interact = context.phase switch
+            {
+                InputActionPhase.Started => true,
+                InputActionPhase.Canceled => false,
+                _ => interact
+            };
         }
     }
 }

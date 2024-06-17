@@ -82,6 +82,15 @@ namespace eXplorerJam.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a665e7a-ce0a-4846-823f-ca33efb93ff3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -264,7 +273,7 @@ namespace eXplorerJam.Input
                 {
                     ""name"": """",
                     ""id"": ""f3ffdf38-9d9d-4f2d-8a55-54f9c5a7e76a"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -308,7 +317,7 @@ namespace eXplorerJam.Input
                 {
                     ""name"": """",
                     ""id"": ""c4e8f72c-e98c-4356-9220-aa6c7a869655"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse & Keyboard"",
@@ -346,6 +355,28 @@ namespace eXplorerJam.Input
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42cb313b-953f-4544-85cd-f9ddf7bf5b0b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d793c46-b478-459b-ae83-94ecac4fe697"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -390,6 +421,7 @@ namespace eXplorerJam.Input
             m_Player_Grapple = m_Player.FindAction("Grapple", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -457,6 +489,7 @@ namespace eXplorerJam.Input
         private readonly InputAction m_Player_Grapple;
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Interact;
+        private readonly InputAction m_Player_Pause;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
@@ -467,6 +500,7 @@ namespace eXplorerJam.Input
             public InputAction @Grapple => m_Wrapper.m_Player_Grapple;
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
+            public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -494,6 +528,9 @@ namespace eXplorerJam.Input
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -516,6 +553,9 @@ namespace eXplorerJam.Input
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -559,6 +599,7 @@ namespace eXplorerJam.Input
             void OnGrapple(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }
