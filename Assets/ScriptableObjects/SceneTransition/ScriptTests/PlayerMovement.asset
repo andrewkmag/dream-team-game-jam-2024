@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
-  m_Name: SampleScene
+  m_Name: PlayerMovement
   m_EditorClassIdentifier: 
-  sceneName: 
-  transitionTime: 0
-  gravity: 0
-  planets: 
+  sceneName: SampleScene
+  transitionTime: 1
+  gravity: 10

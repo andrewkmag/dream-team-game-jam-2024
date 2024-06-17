@@ -7,7 +7,15 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     [SerializeField] private ScenesScrObj actualScene;
     [SerializeField] private float gravity;
-    [SerializeField] private int[] planets;
+    [SerializeField] private bool isdead;
+
+    #endregion
+
+    #region Events
+
+    public delegate void DieAction();
+
+    public static event DieAction OnDeath;
 
     #endregion
 
@@ -16,11 +24,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         ScenesScrObj.OnSceneChange += GetSceneValues;
+        HealthManager.OnDeath += PlayerDeath;
     }
 
     private void OnDisable()
     {
         ScenesScrObj.OnSceneChange -= GetSceneValues;
+        HealthManager.OnDeath += PlayerDeath;
     }
 
     private void Reset()
@@ -60,8 +70,14 @@ public class GameManager : MonoBehaviour
     private void GetSceneValues(ScenesScrObj sceneSo)
     {
         actualScene = sceneSo;
-        gravity = sceneSo.Gravity;
-        planets = sceneSo.Planets;
+        gravity = sceneSo.Gravity; // We can add any number of variables and load them from the controllers
+        isdead = false;
+    }
+
+    private void PlayerDeath()
+    {
+        isdead = true;
+        OnDeath?.Invoke();
     }
 
     #endregion
