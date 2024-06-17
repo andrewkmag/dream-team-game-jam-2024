@@ -5,6 +5,7 @@ public class CheatManager : MonoBehaviour
     #region Fields
 
     public GameObject panel;
+    private bool isCursorVisible = false;
     private bool _isPanelNotNull;
 
     #endregion
@@ -34,6 +35,7 @@ public class CheatManager : MonoBehaviour
     {
         if (!Input.GetKeyDown(TOGGLE_KEY)) return;
         TogglePanelVisibility();
+        ToggleCursorVisibility();
     }
 
     #endregion
@@ -46,5 +48,34 @@ public class CheatManager : MonoBehaviour
         panel.SetActive(!panel.activeSelf);
     }
 
+    private void ToggleCursorVisibility()
+    {
+        isCursorVisible = !isCursorVisible;
+        if (isCursorVisible)
+        {
+            ShowCursor();
+        }
+        else
+        {
+            HideCursor();
+        }
+    }
+
+    private void ShowCursor()
+    {
+        isCursorVisible = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void HideCursor()
+    {
+        isCursorVisible = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     #endregion
 }
+
+

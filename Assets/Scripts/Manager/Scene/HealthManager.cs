@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform heartContainersParent;
+    [SerializeField] private HeartPooling heartContainerPool;
+    [SerializeField] private int actualHearts;
+    
+    private void Awake()
     {
-        
+        actualHearts = 2;
+        InitializeHeartContainers();
+    }
+    
+    private void InitializeHeartContainers()
+    {
+        if (actualHearts<=0) return;
+        for (var i = 0; i < actualHearts; i++)
+        {
+            AddHeartContainer();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddHeartContainer()
     {
         
+        var newHeartContainer = heartContainerPool.GetObject();
+        newHeartContainer.transform.SetParent(heartContainersParent);
+        var heartContainer = newHeartContainer.GetComponent<HeartContainer>();
+        heartContainer.ID = heartContainersParent.childCount - 1;
+        actualHearts++;
+    }
+
+    public void RemoveHeartContainer()
+    {
+        if (actualHearts <= 0) return;
+        var lastChild = heartContainersParent.GetChild(heartContainersParent.childCount - 1);
+        heartContainerPool.ReturnObject(lastChild.gameObject);
+        actualHearts--;
     }
 }
