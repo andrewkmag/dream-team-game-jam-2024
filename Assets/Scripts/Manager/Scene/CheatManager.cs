@@ -21,6 +21,7 @@ public class CheatManager : MonoBehaviour
 
     private void Start()
     {
+        panel.SetActive(false);
         _isPanelNotNull = panel != null;
     }
 

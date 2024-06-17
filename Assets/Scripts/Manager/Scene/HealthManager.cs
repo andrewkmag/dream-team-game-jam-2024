@@ -1,27 +1,54 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private Transform heartContainersParent;
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    #region Fields
 
-    private const int MIN_HEALTH=1;
-    private const int FIRST_INDEX=0;
-    
+    [SerializeField] private Transform heartContainersParent;
+    [SerializeField] private int maxContainers;
+    [SerializeField] private int currentContainers;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private HeartContainer[] pooledHealthContainers;
+    [SerializeField] private bool isdead;
+
+    #endregion
+
+    #region Constants
+
+    private const int MIN_CONTAINERS = 1;
+    private const int MIN_HEALTH = 1;
+    private const int FIRST_INDEX = 0;
+    private const int NO_HEALTH = 0;
+
+    #endregion
+
+    #region Events
+
+    public delegate void DieAction();
+
+    public static event DieAction OnDeath;
+
+    #endregion
+
+    #region UnityMethods
+
     private void Start()
     {
-        if (maxHealth > HeartPooling.SharedInstance.amountToPool)
-            maxHealth = HeartPooling.SharedInstance.amountToPool;
+        maxContainers = HeartPooling.SharedInstance.amountToPool;
         InitializeHeartContainers();
+        pooledHealthContainers = HeartPooling.SharedInstance.GetPooledArray();
+        currentHealth = currentContainers;
     }
-    
+
+    #endregion
+
+    #region Methods
+
     private void InitializeHeartContainers()
     {
-        if (currentHealth < MIN_HEALTH)
-            currentHealth = MIN_HEALTH;
-        for (var i = FIRST_INDEX; i < currentHealth; i++)
+        if (currentContainers < MIN_CONTAINERS)
+            currentContainers = MIN_CONTAINERS;
+        for (var i = FIRST_INDEX; i < currentContainers; i++)
         {
             AddHeartPooled();
         }
@@ -29,29 +56,78 @@ public class HealthManager : MonoBehaviour
 
     private void AddHeartPooled()
     {
-        if (currentHealth>=maxHealth) return;
-        var go = HeartPooling.SharedInstance.GetPooledObject();
-        if (go == null) return;
-        go.transform.SetParent(heartContainersParent);
-        go.SetActive(true);
-    }
-
-    public void AddHeartContainer()
-    {
-        if (currentHealth>=maxHealth) return;
+        if (currentContainers >= maxContainers) return;
         var go = HeartPooling.SharedInstance.GetPooledObject();
         if (go == null) return;
         go.transform.SetParent(heartContainersParent);
         go.SetActive(true);
         currentHealth++;
+        UpdateHealth();
+    }
+
+    public void AddHeartContainer()
+    {
+        if (isdead) return;
+        if (currentContainers >= maxContainers) return;
+        var go = HeartPooling.SharedInstance.GetPooledObject();
+        if (go == null) return;
+        go.transform.SetParent(heartContainersParent);
+        go.SetActive(true);
+        currentContainers++;
+        UpdateHealth();
+    }
+
+    public void TakeDamage()
+    {
+        if (isdead) return;
+        if (currentHealth <= MIN_HEALTH)
+        {
+            isdead = true;
+            OnDeath?.Invoke();
+            currentHealth = NO_HEALTH;
+            UpdateHealth();
+            return;
+        }
+
+        currentHealth--;
+        UpdateHealth();
+    }
+
+    public void Heal()
+    {
+        if (isdead) return;
+        if (currentHealth >= currentContainers) return;
+        currentHealth++;
+        UpdateHealth();
+    }
+
+    private void UpdateHealth()
+    {
+        for (var index = FIRST_INDEX; index < pooledHealthContainers.Length; index++)
+        {
+            if (index < currentHealth)
+            {
+                pooledHealthContainers[index].Healed();
+            }
+            else
+            {
+                pooledHealthContainers[index].Damaged();
+            }
+        }
     }
 
     public void RemoveHeartContainer()
     {
-        if (currentHealth<=MIN_HEALTH) return;
+        if (isdead) return;
+        if (currentContainers <= MIN_CONTAINERS) return;
         var go = HeartPooling.SharedInstance.GetPooledObjectToRemove();
         if (go == null) return;
         go.SetActive(false);
-        currentHealth--;
+        currentContainers--;
+        if (currentHealth <= currentContainers) return;
+        currentHealth = currentContainers;
+        UpdateHealth();
     }
+
+    #endregion
 }
