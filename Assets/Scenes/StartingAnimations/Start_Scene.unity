@@ -228,7 +228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293, y: -132}
+  m_AnchoredPosition: {x: 293, y: -153}
   m_SizeDelta: {x: 160, y: 50.555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199351850
@@ -253,10 +253,12 @@ MonoBehaviour:
     - NO!
     - DO IT!
     - NO! How many times do I have to tell you that a barrel roll isn't even possible
-      in this type of ship.
+      in this type of ship?!
     - I've had it! I'm stopping this ship until you all settle down-
   startButton: {fileID: 199351848}
   continueButton: {fileID: 241299476}
+  textMeshPro: {fileID: 1639160704}
+  typingSpeed: 0.04
 --- !u!114 &199351851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +412,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue >
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 653d7fe7cc3583c4d81324caa150096a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -474,7 +476,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &200568799
@@ -521,7 +523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293, y: -132}
+  m_AnchoredPosition: {x: 293, y: -153.00006}
   m_SizeDelta: {x: 160, y: 50.555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241299478
@@ -652,6 +654,7 @@ MonoBehaviour:
   animator: {fileID: 1348616186}
   shipAnimator: {fileID: 1467315123}
   backgroundImage: {fileID: 1801841958}
+  typingSpeed: 0.04
 --- !u!4 &762783473
 Transform:
   m_ObjectHideFlags: 0
@@ -813,8 +816,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue >
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 653d7fe7cc3583c4d81324caa150096a, type: 2}
+  m_sharedMaterial: {fileID: 1032362606806052705, guid: 653d7fe7cc3583c4d81324caa150096a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1314,8 +1318,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Come on, Jam!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 653d7fe7cc3583c4d81324caa150096a, type: 2}
+  m_sharedMaterial: {fileID: 1032362606806052705, guid: 653d7fe7cc3583c4d81324caa150096a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1345,7 +1350,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1485,7 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e86b8982acc354a808ce60cd301fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.5
+  scrollSpeed: 0.9
 --- !u!1 &2030369597
 GameObject:
   m_ObjectHideFlags: 0
