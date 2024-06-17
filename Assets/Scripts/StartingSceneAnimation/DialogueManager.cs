@@ -12,10 +12,17 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
     public Animator shipAnimator;
+    public Animator shakingShip;
 
     public GameObject backgroundImage;
+    public GameObject speechBubble1;
+    public GameObject speechBubble2;   
+    public GameObject speechText1;
+    public GameObject speechText2;
 
     private Queue<string> sentences;
+
+    public float typingSpeed = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -59,19 +66,28 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(typingSpeed);
         }
     }
 
     void EndDialogue()
     {
+        speechBubble1.SetActive(false);
+        speechBubble2.SetActive(false);
+        speechText1.SetActive(false);
+        speechText2.SetActive(false);
+
+
+        //remove the dialogue screen
         animator.SetBool("isOpen", false);
         
-        // stop the ships animation
+        // stop the ships animation in previous scene
         shipAnimator.SetBool("StopShip", true);
 
         // stop the background image
         backgroundImage.GetComponent<ImageScroller>().enabled = false;
+
+        shakingShip.SetBool("isBeingBoarded", true);
     }
 
 }
