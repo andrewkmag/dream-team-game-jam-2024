@@ -19,6 +19,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float viewAngle = 90;
     [SerializeField] private Transform pathHolder;
     [SerializeField] private bool comeAndGo;
+
+    [SerializeField] private bool incombat;
+    [SerializeField] private Vector3 targetWaypoint;
+    [SerializeField] private int targetWaypointIndex;
+    private Transform[] waypoints;
     private bool _reverse;
 
     #endregion
@@ -59,16 +64,29 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        var waypoints = pathHolder.GetComponentsInChildren<Transform>()
+        waypoints = pathHolder.GetComponentsInChildren<Transform>()
             .Where(x => x != pathHolder.transform).ToArray();
-
-        StartCoroutine(PatrolPath(waypoints));
+        transform.position = GetWaypoint(waypoints, INITIAL_ARRAY);
+        InitializeEnemyRoutine();
+        StartCoroutine(EnemyRoutime(waypoints));
     }
 
     private void Update()
     {
-        if (!CanSeePlayer()) return;
-        OnPlayerSpotted?.Invoke();
+        if (CanSeePlayer() && !incombat)
+        {
+            incombat = true;
+            OnPlayerSpotted?.Invoke();            
+        }
+        if (incombat)
+        {
+            if (!NearPlayer())
+            {
+                incombat = false;
+                StartCoroutine(EnemyRoutime(waypoints));
+            }
+            Debug.Log($"Oscar: Still in combat {incombat}");
+        }
     }
 
     #endregion
@@ -84,21 +102,31 @@ public class Enemy : MonoBehaviour
         var angleToPlayer = Vector3.Angle(enemyT.forward, directionToPlayer);
         return angleToPlayer < viewAngle * HALF_ANGLE;
     }
-
-    private IEnumerator PatrolPath(IReadOnlyList<Transform> waypoints)
+    
+    private bool NearPlayer()
     {
-        var targetWaypointIndex = INITIAL_ARRAY;
-        var targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
+        var enemyT = transform;
+        Debug.Log($"Oscar: Dist to player {Vector3.Distance(enemyT.position, player.position)}");
+        return Vector3.Distance(enemyT.position, player.position) < viewDistance;
+    }
+
+    private void InitializeEnemyRoutine()
+    {
+        targetWaypoint = GetWaypoint(waypoints, INITIAL_ARRAY);
+        targetWaypointIndex = INITIAL_ARRAY;
+    }
+
+    private IEnumerator EnemyRoutime(IReadOnlyList<Transform> waypoints)
+    {
         var waypointsQty = waypoints.Count();
-        transform.position = targetWaypoint;
         if (waypointsQty > ONE_ELEMENT)
         {
-            targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
-            targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
+
             transform.LookAt(targetWaypoint);
 
             while (true)
             {
+                if (incombat) yield break;
                 transform.position = MoveToWaypoint(targetWaypoint);
                 if (transform.position != targetWaypoint)
                 {
@@ -113,13 +141,11 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        else
+        while (true)
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(waitTime);
-                yield return StartCoroutine(Rotate());
-            }
+            if (incombat) yield break;
+            yield return new WaitForSeconds(waitTime);
+            yield return StartCoroutine(Rotate());
         }
     }
 
@@ -168,6 +194,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator FaceTarget(Vector3 targetPos)
     {
+        if (incombat) yield break;
         var directionToLook = (targetPos - transform.position).normalized;
         var targetAngle = viewAngle - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
@@ -184,6 +211,7 @@ public class Enemy : MonoBehaviour
         targetAngle += viewAngle;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
         {
+            if (incombat) yield break;
             var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.up * angle;
             yield return null;
