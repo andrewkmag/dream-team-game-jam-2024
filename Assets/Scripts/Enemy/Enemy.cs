@@ -53,12 +53,6 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    #region Events
-
-    public static event System.Action OnPlayerSpotted;
-
-    #endregion
-
     #region UnityMethods
 
     private void Start()
@@ -75,8 +69,7 @@ public class Enemy : MonoBehaviour
     {
         if (CanSeePlayer() && !incombat)
         {
-            incombat = true;
-            OnPlayerSpotted?.Invoke();            
+            incombat = true;        
         }
         if (incombat)
         {
