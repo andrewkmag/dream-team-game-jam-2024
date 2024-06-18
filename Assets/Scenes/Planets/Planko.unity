@@ -3539,16 +3539,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547240372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7402, y: 1, z: 1}
+  m_LocalScale: {x: 2.367716, y: 1.3606, z: 1.3606}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1376299936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -133.17178, y: -84}
+  m_AnchoredPosition: {x: -137, y: -73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547240374
@@ -3571,7 +3571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6bb671678e360a541a120cc219295ccd, type: 3}
+  m_Texture: {fileID: 2800000, guid: 03a7672ec519dc847824fef666f5862f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4128,6 +4128,7 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
   cinemachineVirtualCamera: {fileID: 414273561}
   animator: {fileID: 0}
+  pauseManager: {fileID: 0}
   moveSpeed: 6.5
   sprintSpeed: 2.5
   verticalTerminalSpeed: 40
@@ -4148,7 +4149,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   animationSmoothTime: 0.05
-  animationPlayTransition: 0.15
 --- !u!114 &565559530
 MonoBehaviour:
   m_ObjectHideFlags: 0
