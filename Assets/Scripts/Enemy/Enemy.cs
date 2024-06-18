@@ -12,13 +12,22 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float speed = 5;
     [SerializeField] private float waitTime = .3f;
+    [SerializeField] private float minWaitTime = .001f;
     [SerializeField] private float turnSpeed = 60;
 
     [SerializeField] private float viewDistance;
+    [SerializeField] private float attackDistance;
     [SerializeField] private LayerMask viewMask;
     [SerializeField] private float viewAngle = 90;
     [SerializeField] private Transform pathHolder;
     [SerializeField] private bool comeAndGo;
+    [SerializeField] private float shootCooldown = 1.5f;
+    private float deltaShootCooldown = 1.5f;
+
+    [SerializeField] private bool incombat;
+    [SerializeField] private Vector3 targetWaypoint;
+    [SerializeField] private int targetWaypointIndex;
+    private Transform[] waypoints;
     private bool _reverse;
 
     #endregion
@@ -31,6 +40,7 @@ public class Enemy : MonoBehaviour
     private const float NEGLIGIBLE_ANGLE_DIFF = 0.05f;
     private const int ZERO_INIT_ADJUSTMENT = 1;
     private const float HALF_ANGLE = 0.5f;
+    private const float RIGHT_ANGLE = 90f;
 
 #if UNITY_EDITOR
     private const int FIRST_SPHERE = 0;
@@ -44,13 +54,8 @@ public class Enemy : MonoBehaviour
     private readonly Color _firstHandleNodeColor = new Color(0, 255, 0);
     private readonly Color _handlenodesColor = new Color(255, 255, 0, 0.5f);
     private readonly Color _enemyfovHandleAreaColor = new Color(0, 255, 255, 0.5f);
+    private readonly Color _enemycombatHandleAreaColor = new Color(255, 0, 0, 0.5f);
 #endif
-
-    #endregion
-
-    #region Events
-
-    public static event System.Action OnPlayerSpotted;
 
     #endregion
 
@@ -58,17 +63,13 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        deltaShootCooldown = Time.time;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        var waypoints = pathHolder.GetComponentsInChildren<Transform>()
+        waypoints = pathHolder.GetComponentsInChildren<Transform>()
             .Where(x => x != pathHolder.transform).ToArray();
-
-        StartCoroutine(PatrolPath(waypoints));
-    }
-
-    private void Update()
-    {
-        if (!CanSeePlayer()) return;
-        OnPlayerSpotted?.Invoke();
+        transform.position = GetWaypoint(waypoints, INITIAL_ARRAY);
+        InitializeEnemyRoutine();
+        StartCoroutine(EnemyRoutime(waypoints));
     }
 
     #endregion
@@ -85,40 +86,72 @@ public class Enemy : MonoBehaviour
         return angleToPlayer < viewAngle * HALF_ANGLE;
     }
 
-    private IEnumerator PatrolPath(IReadOnlyList<Transform> waypoints)
+    private bool NearPlayer()
     {
-        var targetWaypointIndex = INITIAL_ARRAY;
-        var targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
-        var waypointsQty = waypoints.Count();
-        transform.position = targetWaypoint;
-        if (waypointsQty > ONE_ELEMENT)
-        {
-            targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
-            targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
-            transform.LookAt(targetWaypoint);
+        var enemyT = transform;
+        return Vector3.Distance(enemyT.position, player.position) < attackDistance;
+    }
 
-            while (true)
+    private void InitializeEnemyRoutine()
+    {
+        targetWaypoint = GetWaypoint(waypoints, INITIAL_ARRAY);
+        targetWaypointIndex = INITIAL_ARRAY;
+    }
+
+    private IEnumerator EnemyRoutime(IReadOnlyList<Transform> waypoints)
+    {
+        while (true)
+        {
+            if (!incombat)
             {
-                transform.position = MoveToWaypoint(targetWaypoint);
-                if (transform.position != targetWaypoint)
+                if (CanSeePlayer())
                 {
-                    yield return null;
+                    incombat = true;
                 }
                 else
                 {
-                    targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
-                    targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
-                    yield return new WaitForSeconds(waitTime);
-                    yield return StartCoroutine(FaceTarget(targetWaypoint));
+                    var waypointsQty = waypoints.Count();
+                    if (waypointsQty <= ONE_ELEMENT)
+                    {
+                        yield return StartCoroutine(Rotate());
+                        yield return new WaitForSeconds(waitTime);
+                    }
+                    else //More wps
+                    {
+                        transform.position = MoveToWaypoint(targetWaypoint);
+                        yield return new WaitForSeconds(minWaitTime);
+                        if (transform.position == targetWaypoint)
+                        {
+                            targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
+                            targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
+                            yield return new WaitForSeconds(waitTime);
+                            yield return StartCoroutine(FaceTarget(targetWaypoint));
+                        }
+                    }
                 }
             }
-        }
-        else
-        {
-            while (true)
+            if (incombat)
             {
-                yield return new WaitForSeconds(waitTime);
-                yield return StartCoroutine(Rotate());
+                if (!NearPlayer())
+                {
+                    incombat = false;
+                }
+                else
+                {
+                    yield return StartCoroutine(FaceTargetAttack(player.position));
+                    yield return new WaitForSeconds(minWaitTime);
+                    Debug.Log($"Oscar {shootCooldown} and {Time.time-deltaShootCooldown}");
+                    if (shootCooldown <= Time.time-deltaShootCooldown)
+                    {
+                        var shoot = PooledShots.SharedInstance.GetPooledObject();
+                        if (shoot == null) continue;
+                        var transform1 = transform;
+                        shoot.transform.position = transform1.position+transform1.forward;
+                        shoot.transform.rotation = transform1.rotation;
+                        shoot.SetActive(true);
+                        deltaShootCooldown = Time.time;
+                    }
+                }
             }
         }
     }
@@ -166,12 +199,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator FaceTargetAttack(Vector3 targetPos)
+    {
+        var directionToLook = (targetPos - transform.position).normalized;
+        var targetAngle = RIGHT_ANGLE - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
+        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
+        {
+            if (!NearPlayer()) yield break;
+            var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
+            transform.eulerAngles = Vector3.up * angle;
+            yield return null;
+        }
+    }
+    
     private IEnumerator FaceTarget(Vector3 targetPos)
     {
         var directionToLook = (targetPos - transform.position).normalized;
-        var targetAngle = viewAngle - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
+        var targetAngle = RIGHT_ANGLE - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
         {
+            if (CanSeePlayer()) yield break;
             var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.up * angle;
             yield return null;
@@ -184,6 +231,7 @@ public class Enemy : MonoBehaviour
         targetAngle += viewAngle;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
         {
+            if (incombat) yield break;
             var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.up * angle;
             yield return null;
@@ -204,39 +252,48 @@ public class Enemy : MonoBehaviour
         var from = Quaternion.AngleAxis(-HALF_ANGLE * viewAngle, Vector3.up) * (
             forward - Vector3.Dot(forward, Vector3.up) * Vector3.up
         );
-        Handles.color = _enemyfovHandleAreaColor;
-        Handles.DrawSolidArc(transform.position, enemyTransform.up, from, viewAngle, viewDistance);
-
-        var previousPosition = waypoints[INITIAL_ARRAY].position;
-        for (var index = INITIAL_INDEX; index < waypoints.Length; index++)
+        if (incombat)
         {
-            var waypoint = waypoints[index];
-            switch (index)
+            Handles.color = _enemycombatHandleAreaColor;
+            Handles.DrawWireDisc(transform.position, enemyTransform.up, attackDistance, FIRST_LINE_THICK);
+            Handles.DrawLine(transform.position, transform.position + transform.forward * attackDistance, LINE_THICK);
+        }
+        else
+        {
+            Handles.color = _enemyfovHandleAreaColor;
+            Handles.DrawSolidArc(transform.position, enemyTransform.up, from, viewAngle, viewDistance);
+
+            var previousPosition = waypoints[INITIAL_ARRAY].position;
+            for (var index = INITIAL_INDEX; index < waypoints.Length; index++)
             {
-                case FIRST_SPHERE:
-                    Handles.color = _firstHandleNodeColor
-                        ;
-                    Handles.SphereHandleCap(HANDLE_CONTROL, waypoints[INITIAL_ARRAY].position, Quaternion.identity,
-                        FIRST_SPHERE_RAD,
-                        EventType.Repaint);
-                    break;
-                case FIRST_LINE:
-                    Handles.DrawLine(previousPosition, waypoint.position, FIRST_LINE_THICK);
-                    Handles.color = _handlenodesColor;
-                    break;
-                default:
-                    Handles.SphereHandleCap(HANDLE_CONTROL, waypoint.position, Quaternion.identity, SPHERE_RAD,
-                        EventType.Repaint);
-                    Handles.DrawLine(previousPosition, waypoint.position, LINE_THICK);
-                    break;
+                var waypoint = waypoints[index];
+                switch (index)
+                {
+                    case FIRST_SPHERE:
+                        Handles.color = _firstHandleNodeColor
+                            ;
+                        Handles.SphereHandleCap(HANDLE_CONTROL, waypoints[INITIAL_ARRAY].position, Quaternion.identity,
+                            FIRST_SPHERE_RAD,
+                            EventType.Repaint);
+                        break;
+                    case FIRST_LINE:
+                        Handles.DrawLine(previousPosition, waypoint.position, FIRST_LINE_THICK);
+                        Handles.color = _handlenodesColor;
+                        break;
+                    default:
+                        Handles.SphereHandleCap(HANDLE_CONTROL, waypoint.position, Quaternion.identity, SPHERE_RAD,
+                            EventType.Repaint);
+                        Handles.DrawLine(previousPosition, waypoint.position, LINE_THICK);
+                        break;
+                }
+
+                previousPosition = waypoint.position;
             }
 
-            previousPosition = waypoint.position;
-        }
-
-        if (!comeAndGo)
-        {
-            Handles.DrawLine(previousPosition, waypoints[INITIAL_ARRAY].position, LINE_THICK);
+            if (!comeAndGo)
+            {
+                Handles.DrawLine(previousPosition, waypoints[INITIAL_ARRAY].position, LINE_THICK);
+            }
         }
     }
 #endif
