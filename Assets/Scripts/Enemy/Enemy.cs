@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float viewAngle = 90;
     [SerializeField] private Transform pathHolder;
     [SerializeField] private bool comeAndGo;
+    [SerializeField] private float shootCooldown = 1.5f;
+    private float deltaShootCooldown = 1.5f;
 
     [SerializeField] private bool incombat;
     [SerializeField] private Vector3 targetWaypoint;
@@ -61,6 +63,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        deltaShootCooldown = Time.time;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         waypoints = pathHolder.GetComponentsInChildren<Transform>()
             .Where(x => x != pathHolder.transform).ToArray();
@@ -137,12 +140,17 @@ public class Enemy : MonoBehaviour
                 {
                     yield return StartCoroutine(FaceTargetAttack(player.position));
                     yield return new WaitForSeconds(minWaitTime);
-                    var shoot = PooledShots.SharedInstance.GetPooledObject();
-                    if (shoot == null) continue;
-                    var transform1 = transform;
-                    shoot.transform.position = transform1.position+transform1.forward;
-                    shoot.transform.rotation = transform1.rotation;
-                    shoot.SetActive(true);
+                    Debug.Log($"Oscar {shootCooldown} and {Time.time-deltaShootCooldown}");
+                    if (shootCooldown <= Time.time-deltaShootCooldown)
+                    {
+                        var shoot = PooledShots.SharedInstance.GetPooledObject();
+                        if (shoot == null) continue;
+                        var transform1 = transform;
+                        shoot.transform.position = transform1.position+transform1.forward;
+                        shoot.transform.rotation = transform1.rotation;
+                        shoot.SetActive(true);
+                        deltaShootCooldown = Time.time;
+                    }
                 }
             }
         }

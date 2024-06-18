@@ -9739,6 +9739,7 @@ GameObject:
   - component: {fileID: 6436886595498734592}
   - component: {fileID: 3298390983242335919}
   - component: {fileID: 6664965005139363111}
+  - component: {fileID: 4544451454607251578}
   m_Layer: 0
   m_Name: EnergyBall
   m_TagString: Untagged
@@ -9756,8 +9757,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.557, y: 0.204, z: -9.262}
-  m_LocalScale: {x: 0.047049478, y: 0.046687365, z: 0.07587782}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.20000002, y: 0.19846073, z: 0.3225448}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1652163082501538454}
   - {fileID: 3302997335689912658}
@@ -9828,9 +9829,22 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.09
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4544451454607251578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380351514943825143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b815f5208bdfe8419e108af7c915af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3

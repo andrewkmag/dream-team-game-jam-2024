@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.4f;
+    [SerializeField] private float speed = 1f;
     private void Update()
     {
-        transform.Translate(transform.forward*Time.deltaTime*speed);
+        transform.Translate(Vector3.forward *Time.deltaTime*speed);
     }
 }
