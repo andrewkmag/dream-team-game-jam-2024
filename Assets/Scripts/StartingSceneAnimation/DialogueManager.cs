@@ -3,26 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    [SerializeField] String[] names;
-    public Sprite[] textSprite;
-    public Image dialogueName;
-    public TextMeshProUGUI dialogueText;
 
-    public Animator animator;
-    public Animator shipAnimator;
-    public Animator shakingShip;
+    [Header("References")]
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private String[] names;
+    [SerializeField] private Sprite[] textSprite;
+    [SerializeField] private Image dialogueName;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
-    public GameObject backgroundImage;
-    public GameObject speechBubble1;
-    public GameObject speechBubble2;   
-    public GameObject speechText1;
-    public GameObject speechText2;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator shipAnimator;
+    [SerializeField] private Animator shakingShip;
+
+    [SerializeField] private GameObject backgroundImage;
+    [SerializeField] private GameObject speechBubble1;
+    [SerializeField] private GameObject speechText1;
 
     private Queue<string> sentences;
     private int diagMatch;
@@ -64,9 +66,10 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count < 1)
+        if (sentences.Count == 1)
         {
             nameArray = false;
+            Debug.Log("End of conversation");
             EndDialogue();
             return;
         }
@@ -75,6 +78,7 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+        Debug.Log("Count is: " + sentences.Count);
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -90,13 +94,10 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        Debug.Log("Ending the dialogue");
         speechBubble1.SetActive(false);
-        speechBubble2.SetActive(false);
         speechText1.SetActive(false);
         speechText2.SetActive(false);
-
-        
-
 
         //remove the dialogue screen
         animator.SetBool("isOpen", false);
@@ -107,7 +108,8 @@ public class DialogueManager : MonoBehaviour
         // stop the background image
         backgroundImage.GetComponent<ImageScroller>().enabled = false;
 
-        shakingShip.SetBool("isBeingBoarded", true);
+        // load the next scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
