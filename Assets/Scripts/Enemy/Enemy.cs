@@ -137,6 +137,12 @@ public class Enemy : MonoBehaviour
                 {
                     yield return StartCoroutine(FaceTargetAttack(player.position));
                     yield return new WaitForSeconds(minWaitTime);
+                    var shoot = PooledShots.SharedInstance.GetPooledObject();
+                    if (shoot == null) continue;
+                    var transform1 = transform;
+                    shoot.transform.position = transform1.position+transform1.forward;
+                    shoot.transform.rotation = transform1.rotation;
+                    shoot.SetActive(true);
                 }
             }
         }
