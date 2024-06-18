@@ -9,9 +9,10 @@ public class PooledShots : MonoBehaviour
     public int amountToPool;
 
     public static PooledShots SharedInstance { get; private set; }
-    
+
     private const int INITIAL_ARRAY = 0;
-    
+
+
     private void Awake()
     {
         if (SharedInstance == null)
@@ -30,19 +31,17 @@ public class PooledShots : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public GameObject GetPooledObject()
     {
-        for(var i = INITIAL_ARRAY; i < amountToPool; i++)
+        for (var i = INITIAL_ARRAY; i < amountToPool; i++)
         {
-            if(!pooledObjects[i].activeInHierarchy)
+            if (!pooledObjects[i].activeInHierarchy)
             {
                 return pooledObjects[i];
             }
         }
+
         return null;
     }
-    
-    
-    
 }

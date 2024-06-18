@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -31,6 +32,16 @@ public class HealthManager : MonoBehaviour
     #endregion
 
     #region UnityMethods
+
+    private void OnEnable()
+    {
+        Shoot.OnPlayerHit += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        Shoot.OnPlayerHit -= TakeDamage;
+    }
 
     private void Start()
     {
