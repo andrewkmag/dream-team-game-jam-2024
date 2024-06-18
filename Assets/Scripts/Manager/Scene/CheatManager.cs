@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
-#if UnityEditor
     #region Fields
 
     public GameObject panel;
@@ -19,6 +18,7 @@ public class CheatManager : MonoBehaviour
     #endregion
 
     #region UnityMethods
+
 
     private void Start()
     {
@@ -77,6 +77,6 @@ public class CheatManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+
     #endregion
-#endif
 }
