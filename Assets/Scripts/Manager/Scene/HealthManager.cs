@@ -17,8 +17,8 @@ public class HealthManager : MonoBehaviour
 
     #region Constants
 
-    private const int MIN_CONTAINERS = 1;
-    private const int MIN_HEALTH = 1;
+    private const int MIN_CONTAINERS = 3;
+    private const int MIN_HEALTH = 3;
     private const int FIRST_INDEX = 0;
     private const int NO_HEALTH = 0;
 

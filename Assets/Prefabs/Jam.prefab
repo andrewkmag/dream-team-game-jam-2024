@@ -159,6 +159,7 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
   cinemachineVirtualCamera: {fileID: 4374250796218914909}
   animator: {fileID: 8080250101122184649}
+  pauseManager: {fileID: 0}
   moveSpeed: 8
   sprintSpeed: 2
   verticalTerminalSpeed: 40
@@ -179,7 +180,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   animationSmoothTime: 0.05
-  animationPlayTransition: 0.15
 --- !u!114 &5937711650311261020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 4138815096551334079}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19382484, y: -0.00082813785, z: 0.00016361654, w: 0.9810358}
-  m_LocalPosition: {x: 0, y: 3.1, z: -7.6100006}
+  m_LocalPosition: {x: 0, y: 3.1, z: -4.029999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -849,10 +849,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 4.5, z: -3.61}
+  ShoulderOffset: {x: 0, y: 4.5, z: -2.82}
   VerticalArmLength: -1.4
   CameraSide: 1
-  CameraDistance: 4
+  CameraDistance: 1.21
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
