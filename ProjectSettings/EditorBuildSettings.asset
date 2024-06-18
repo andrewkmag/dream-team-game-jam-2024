@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadSceneOrderTest/MainMenu.unity
     guid: 3085b914562765d4e85ba319b53015ca
   - enabled: 1
-    path: Assets/Scenes/LoadSceneOrderTest/Sweetsvylvania.unity
-    guid: 59364c2a031029343b9177316996d407
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/StartingAnimations/Start_Scene.unity
     guid: 1ca0495b04fc592418b02565e407c901
   - enabled: 1
@@ -23,13 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Planets/Sweetsvylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Planets/Soyturn.unity
     guid: 3b26137f0582d124eb98ee907ce2ed69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Planets/Planko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
   m_configObjects: {}
