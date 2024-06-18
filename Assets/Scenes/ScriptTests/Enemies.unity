@@ -175,6 +175,7 @@ MonoBehaviour:
   waitTime: 4
   turnSpeed: 90
   viewDistance: 5
+  attackDistance: 0
   viewMask:
     serializedVersion: 2
     m_Bits: 0
@@ -458,6 +459,7 @@ MonoBehaviour:
   waitTime: 0.5
   turnSpeed: 90
   viewDistance: 5
+  attackDistance: 7
   viewMask:
     serializedVersion: 2
     m_Bits: 0
@@ -672,8 +674,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.7, y: 4.18, z: 8.41}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7, y: 4.18, z: -6.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2644,6 +2646,7 @@ MonoBehaviour:
   waitTime: 0.7
   turnSpeed: 90
   viewDistance: 9
+  attackDistance: 0
   viewMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2789,7 +2792,7 @@ Transform:
   m_GameObject: {fileID: 1555386328}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19382484, y: -0.00082813785, z: 0.00016361654, w: 0.9810358}
-  m_LocalPosition: {x: 0, y: 3.1, z: -7.6099997}
+  m_LocalPosition: {x: 0, y: 3.1, z: -7.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3134,14 +3137,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688395431}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7, y: 1.08, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1555386330}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1688395441
 MonoBehaviour:
   m_ObjectHideFlags: 0

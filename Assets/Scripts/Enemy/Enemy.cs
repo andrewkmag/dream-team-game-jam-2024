@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float turnSpeed = 60;
 
     [SerializeField] private float viewDistance;
+    [SerializeField] private float attackDistance;
     [SerializeField] private LayerMask viewMask;
     [SerializeField] private float viewAngle = 90;
     [SerializeField] private Transform pathHolder;
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
     private readonly Color _firstHandleNodeColor = new Color(0, 255, 0);
     private readonly Color _handlenodesColor = new Color(255, 255, 0, 0.5f);
     private readonly Color _enemyfovHandleAreaColor = new Color(0, 255, 255, 0.5f);
+    private readonly Color _enemycombatHandleAreaColor = new Color(255, 0, 0, 0.5f);
 #endif
 
     #endregion
@@ -69,8 +71,10 @@ public class Enemy : MonoBehaviour
     {
         if (CanSeePlayer() && !incombat)
         {
-            incombat = true;        
+            incombat = true;
+            StartCoroutine(EnemyRoutime(waypoints));
         }
+
         if (incombat)
         {
             if (!NearPlayer())
@@ -78,7 +82,10 @@ public class Enemy : MonoBehaviour
                 incombat = false;
                 StartCoroutine(EnemyRoutime(waypoints));
             }
-            Debug.Log($"Oscar: Still in combat {incombat}");
+            else
+            {
+                StartCoroutine(EnemyRoutime(waypoints));
+            }
         }
     }
 
@@ -95,12 +102,11 @@ public class Enemy : MonoBehaviour
         var angleToPlayer = Vector3.Angle(enemyT.forward, directionToPlayer);
         return angleToPlayer < viewAngle * HALF_ANGLE;
     }
-    
+
     private bool NearPlayer()
     {
         var enemyT = transform;
-        Debug.Log($"Oscar: Dist to player {Vector3.Distance(enemyT.position, player.position)}");
-        return Vector3.Distance(enemyT.position, player.position) < viewDistance;
+        return Vector3.Distance(enemyT.position, player.position) < attackDistance;
     }
 
     private void InitializeEnemyRoutine()
@@ -111,15 +117,18 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyRoutime(IReadOnlyList<Transform> waypoints)
     {
+        if (incombat)
+        {
+            
+        }
         var waypointsQty = waypoints.Count();
         if (waypointsQty > ONE_ELEMENT)
         {
-
             transform.LookAt(targetWaypoint);
 
             while (true)
             {
-                if (incombat) yield break;
+                if (incombat) continue;
                 transform.position = MoveToWaypoint(targetWaypoint);
                 if (transform.position != targetWaypoint)
                 {
@@ -134,11 +143,11 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
         while (true)
         {
             if (incombat) yield break;
             yield return new WaitForSeconds(waitTime);
-            yield return StartCoroutine(Rotate());
         }
     }
 
@@ -225,39 +234,48 @@ public class Enemy : MonoBehaviour
         var from = Quaternion.AngleAxis(-HALF_ANGLE * viewAngle, Vector3.up) * (
             forward - Vector3.Dot(forward, Vector3.up) * Vector3.up
         );
-        Handles.color = _enemyfovHandleAreaColor;
-        Handles.DrawSolidArc(transform.position, enemyTransform.up, from, viewAngle, viewDistance);
-
-        var previousPosition = waypoints[INITIAL_ARRAY].position;
-        for (var index = INITIAL_INDEX; index < waypoints.Length; index++)
+        if (incombat)
         {
-            var waypoint = waypoints[index];
-            switch (index)
+            Handles.color = _enemycombatHandleAreaColor;
+            Handles.DrawWireDisc(transform.position, enemyTransform.up, attackDistance, FIRST_LINE_THICK);
+            Handles.DrawLine(transform.position, transform.position + transform.forward * attackDistance, LINE_THICK);
+        }
+        else
+        {
+            Handles.color = _enemyfovHandleAreaColor;
+            Handles.DrawSolidArc(transform.position, enemyTransform.up, from, viewAngle, viewDistance);
+
+            var previousPosition = waypoints[INITIAL_ARRAY].position;
+            for (var index = INITIAL_INDEX; index < waypoints.Length; index++)
             {
-                case FIRST_SPHERE:
-                    Handles.color = _firstHandleNodeColor
-                        ;
-                    Handles.SphereHandleCap(HANDLE_CONTROL, waypoints[INITIAL_ARRAY].position, Quaternion.identity,
-                        FIRST_SPHERE_RAD,
-                        EventType.Repaint);
-                    break;
-                case FIRST_LINE:
-                    Handles.DrawLine(previousPosition, waypoint.position, FIRST_LINE_THICK);
-                    Handles.color = _handlenodesColor;
-                    break;
-                default:
-                    Handles.SphereHandleCap(HANDLE_CONTROL, waypoint.position, Quaternion.identity, SPHERE_RAD,
-                        EventType.Repaint);
-                    Handles.DrawLine(previousPosition, waypoint.position, LINE_THICK);
-                    break;
+                var waypoint = waypoints[index];
+                switch (index)
+                {
+                    case FIRST_SPHERE:
+                        Handles.color = _firstHandleNodeColor
+                            ;
+                        Handles.SphereHandleCap(HANDLE_CONTROL, waypoints[INITIAL_ARRAY].position, Quaternion.identity,
+                            FIRST_SPHERE_RAD,
+                            EventType.Repaint);
+                        break;
+                    case FIRST_LINE:
+                        Handles.DrawLine(previousPosition, waypoint.position, FIRST_LINE_THICK);
+                        Handles.color = _handlenodesColor;
+                        break;
+                    default:
+                        Handles.SphereHandleCap(HANDLE_CONTROL, waypoint.position, Quaternion.identity, SPHERE_RAD,
+                            EventType.Repaint);
+                        Handles.DrawLine(previousPosition, waypoint.position, LINE_THICK);
+                        break;
+                }
+
+                previousPosition = waypoint.position;
             }
 
-            previousPosition = waypoint.position;
-        }
-
-        if (!comeAndGo)
-        {
-            Handles.DrawLine(previousPosition, waypoints[INITIAL_ARRAY].position, LINE_THICK);
+            if (!comeAndGo)
+            {
+                Handles.DrawLine(previousPosition, waypoints[INITIAL_ARRAY].position, LINE_THICK);
+            }
         }
     }
 #endif
