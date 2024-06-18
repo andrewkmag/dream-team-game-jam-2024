@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299007466501733080}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.258472, y: -0.138, z: 38.65}
   m_LocalScale: {x: 1.5, y: 0.25, z: 1.5}
   m_ConstrainProportionsScale: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1174795749915715121}
   - component: {fileID: 6568765517694857556}
   - component: {fileID: 183840068402127647}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelAndColider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
