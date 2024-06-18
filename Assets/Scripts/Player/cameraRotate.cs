@@ -17,6 +17,7 @@ public class cameraRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.IsPaused) return;
         y = Input.GetAxis("Mouse X");
         x = Input.GetAxis("Mouse Y");
         rotate = new Vector3(x, y * sensitivity, 0);

@@ -10,6 +10,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private int currentContainers;
     [SerializeField] private int currentHealth;
     [SerializeField] private HeartContainer[] pooledHealthContainers;
+    [SerializeField] private bool invincible;
     [SerializeField] private bool isdead;
 
     #endregion
@@ -25,9 +26,11 @@ public class HealthManager : MonoBehaviour
 
     #region Events
 
-    public delegate void DieAction();
+    public delegate void Action();
 
-    public static event DieAction OnDeath;
+    public static event Action OnDeath;
+    public static event Action OnRespawn;
+
 
     #endregion
 
@@ -90,13 +93,11 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage()
     {
+        if(invincible) return;
         if (isdead) return;
         if (currentHealth <= MIN_HEALTH)
         {
-            isdead = true;
-            OnDeath?.Invoke();
-            currentHealth = NO_HEALTH;
-            UpdateHealth();
+            Kill();
             return;
         }
 
@@ -109,6 +110,31 @@ public class HealthManager : MonoBehaviour
         if (isdead) return;
         if (currentHealth >= currentContainers) return;
         currentHealth++;
+        UpdateHealth();
+    }
+    
+    public void Kill()
+    {
+        if (isdead) return;
+        isdead = true;
+        OnDeath?.Invoke();
+        currentHealth = NO_HEALTH;
+        UpdateHealth();
+    }
+    
+    public void Respawn()
+    {
+        if (!isdead) return;
+        isdead = false;
+        OnRespawn?.Invoke();
+        HealAll();
+    }
+    
+    public void HealAll()
+    {
+        if (isdead) return;
+        if (currentHealth >= currentContainers) return;
+        currentHealth=currentContainers;
         UpdateHealth();
     }
 
