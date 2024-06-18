@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
+#if UnityEditor
     #region Fields
 
     public GameObject panel;
@@ -77,6 +78,5 @@ public class CheatManager : MonoBehaviour
     }
 
     #endregion
+#endif
 }
-
-
