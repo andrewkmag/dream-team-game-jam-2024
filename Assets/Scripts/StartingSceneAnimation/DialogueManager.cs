@@ -63,7 +63,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 1)
         {
             Debug.Log("End of conversation");
             EndDialogue();

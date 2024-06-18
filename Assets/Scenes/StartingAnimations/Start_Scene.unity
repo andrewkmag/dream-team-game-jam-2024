@@ -689,10 +689,8 @@ MonoBehaviour:
   shipAnimator: {fileID: 1467315123}
   shakingShip: {fileID: 0}
   backgroundImage: {fileID: 1801841958}
-  speechBubble1: {fileID: 0}
-  speechBubble2: {fileID: 0}
-  speechText1: {fileID: 0}
-  speechText2: {fileID: 0}
+  speechBubble1: {fileID: 1348616182}
+  speechText1: {fileID: 1639160702}
   typingSpeed: 0.04
 --- !u!4 &762783473
 Transform:
