@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject backgroundImage;
     [SerializeField] private GameObject speechBubble1;
+    [SerializeField] private GameObject speechBubble2;
+    [SerializeField] private GameObject speechText2;
     [SerializeField] private GameObject speechText1;
 
     private Queue<string> sentences;

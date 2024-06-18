@@ -87,9 +87,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Smooth time for the animation blend tree")] [SerializeField]
     private float animationSmoothTime = 0.05f;
 
-    [Tooltip("Time it takes to blend to the jump animation")] [SerializeField]
-    private float animationPlayTransition = 0.15f;
-
     #endregion
 
     #region Local variables
