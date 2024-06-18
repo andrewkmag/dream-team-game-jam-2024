@@ -50,8 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartContainersParent: {fileID: 3953708180408375869}
-  maxHealth: 15
+  startingContainers: 3
+  maxContainers: 0
+  currentContainers: 0
   currentHealth: 0
+  pooledHealthContainers: []
+  invincible: 0
+  isdead: 0
 --- !u!1 &3325479277826298701
 GameObject:
   m_ObjectHideFlags: 0
