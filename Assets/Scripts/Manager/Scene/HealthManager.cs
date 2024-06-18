@@ -5,20 +5,26 @@ public class HealthManager : MonoBehaviour
 {
     #region Fields
 
+    [Header("Health variables")]
     [SerializeField] private Transform heartContainersParent;
+    [SerializeField] private int startingContainers;
+    
+    [Header("Debug")]
+    [SerializeField] private bool invincible;
+    
+    [Header("Readonly")]
     [SerializeField] private int maxContainers;
     [SerializeField] private int currentContainers;
     [SerializeField] private int currentHealth;
     [SerializeField] private HeartContainer[] pooledHealthContainers;
-    [SerializeField] private bool invincible;
     [SerializeField] private bool isdead;
 
     #endregion
 
     #region Constants
 
-    private const int MIN_CONTAINERS = 3;
-    private const int MIN_HEALTH = 3;
+    private const int MIN_CONTAINERS = 1;
+    private const int MIN_HEALTH = 1;
     private const int FIRST_INDEX = 0;
     private const int NO_HEALTH = 0;
 
@@ -60,8 +66,8 @@ public class HealthManager : MonoBehaviour
 
     private void InitializeHeartContainers()
     {
-        if (currentContainers < MIN_CONTAINERS)
-            currentContainers = MIN_CONTAINERS;
+        if (currentContainers < startingContainers)
+            currentContainers = startingContainers;
         for (var i = FIRST_INDEX; i < currentContainers; i++)
         {
             AddHeartPooled();
