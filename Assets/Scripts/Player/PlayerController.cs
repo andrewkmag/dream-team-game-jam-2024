@@ -10,18 +10,18 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    #region Serialized fields
+    #region Serialized References
 
     [Header("References")] [SerializeField]
     private CharacterController characterController;
 
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private grapple grapple;
+    [SerializeField] private Animator animator;
 
     #endregion
 
-    #region Not implemented
+    #region Serialized Settings
 
     // TODO: Implement the following fields
     [Header("Settings")] [Tooltip("Move speed of the character in m/s")] [SerializeField]
@@ -82,6 +82,14 @@ public class PlayerController : MonoBehaviour
     [Tooltip("What layers the character is considered grounded on")] [SerializeField]
     private LayerMask GroundLayers;
 
+    [Header("Animation Smoothing")]
+
+    [Tooltip("Smooth time for the animation blend tree")] [SerializeField]
+    private float animationSmoothTime = 0.05f;
+
+    [Tooltip("Time it takes to blend to the jump animation")] [SerializeField]
+    private float animationPlayTransition = 0.15f;
+
     #endregion
 
     #region Local variables
@@ -95,6 +103,17 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeoutDelta;
     private float fallTimeoutDelta;
     private float verticalSpeed;
+
+    // Animation related variables
+    private int moveXAnimationParameterId; // Store the animator parameter id for movement x
+    private int moveZAnimationParameterId; // Store the animator parameter id for movement z
+    private int jumpAnimationParameterId; // Store the animator parameter id for jumping
+    private int freeFallAnimationParameterId; // Store the animator parameter id for free falling
+    private int groundAnimationParameterId; // Store the animator parameter id for grounded
+
+    private Vector2 currentAnimationBlendVector; // Store the current animation blend vector
+    private Vector2 animationBlendVelocity; // Store the velocity of the blend vector
+
 
     #endregion
 
@@ -125,6 +144,12 @@ public class PlayerController : MonoBehaviour
         dashCooldownDelta = dashCooldown;
         jumpTimeoutDelta = jumpTimeout;
         fallTimeoutDelta = fallTimeout;
+
+        moveXAnimationParameterId = Animator.StringToHash("MoveX");
+        moveZAnimationParameterId = Animator.StringToHash("MoveZ");
+        jumpAnimationParameterId = Animator.StringToHash("Jump");
+        freeFallAnimationParameterId = Animator.StringToHash("FreeFall");
+        groundAnimationParameterId = Animator.StringToHash("Grounded");
     }
 
     private void Update()
@@ -132,7 +157,6 @@ public class PlayerController : MonoBehaviour
         GroundedCheck(); // Check if the player is grounded
         MovePlayer(); // Poll for movement every frame
         Jump(); // Poll for jumping every frame
-        Grapple();
     }
 
     #endregion
@@ -159,6 +183,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
+        Vector2 movementInputForAnimationBlend = new Vector2(previousMovementInput.x, previousMovementInput.y);
+        currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector,
+                                                            movementInputForAnimationBlend,
+                                                            ref animationBlendVelocity,
+                                                            animationSmoothTime);
+
         // Store the player's movement input
         Vector3 desiredMoveDirection = new Vector3(previousMovementInput.x, 0, previousMovementInput.y);
 
@@ -183,6 +213,9 @@ public class PlayerController : MonoBehaviour
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
+
+        animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
+        animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
         
         if (inputReader.dash && dashTimeoutDelta <= NO_TIME && remainingDashes > NO_REMAINING)
         {
@@ -237,7 +270,8 @@ public class PlayerController : MonoBehaviour
         playerGrounded =
             Physics.CheckSphere(spherePosition, groundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
-        Debug.Log($"Grounded: {playerGrounded}, Sphere Position: {spherePosition}");
+        // Debug.Log($"Grounded: {playerGrounded}, Sphere Position: {spherePosition}");
+        animator.SetBool(groundAnimationParameterId, playerGrounded);
     }
 
     private void Jump()
@@ -252,9 +286,13 @@ public class PlayerController : MonoBehaviour
             if (fallTimeoutDelta >= 0.0f)
             {
                 fallTimeoutDelta -= Time.deltaTime;
+            } else
+            {
+                Debug.Log("Jam is free falling");
+                animator.SetBool(freeFallAnimationParameterId, true);
             }
         }
-        else
+        else // If the player is grounded
         {
             if (verticalSpeed < 0.0f)
             {
@@ -263,10 +301,15 @@ public class PlayerController : MonoBehaviour
             }
 
             fallTimeoutDelta = fallTimeout;
+            Debug.Log("Jam is grounded");
+            animator.SetBool(jumpAnimationParameterId, false);
+            animator.SetBool(freeFallAnimationParameterId, false);
         }
 
         if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
         {
+            Debug.Log("Jam is Jumping");
+            animator.SetBool(jumpAnimationParameterId, true);
             remainingJumps--;
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
             inputReader.jump = false;
@@ -286,16 +329,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    private void Grapple()
-    {
-
-        if (inputReader.Grapple == true)
-        {
-            grapple.StartGrapple();
-            
-        }
-        
-    }
     #region Debug Helpers
 
     // TODO: Delete these before submission
