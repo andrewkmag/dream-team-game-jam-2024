@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,9 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
+    [SerializeField] String[] names;
+    public Sprite[] textSprite;
+    public Image dialogueName;
     public TextMeshProUGUI dialogueText;
 
     public Animator animator;
@@ -21,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject speechText2;
 
     private Queue<string> sentences;
+    private int diagMatch;
 
     public float typingSpeed = 0.1f;
 
@@ -28,13 +33,21 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        diagMatch = 0;
+        nameText.text = names[diagMatch];
+    }
+
+    void Update(){
+        if(diagMatch == 1){
+            dialogueName.sprite = textSprite[1];
+        } else{
+            dialogueName.sprite = textSprite[0];
+        }
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("isOpen", true);
-
-        nameText.text = dialogue.name;
         
         sentences.Clear();
 
@@ -53,7 +66,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        diagMatch = diagMatch + 1;
+        nameText.text = names[diagMatch];
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
