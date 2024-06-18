@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float speed = 5;
     [SerializeField] private float waitTime = .3f;
+    [SerializeField] private float minWaitTime = .001f;
     [SerializeField] private float turnSpeed = 60;
 
     [SerializeField] private float viewDistance;
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
     private const float NEGLIGIBLE_ANGLE_DIFF = 0.05f;
     private const int ZERO_INIT_ADJUSTMENT = 1;
     private const float HALF_ANGLE = 0.5f;
+    private const float RIGHT_ANGLE = 90f;
 
 #if UNITY_EDITOR
     private const int FIRST_SPHERE = 0;
@@ -67,28 +69,6 @@ public class Enemy : MonoBehaviour
         StartCoroutine(EnemyRoutime(waypoints));
     }
 
-    private void Update()
-    {
-        if (CanSeePlayer() && !incombat)
-        {
-            incombat = true;
-            StartCoroutine(EnemyRoutime(waypoints));
-        }
-
-        if (incombat)
-        {
-            if (!NearPlayer())
-            {
-                incombat = false;
-                StartCoroutine(EnemyRoutime(waypoints));
-            }
-            else
-            {
-                StartCoroutine(EnemyRoutime(waypoints));
-            }
-        }
-    }
-
     #endregion
 
     #region Methods
@@ -117,37 +97,48 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyRoutime(IReadOnlyList<Transform> waypoints)
     {
-        if (incombat)
+        while (true)
         {
-            
-        }
-        var waypointsQty = waypoints.Count();
-        if (waypointsQty > ONE_ELEMENT)
-        {
-            transform.LookAt(targetWaypoint);
-
-            while (true)
+            if (!incombat)
             {
-                if (incombat) continue;
-                transform.position = MoveToWaypoint(targetWaypoint);
-                if (transform.position != targetWaypoint)
+                if (CanSeePlayer())
                 {
-                    yield return null;
+                    incombat = true;
                 }
                 else
                 {
-                    targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
-                    targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
-                    yield return new WaitForSeconds(waitTime);
-                    yield return StartCoroutine(FaceTarget(targetWaypoint));
+                    var waypointsQty = waypoints.Count();
+                    if (waypointsQty <= ONE_ELEMENT)
+                    {
+                        yield return StartCoroutine(Rotate());
+                        yield return new WaitForSeconds(waitTime);
+                    }
+                    else //More wps
+                    {
+                        transform.position = MoveToWaypoint(targetWaypoint);
+                        yield return new WaitForSeconds(minWaitTime);
+                        if (transform.position == targetWaypoint)
+                        {
+                            targetWaypointIndex = GetNewWaypointIndex(waypoints, targetWaypointIndex);
+                            targetWaypoint = GetWaypoint(waypoints, targetWaypointIndex);
+                            yield return new WaitForSeconds(waitTime);
+                            yield return StartCoroutine(FaceTarget(targetWaypoint));
+                        }
+                    }
                 }
             }
-        }
-
-        while (true)
-        {
-            if (incombat) yield break;
-            yield return new WaitForSeconds(waitTime);
+            if (incombat)
+            {
+                if (!NearPlayer())
+                {
+                    incombat = false;
+                }
+                else
+                {
+                    yield return StartCoroutine(FaceTargetAttack(player.position));
+                    yield return new WaitForSeconds(minWaitTime);
+                }
+            }
         }
     }
 
@@ -194,13 +185,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator FaceTarget(Vector3 targetPos)
+    private IEnumerator FaceTargetAttack(Vector3 targetPos)
     {
-        if (incombat) yield break;
         var directionToLook = (targetPos - transform.position).normalized;
-        var targetAngle = viewAngle - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
+        var targetAngle = RIGHT_ANGLE - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
         {
+            if (!NearPlayer()) yield break;
+            var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
+            transform.eulerAngles = Vector3.up * angle;
+            yield return null;
+        }
+    }
+    
+    private IEnumerator FaceTarget(Vector3 targetPos)
+    {
+        var directionToLook = (targetPos - transform.position).normalized;
+        var targetAngle = RIGHT_ANGLE - Mathf.Atan2(directionToLook.z, directionToLook.x) * Mathf.Rad2Deg;
+        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) > NEGLIGIBLE_ANGLE_DIFF)
+        {
+            if (CanSeePlayer()) yield break;
             var angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, turnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.up * angle;
             yield return null;
