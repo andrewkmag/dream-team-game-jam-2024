@@ -110,7 +110,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 currentAnimationBlendVector; // Store the current animation blend vector
     private Vector2 animationBlendVelocity; // Store the velocity of the blend vector
-
+    
+    private static readonly int OnDeath = Animator.StringToHash("onDeath");
+    private static readonly int OnRespawn = Animator.StringToHash("onRespawn");
 
     #endregion
 
@@ -162,10 +164,25 @@ public class PlayerController : MonoBehaviour
         Jump(); // Poll for jumping every frame
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnDeath += PlayerDeath;
+        GameManager.OnRespawn += PlayerRespawn;
+        GameManager.OnPause += PlayerPause;
+        GameManager.OnResume += PlayerResume;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnDeath -= PlayerDeath;
+        GameManager.OnRespawn += PlayerRespawn;
+        GameManager.OnPause -= PlayerPause;
+        GameManager.OnResume -= PlayerResume;
+    }
+
     #endregion
 
     #region Player Movement Mechanics
-
     /// <summary>
     /// Updates the player movement vector based on the input vector
     /// </summary>
@@ -186,6 +203,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
+        
         Vector2 movementInputForAnimationBlend = new Vector2(previousMovementInput.x, previousMovementInput.y);
         currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector,
                                                             movementInputForAnimationBlend,
@@ -222,7 +240,6 @@ public class PlayerController : MonoBehaviour
         
         if (inputReader.dash && dashTimeoutDelta <= NO_TIME && remainingDashes > NO_REMAINING)
         {
-            Debug.Log("OSCAR: Try and dash");
             remainingDashes--;
             StartCoroutine(Dash(finalMoveDirection));
                    
@@ -330,6 +347,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    #region Player State Mechanics
+
+    private void PlayerDeath()
+    {
+        PlayerPause();
+        AnimPlayerDeath();
+    }
+    
+    private void PlayerRespawn()
+    {
+        PlayerResume();
+        AnimPlayerRespawn();
+    }
+    #endregion
+
+    private void PlayerPause()
+    {
+        inputReader.PausedInputs();
+    }
+    
+    private void PlayerResume()
+    {
+        inputReader.ResumeInputs();
+    }
+    
+    #region Player AnimationTriggers
+
+    private void AnimPlayerDeath()
+    {
+        animator.SetTrigger(OnDeath);
+    }
+    
+    private void AnimPlayerRespawn()
+    {
+        animator.SetTrigger(OnRespawn);
+    }
     #endregion
 
     #region Pause Mechanics

@@ -19,6 +19,7 @@ public class CheatManager : MonoBehaviour
 
     #region UnityMethods
 
+
     private void Start()
     {
         panel.SetActive(false);
@@ -76,7 +77,6 @@ public class CheatManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+
     #endregion
 }
-
-

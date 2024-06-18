@@ -20,6 +20,7 @@ namespace eXplorerJam.Input
         public bool dash;
         public bool interact;
         public bool pause;
+        public bool ispaused;
 
         private void OnEnable()
         {
@@ -32,15 +33,27 @@ namespace eXplorerJam.Input
 
             // Enable the Player action map
             _controls.Player.Enable();
+            ispaused = false;
+        }
+
+        public void PausedInputs()
+        {
+            ispaused = true;
+        }
+        public void ResumeInputs()
+        {
+            ispaused = false;
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnSprint(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             //read the sprint value as a bool (button press) and invoke sprintEvent
             bool isSprinting = context.ReadValueAsButton();
             SprintEvent?.Invoke(isSprinting);
@@ -48,6 +61,7 @@ namespace eXplorerJam.Input
 
         public void OnJump(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             jump = context.phase switch
             {
                 InputActionPhase.Started => true,
@@ -58,6 +72,7 @@ namespace eXplorerJam.Input
 
         public void OnDash(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             dash = context.phase switch
             {
                 InputActionPhase.Started => true,
@@ -66,9 +81,9 @@ namespace eXplorerJam.Input
             };
         }
 
-
         public void OnInteract(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             interact = context.phase switch
             {
                 InputActionPhase.Started => true,
@@ -79,6 +94,7 @@ namespace eXplorerJam.Input
 
         public void OnGrapple(InputAction.CallbackContext context)
         {
+            if(ispaused)return;
             if (context.phase == InputActionPhase.Started)
             {
                 Grapple = true;
