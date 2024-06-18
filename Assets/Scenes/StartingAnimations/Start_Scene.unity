@@ -722,9 +722,10 @@ MonoBehaviour:
   shakingShip: {fileID: 1467315123}
   backgroundImage: {fileID: 1801841958}
   speechBubble1: {fileID: 102415085}
-  speechBubble2: {fileID: 102415085}
   speechText1: {fileID: 102415085}
   speechText2: {fileID: 102415085}
+  speechBubble2: {fileID: 102415085}
+  firstScene: Scene
   typingSpeed: 0.04
 --- !u!4 &762783473
 Transform:

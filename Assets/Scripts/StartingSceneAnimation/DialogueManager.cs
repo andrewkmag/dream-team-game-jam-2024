@@ -35,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     private bool nameArray = true;
     private bool endedDialogue = false;
 
+    public string firstScene;
+
     public float typingSpeed = 0.1f;
 
     // Start is called before the first frame update
@@ -120,6 +122,8 @@ public class DialogueManager : MonoBehaviour
 
         StartCoroutine(LoadNextScene());
 
+        Debug.Log(SceneManager.GetActiveScene());
+
         // load the next scene
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -128,8 +132,18 @@ public class DialogueManager : MonoBehaviour
     {
         if (endedDialogue == true)
         {
-            yield return new WaitForSecondsRealtime(17);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (firstScene == "Scene")
+            {
+                yield return new WaitForSecondsRealtime(1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else if (firstScene != "Scene")
+            {
+                yield return new WaitForSecondsRealtime(17);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            }
+            
         }
     }
 
