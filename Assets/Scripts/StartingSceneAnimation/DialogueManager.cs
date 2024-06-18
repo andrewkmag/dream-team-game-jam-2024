@@ -26,12 +26,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject speechBubble1;
     [SerializeField] private GameObject speechText1;
     [SerializeField] private GameObject speechText2;
+    [SerializeField] private GameObject speechBubble2;
 
 
     private Queue<string> sentences;
     private int diagMatch;
 
     private bool nameArray = true;
+    private bool endedDialogue = false;
 
     public float typingSpeed = 0.1f;
 
@@ -68,7 +70,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 1)
+        if (sentences.Count < 1)
         {
             nameArray = false;
             Debug.Log("End of conversation");
@@ -77,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (nameArray) { diagMatch = diagMatch + 1; }
         nameText.text = names[diagMatch];
+
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -98,8 +101,11 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Ending the dialogue");
         speechBubble1.SetActive(false);
+        speechBubble2.SetActive(false);
         speechText1.SetActive(false);
         speechText2.SetActive(false);
+
+        endedDialogue = true;
 
         //remove the dialogue screen
         animator.SetBool("isOpen", false);
@@ -107,11 +113,24 @@ public class DialogueManager : MonoBehaviour
         // stop the ships animation in previous scene
         shipAnimator.SetBool("StopShip", true);
 
+        shakingShip.SetBool("isBeingBoarded", true);
+
         // stop the background image
         backgroundImage.GetComponent<ImageScroller>().enabled = false;
 
+        StartCoroutine(LoadNextScene());
+
         // load the next scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator LoadNextScene()
+    {
+        if (endedDialogue == true)
+        {
+            yield return new WaitForSecondsRealtime(17);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
 }
