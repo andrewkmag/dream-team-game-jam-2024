@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
   - enabled: 0
-    path: Assets/Scenes/Planets/Planko.unity
+    path: Assets/Scenes/Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
   m_configObjects: {}
