@@ -17,6 +17,7 @@ public class Interact : MonoBehaviour
     private bool _busyInteracting;
     private bool _promptNotNull;
     private bool _notNull;
+    private bool _isContextualManagerInstaceNotNull;
 
     #endregion
     
@@ -29,6 +30,15 @@ public class Interact : MonoBehaviour
 
 
     #region Unity Methods
+
+    private void Awake()
+    {
+        _isContextualManagerInstaceNotNull = ContextualUIManager.Instace != null;
+        if (!_isContextualManagerInstaceNotNull)
+        {
+            Debug.LogWarning("Interact needs the contextual ui manager on scene");
+        }
+    }
 
     private void Update()
     {
@@ -76,12 +86,18 @@ public class Interact : MonoBehaviour
             }
             else
             {
-                ContextualUIManager.Instace.HideContextualText();                
+                if (_isContextualManagerInstaceNotNull)
+                {
+                    ContextualUIManager.Instace.HideContextualText();
+                }
             }
         }
         else
         {
-            ContextualUIManager.Instace.HideContextualText();                
+            if (_isContextualManagerInstaceNotNull)
+            {
+                ContextualUIManager.Instace.HideContextualText();
+            }
         }
     }
 
