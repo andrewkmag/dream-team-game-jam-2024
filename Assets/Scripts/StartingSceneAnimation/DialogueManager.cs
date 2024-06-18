@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,6 +13,9 @@ public class DialogueManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private String[] names;
+    [SerializeField] private Sprite[] textSprite;
+    [SerializeField] private Image dialogueName;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private Animator animator;
@@ -23,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject speechText1;
 
     private Queue<string> sentences;
+    private int diagMatch;
 
     public float typingSpeed = 0.1f;
 
@@ -30,13 +35,21 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        diagMatch = 0;
+        nameText.text = names[diagMatch];
+    }
+
+    void Update(){
+        if(diagMatch == 1){
+            dialogueName.sprite = textSprite[1];
+        } else{
+            dialogueName.sprite = textSprite[0];
+        }
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("isOpen", true);
-
-        nameText.text = dialogue.name;
         
         sentences.Clear();
 
@@ -56,7 +69,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        diagMatch = diagMatch + 1;
+        nameText.text = names[diagMatch];
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
