@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 217110322821412766}
   - component: {fileID: 5830617220268000838}
   - component: {fileID: 5937711650311261020}
-  - component: {fileID: 6626469158644691993}
+  - component: {fileID: -2371470044413674029}
   m_Layer: 0
   m_Name: Jam
   m_TagString: Untagged
@@ -158,7 +158,7 @@ MonoBehaviour:
   characterController: {fileID: 217110322821412766}
   inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
   cinemachineVirtualCamera: {fileID: 4374250796218914909}
-  grapple: {fileID: 6626469158644691993}
+  animator: {fileID: 8080250101122184649}
   moveSpeed: 8
   sprintSpeed: 2
   verticalTerminalSpeed: 40
@@ -178,6 +178,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 8
+  animationSmoothTime: 0.05
+  animationPlayTransition: 0.15
 --- !u!114 &5937711650311261020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: -1
---- !u!114 &6626469158644691993
+--- !u!114 &-2371470044413674029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,19 +202,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 439807735252601345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6865345b32be5e4ea915d4ab31af0d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 91a37d7cb52606d4084bd143db361e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 217110322821412766}
   inputReader: {fileID: 11400000, guid: df4bf708a4cde6f4bb8429dd09793961, type: 2}
-  wrist: {fileID: 7585285527989902742}
-  player: {fileID: 6742639215839078748}
-  isGrappable:
-    serializedVersion: 2
-    m_Bits: 0
-  maxGrappleDistance: 0
-  grappleDelayTime: 0
-  overshootYAxis: 0
 --- !u!1 &580741964106191132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +2815,12 @@ Transform:
 --- !u!4 &8062050586076537351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3554908811827254689, guid: 17f7fdc1a6a757e4aad8ee0806799b22,
+    type: 3}
+  m_PrefabInstance: {fileID: 2398242728383285336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8080250101122184649 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 17f7fdc1a6a757e4aad8ee0806799b22,
     type: 3}
   m_PrefabInstance: {fileID: 2398242728383285336}
   m_PrefabAsset: {fileID: 0}
