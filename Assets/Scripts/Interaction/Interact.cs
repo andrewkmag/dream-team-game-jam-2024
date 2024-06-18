@@ -31,7 +31,7 @@ public class Interact : MonoBehaviour
 
     #region Unity Methods
 
-    private void Awake()
+    private void Start()
     {
         _isContextualManagerInstaceNotNull = ContextualUIManager.Instace != null;
         if (!_isContextualManagerInstaceNotNull)
