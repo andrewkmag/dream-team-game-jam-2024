@@ -176,7 +176,7 @@ MonoBehaviour:
   minWaitTime: 0.005
   turnSpeed: 90
   viewDistance: 7
-  attackDistance: 10
+  attackDistance: 12
   viewMask:
     serializedVersion: 2
     m_Bits: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   minWaitTime: 0.005
   turnSpeed: 90
   viewDistance: 7
-  attackDistance: 10
+  attackDistance: 12
   viewMask:
     serializedVersion: 2
     m_Bits: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   minWaitTime: 0.005
   turnSpeed: 90
   viewDistance: 7
-  attackDistance: 10
+  attackDistance: 12
   viewMask:
     serializedVersion: 2
     m_Bits: 0
