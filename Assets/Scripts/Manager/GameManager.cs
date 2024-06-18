@@ -136,6 +136,8 @@ public class GameManager : MonoBehaviour
         IsDead = true;
         OnDeath?.Invoke();
         PauseGame();
+        var button = ContextualUIManager.Instace.ShowContextualButton("You died", "Respawn");
+        button.onClick.AddListener(()=>HealthManager.Instance.Respawn());
     }
 
     private void PauseGame()
