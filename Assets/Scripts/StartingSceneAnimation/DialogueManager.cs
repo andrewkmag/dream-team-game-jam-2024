@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private int diagMatch;
 
+    private bool nameArray = true;
+
     public float typingSpeed = 0.1f;
 
     // Start is called before the first frame update
@@ -38,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     void Update(){
+        
         if(diagMatch == 1){
             dialogueName.sprite = textSprite[1];
         } else{
@@ -63,10 +66,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (sentences.Count < 1)
         {
+            nameArray = false;
             EndDialogue();
             return;
         }
-        diagMatch = diagMatch + 1;
+        if (nameArray) { diagMatch = diagMatch + 1; }
         nameText.text = names[diagMatch];
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
@@ -90,6 +94,8 @@ public class DialogueManager : MonoBehaviour
         speechBubble2.SetActive(false);
         speechText1.SetActive(false);
         speechText2.SetActive(false);
+
+        
 
 
         //remove the dialogue screen
