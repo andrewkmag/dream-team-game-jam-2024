@@ -1,7 +1,4 @@
-using eXplorerJam.Input;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static eXplorerJam.Input.Controls;
@@ -14,6 +11,7 @@ namespace eXplorerJam.Input
         // Events
         public event Action<Vector2> MoveEvent;
         public event Action<bool> SprintEvent;
+        public event Action PauseEvent;
 
         // Local variables
         private Controls _controls;
@@ -93,12 +91,11 @@ namespace eXplorerJam.Input
 
         public void OnPause(InputAction.CallbackContext context)
         {
-            interact = context.phase switch
+            if (context.phase == InputActionPhase.Started)
             {
-                InputActionPhase.Started => true,
-                InputActionPhase.Canceled => false,
-                _ => interact
-            };
+                pause = !pause;
+                PauseEvent?.Invoke();
+            }
         }
     }
 }

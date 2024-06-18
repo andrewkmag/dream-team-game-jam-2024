@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private Animator animator;
+    [SerializeField] private PauseManager pauseManager;
 
     #endregion
 
@@ -29,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Sprint speed of the character in m/s")] [SerializeField]
     private float sprintSpeed = 6.0f;
-
 
     [Tooltip("Terminal speed of the character in m/s")] [SerializeField]
     private float verticalTerminalSpeed = 50f;
@@ -127,11 +127,14 @@ public class PlayerController : MonoBehaviour
 
     #region Unity Methods
 
-    private void Start()
+    private void Awake()
     {
+        pauseManager = FindObjectOfType<PauseManager>();
+
         // Subscribe to the MoveEvent specified in InputReader.cs
         inputReader.MoveEvent += HandleMove;
         inputReader.SprintEvent += HandleSprint;
+        inputReader.PauseEvent += HandlePause;
 
         // Set the virtualcamera's transform
         virtualCameraTransform = cinemachineVirtualCamera.transform;
@@ -147,6 +150,9 @@ public class PlayerController : MonoBehaviour
         jumpAnimationParameterId = Animator.StringToHash("Jump");
         freeFallAnimationParameterId = Animator.StringToHash("FreeFall");
         groundAnimationParameterId = Animator.StringToHash("Grounded");
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -323,6 +329,18 @@ public class PlayerController : MonoBehaviour
             verticalSpeed += gravity * Time.deltaTime;
         }
     }
+
+    #endregion
+
+    #region Pause Mechanics
+    private void HandlePause()
+    {
+        if (pauseManager != null)
+        {
+            pauseManager.TogglePause();
+        }
+    }
+
 
     #endregion
 
