@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private bool isPaused;
     [SerializeField] private bool isDead;
+    [SerializeField] private Vector3 checkpointPosition;
 
     #endregion
 
@@ -27,12 +29,26 @@ public class GameManager : MonoBehaviour
         set => isDead = value;
     }
 
+    public Vector3 CheckpointPosition
+    {
+        get => checkpointPosition;
+        set => checkpointPosition = value;
+    }
+
     #endregion
 
     #region Constants
 
     const float PAUSED_TIME = 0;
     const float RESUMED_TIME = 1;
+
+
+#if UNITY_EDITOR
+    private const float SPHERE_RAD = 0.5f;
+    private const int HANDLE_CONTROL = 0;
+
+    private readonly Color _handleNodeColor = new Color(0, 255, 0);
+#endif
 
     #endregion
 
@@ -85,6 +101,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+        
+        checkpointPosition=Vector3.zero;
     }
 
     private void Start()
@@ -94,6 +112,10 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"Add a scriptable scene object to the Game Manager to Start");
         }
 
+        if (checkpointPosition == Vector3.zero)
+        {
+            checkpointPosition = transform.position;
+        }
         IsPaused = false;
     }
 
@@ -137,6 +159,22 @@ public class GameManager : MonoBehaviour
         OnRespawn?.Invoke();
         PauseGame();
     }
+
+    #endregion
+
+    #region Debug
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (checkpointPosition == null) return;
+        Handles.color = _handleNodeColor;
+        
+        Handles.SphereHandleCap(HANDLE_CONTROL, checkpointPosition, Quaternion.identity,
+            SPHERE_RAD,
+            EventType.Repaint);
+    }
+#endif
 
     #endregion
 }

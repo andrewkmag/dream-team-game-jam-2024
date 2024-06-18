@@ -42,7 +42,16 @@ public class Checkpoint : MonoBehaviour
     {
         if (isActiveCheckpoint) return;
         isActiveCheckpoint = true;
+        SetCheckPointRespawn();
         _anim.SetTrigger(ActivateCheckpoint);
+    }
+
+    private void SetCheckPointRespawn()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.CheckpointPosition=transform.position+Vector3.up;            
+        }
     }
 
     public void Deactivate(Checkpoint checkpoint)
