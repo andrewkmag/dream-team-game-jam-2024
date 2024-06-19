@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MapScript : MonoBehaviour
 {
+
     public void Update()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -14,7 +15,7 @@ public class MapScript : MonoBehaviour
         }
     }
 
-    
+   
     public void loadingNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
