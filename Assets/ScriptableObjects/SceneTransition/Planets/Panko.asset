@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
-  m_Name: Planko
+  m_Name: Panko
   m_EditorClassIdentifier: 
-  sceneName: Planko
+  sceneName: Panko
   transitionTime: 2
   nextScene: {fileID: 0}

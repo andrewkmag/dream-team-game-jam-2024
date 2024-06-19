@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Sweetsvylvania
   transitionTime: 2
-  nextScene: {fileID: 11400000, guid: c01611a225cda0b48b0d10a2b6ba5807, type: 2}
+  nextScene: {fileID: 11400000, guid: 80c62100832220d4f9799b323f11a6bb, type: 2}
