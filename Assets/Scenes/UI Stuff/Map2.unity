@@ -907,7 +907,7 @@ Animator:
   m_GameObject: {fileID: 1182339793}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 364ec938891faeb429036bfc1610ea13, type: 2}
+  m_Controller: {fileID: 9100000, guid: 16a27d20e235f00468a047e4dc770e44, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -954,8 +954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.685, y: -45.187}
-  m_SizeDelta: {x: 101.193, y: 61.973}
+  m_AnchoredPosition: {x: 57.382, y: 77.621}
+  m_SizeDelta: {x: 72.241, y: 62.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1387603740
 MonoBehaviour:
@@ -1001,13 +1001,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1398889706}
+        m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1060,6 +1060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398889705}
+  - component: {fileID: 1398889706}
   m_Layer: 0
   m_Name: LoadNextScene
   m_TagString: Untagged
@@ -1082,6 +1083,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398889706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398889704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363f7f69e0a826f4aaf967d3bdb40c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1410919779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1477589646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1626,7 +1639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1707296243
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1906,8 +1919,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1662282955}
   - {fileID: 43697766}
+  - {fileID: 1398889705}
   - {fileID: 1521257173}
   - {fileID: 1571026934}
   - {fileID: 591906202}
   - {fileID: 818630047}
-  - {fileID: 1398889705}
