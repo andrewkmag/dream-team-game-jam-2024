@@ -55,6 +55,18 @@ public class DialogueManager : MonoBehaviour
         } else{
             dialogueName.sprite = textSprite[0];
         }
+
+        Scene scene = SceneManager.GetActiveScene();
+
+        if (scene.name == "Sweetsylvania")
+        {
+            Time.timeScale = 0;
+
+            if (endedDialogue == true)
+            {
+                Time.timeScale = 1;
+            }
+        }
     }
 
     public void StartDialogue (Dialogue dialogue)
