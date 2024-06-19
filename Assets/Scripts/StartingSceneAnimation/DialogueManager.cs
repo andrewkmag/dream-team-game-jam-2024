@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject speechText2;
     [SerializeField] private GameObject speechText1;
 
+    [SerializeField] private AudioSource dialogueSound;
 
     private Queue<string> sentences;
     private int diagMatch;
@@ -65,9 +66,11 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences) 
         {
             sentences.Enqueue(sentence);
+            
         }
 
         DisplayNextSentence();
+        
     }
 
     public void DisplayNextSentence()
@@ -86,6 +89,8 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
         Debug.Log("Count is: " + sentences.Count);
+
+        dialogueSound.Play();
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -126,6 +131,8 @@ public class DialogueManager : MonoBehaviour
 
         // load the next scene
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        dialogueSound.Stop();
     }
 
     IEnumerator LoadNextScene()

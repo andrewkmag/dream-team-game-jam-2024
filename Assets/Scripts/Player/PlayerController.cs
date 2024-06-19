@@ -114,6 +114,10 @@ public class PlayerController : MonoBehaviour
     private static readonly int OnDeath = Animator.StringToHash("onDeath");
     private static readonly int OnRespawn = Animator.StringToHash("onRespawn");
 
+    [Header("Sound")]
+    public AudioSource source;
+    public AudioClip jump, dash, walk, pause;
+
     #endregion
 
     #region Constants
@@ -190,6 +194,16 @@ public class PlayerController : MonoBehaviour
     private void HandleMove(Vector2 movementInput)
     {
         previousMovementInput = movementInput;
+
+        if(movementInput != null && playerGrounded)
+        {
+            source.clip = walk;
+            source.Play();
+        }
+        else
+        {
+            source.Stop();
+        }
     }
 
     private void HandleSprint(bool sprinting)
@@ -229,11 +243,13 @@ public class PlayerController : MonoBehaviour
             desiredMoveDirection.Normalize();
         }
 
+        
         float sprintSpeedMultiplier = isSprinting ? sprintSpeed : 1f;
 
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
+
 
         animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
         animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
@@ -274,6 +290,9 @@ public class PlayerController : MonoBehaviour
                                      new Vector3(ZERO_X, verticalSpeed, ZERO_Z) * Time.deltaTime);
             
             yield return null;
+
+            source.clip = dash;
+            source.Play();
         }
     }
 
@@ -334,6 +353,9 @@ public class PlayerController : MonoBehaviour
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
             inputReader.jump = false;
             jumpTimeoutDelta = jumpTimeout;
+
+            source.clip = jump;
+            source.Play();
         }
 
         if (jumpTimeoutDelta >= 0.0f)
@@ -393,6 +415,9 @@ public class PlayerController : MonoBehaviour
         if (pauseManager != null)
         {
             pauseManager.TogglePause();
+
+            source.clip = pause;
+            source.Play();
         }
     }
 
