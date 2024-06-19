@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
 
         Scene scene = SceneManager.GetActiveScene();
 
-        if (scene.name == "Sweetsylvania")
+        if (scene.name == "Sweetsvylvania[broken]")
         {
             Time.timeScale = 0;
 

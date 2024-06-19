@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
-  m_Name: Sweetsvylvania
+  m_Name: Credits
   m_EditorClassIdentifier: 
-  sceneName: Sweetsvylvania
+  sceneName: EndingScene
   transitionTime: 2
-  nextScene: {fileID: 11400000, guid: 80c62100832220d4f9799b323f11a6bb, type: 2}
+  nextScene: {fileID: 11400000, guid: f97545125690a4b4ab29b73c4b0a16c1, type: 2}
