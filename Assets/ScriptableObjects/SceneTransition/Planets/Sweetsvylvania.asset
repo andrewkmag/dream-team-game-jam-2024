@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Sweetsvylvania
   m_EditorClassIdentifier: 
   sceneName: Sweetsvylvania
-  transitionTime: 0
-  gravity: 0
-  planets: 
+  transitionTime: 2
+  nextScene: {fileID: 0}

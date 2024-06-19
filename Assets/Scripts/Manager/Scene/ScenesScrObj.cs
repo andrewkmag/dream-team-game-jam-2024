@@ -7,24 +7,8 @@ public class ScenesScrObj : ScriptableObject
 
     [SerializeField] private string sceneName;
     [SerializeField] private float transitionTime;
-    [SerializeField] private float gravity;
-    [SerializeField] private int[] planets;
-    #endregion
-
-    #region Properties
-
-    public float Gravity
-    {
-        get => gravity;
-        set => gravity = value;
-    }
     
-    public int[] Planets
-    {
-        get => planets;
-        set => planets = value;
-    }
-
+    [SerializeField] private ScenesScrObj nextScene;
     #endregion
     
     #region Events
