@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3959808, g: 0.3594971, b: 0.42485332, a: 1}
+  m_IndirectSpecularColor: {r: 0.39602053, g: 0.35948887, b: 0.42484036, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -69691,6 +69691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 228914669}
   optionsMenuUI: {fileID: 0}
+  playerHUDManager: {fileID: 0}
   resumeButton: {fileID: 1861870767}
   mainMenuButton: {fileID: 14503801}
   optionsButton: {fileID: 148811981}
@@ -77359,6 +77360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.029999
       objectReference: {fileID: 0}
@@ -80336,7 +80342,7 @@ SceneRoots:
   - {fileID: 1791524836}
   - {fileID: 323535950}
   - {fileID: 1818229314}
+  - {fileID: 1936491240}
   - {fileID: 439698276}
   - {fileID: 2128354464}
   - {fileID: 1658984486}
-  - {fileID: 1936491240}
