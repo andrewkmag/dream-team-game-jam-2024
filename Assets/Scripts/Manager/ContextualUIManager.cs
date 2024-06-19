@@ -150,7 +150,7 @@ public class ContextualUIManager : MonoBehaviour
     private void HideCursor()
     {
         if(!isCursorVisible)return;
-        isCursorVisible = false;
+        isCursorVisible = false; 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
