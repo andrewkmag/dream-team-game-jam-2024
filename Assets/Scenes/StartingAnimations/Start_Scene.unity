@@ -280,7 +280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267.6, y: -87.99999}
+  m_AnchoredPosition: {x: 267.6, y: -65.999985}
   m_SizeDelta: {x: 108.012, y: 18.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199351850
@@ -333,8 +333,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.79622644, g: 0.79622644, b: 0.79622644, a: 1}
-    m_PressedColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    m_HighlightedColor: {r: 0.7254902, g: 0.3529412, b: 1, a: 1}
+    m_PressedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 199351852}
+  m_TargetGraphic: {fileID: 1346850131}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -575,7 +575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267.6, y: -88}
+  m_AnchoredPosition: {x: 267.6, y: -66}
   m_SizeDelta: {x: 108.012, y: 18.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241299478
@@ -600,8 +600,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
-    m_PressedColor: {r: 0.65882355, g: 0.65882355, b: 0.65882355, a: 1}
+    m_HighlightedColor: {r: 0.7254902, g: 0.3529412, b: 1, a: 1}
+    m_PressedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -618,7 +618,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 241299479}
+  m_TargetGraphic: {fileID: 200568798}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -713,18 +713,19 @@ MonoBehaviour:
   - Jam
   - Jam
   textSprite:
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 85c7ce07291c9644c82e9eb3632a2a6a, type: 3}
+  - {fileID: 21300000, guid: bb84ec9387b203e48894c13442b85e4c, type: 3}
   dialogueName: {fileID: 1785284116}
   dialogueText: {fileID: 1639160704}
   animator: {fileID: 1348616186}
   shipAnimator: {fileID: 1467315123}
   shakingShip: {fileID: 1467315123}
+  enemyCharge: {fileID: 1348616186}
   backgroundImage: {fileID: 1801841958}
   speechBubble1: {fileID: 102415085}
-  speechText1: {fileID: 102415085}
-  speechText2: {fileID: 102415085}
   speechBubble2: {fileID: 102415085}
+  speechText2: {fileID: 102415085}
+  speechText1: {fileID: 102415085}
   firstScene: Scene
   typingSpeed: 0.04
 --- !u!4 &762783473
@@ -815,10 +816,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 54ee80eca3dfd1042bc5c3bbed5680e8,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 54ee80eca3dfd1042bc5c3bbed5680e8,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 54ee80eca3dfd1042bc5c3bbed5680e8,
         type: 3}
       propertyPath: m_Name
       value: SM_Spaceship_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54ee80eca3dfd1042bc5c3bbed5680e8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
