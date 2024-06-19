@@ -19,4 +19,6 @@ public class ImageScroller : MonoBehaviour
         offset += (Time.deltaTime * scrollSpeed) / 10f;
         mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }
+
+
 }

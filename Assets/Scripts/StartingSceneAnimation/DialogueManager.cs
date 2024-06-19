@@ -67,6 +67,11 @@ public class DialogueManager : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+
+        if (scene.name == "EndScene")
+        {
+            StartCoroutine(StartCredit());
+        }
     }
 
     public void StartDialogue (Dialogue dialogue)
@@ -160,14 +165,21 @@ public class DialogueManager : MonoBehaviour
                 yield return new WaitForSecondsRealtime(1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            else if (firstScene != "Scene")
+
+            else if (firstScene != "Scene" || firstScene != "EndScene")
             {
                 yield return new WaitForSecondsRealtime(24);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             }
-            
+
         }
+    }
+
+    IEnumerator StartCredit()
+    {
+        yield return new WaitForSecondsRealtime(17);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

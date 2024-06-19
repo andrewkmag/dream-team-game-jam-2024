@@ -5,9 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MapScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public void Update()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Credits")
+        {
+            StartCoroutine(LoadMainMenu());
+        }
+    }
+
+    
     public void loadingNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator LoadMainMenu()
+    {
+        yield return new WaitForSeconds(23);
+        SceneManager.LoadScene("MainMenu");
     }
 }
