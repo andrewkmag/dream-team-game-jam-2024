@@ -114,8 +114,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("GameManager needs an scene script");
         }
-
-        checkpointPosition = Vector3.zero;
     }
 
     private void Start()
@@ -124,13 +122,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError($"Add a scriptable scene object to the Game Manager to Start");
         }
-
-        if (checkpointPosition == Vector3.zero)
-        {
-            checkpointPosition = transform.position;
-        }
-
         IsPaused = false;
+        PlayerSpawn();
     }
 
     #endregion
@@ -183,7 +176,6 @@ public class GameManager : MonoBehaviour
     {
         if(nextScene==null) return;
         nextScene.TransitionScene();
-        //checkpointPosition = FirstCheckpoint.Instance.GetPosition();
         PlayerSpawn();
     }
 

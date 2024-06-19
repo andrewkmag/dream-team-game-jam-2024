@@ -22,20 +22,14 @@ public class FirstCheckpoint : MonoBehaviour
         {
             Destroy(this);
         }
+        GameManager.Instance.CheckpointPosition = transform.position + Vector3.up;
     }
 
-    private void Start()
+
+    public Vector3 GetPosition()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.CheckpointPosition = transform.position + Vector3.up;
-        }
+        return transform.position + Vector3.up;
     }
-
-    // public Vector3 GetPosition()
-    // {
-    //     return transform.position + Vector3.up;
-    // }
 
     #endregion
 }

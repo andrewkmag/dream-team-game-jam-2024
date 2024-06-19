@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EndingScene
   m_EditorClassIdentifier: 
   sceneName: EndingScene
-  transitionTime: 2
-  nextScene: {fileID: 0}
+  transitionTime: 1
+  nextScene: {fileID: 11400000, guid: 5a5ce4afa1a3f4e48af4e4c69f49a267, type: 2}

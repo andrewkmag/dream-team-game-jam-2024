@@ -42,6 +42,7 @@ public class ScenesScrObj : ScriptableObject
     
     public void TransitionScene()
     {
+        Debug.Log($"Transition to {nextScene.sceneName}");
         if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
         OnTransition?.Invoke(sceneName,transitionTime);

@@ -26,10 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI Stuff/Map2.unity
     guid: b54b6ceb507d97e4985d4905b47b9f83
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
+  - enabled: 1
+    path: Assets/Scenes/EndingScene/EndingScene.unity
+    guid: df819608d67a91643b1fa40bd4c06d59
   m_configObjects: {}
