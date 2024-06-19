@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Animator shipAnimator;
     [SerializeField] private Animator shakingShip;
+    [SerializeField] private Animator enemyCharge;
 
     [SerializeField] private GameObject backgroundImage;
     [SerializeField] private GameObject speechBubble1;
@@ -117,6 +118,8 @@ public class DialogueManager : MonoBehaviour
 
         shakingShip.SetBool("isBeingBoarded", true);
 
+        enemyCharge.SetBool("isCharging", true);
+
         // stop the background image
         backgroundImage.GetComponent<ImageScroller>().enabled = false;
 
@@ -139,7 +142,7 @@ public class DialogueManager : MonoBehaviour
             }
             else if (firstScene != "Scene")
             {
-                yield return new WaitForSecondsRealtime(17);
+                yield return new WaitForSecondsRealtime(24);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             }
