@@ -310,16 +310,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 85c7ce07291c9644c82e9eb3632a2a6a, type: 3}
   dialogueName: {fileID: 1270521190}
   dialogueText: {fileID: 831280662}
-  animator: {fileID: 1926168890}
-  shipAnimator: {fileID: 0}
-  shakingShip: {fileID: 982420740}
-  enemyCharge: {fileID: 1926168890}
+  animator: {fileID: 485779451}
+  shipAnimator: {fileID: 982420740}
+  shakingShip: {fileID: 485779451}
+  enemyCharge: {fileID: 485779451}
   backgroundImage: {fileID: 1420149896}
   speechBubble1: {fileID: 485779449}
   speechBubble2: {fileID: 485779449}
   speechText2: {fileID: 485779449}
   speechText1: {fileID: 485779449}
-  firstScene: Scene3
+  firstScene: Scene
   typingSpeed: 0.04
 --- !u!4 &107892780
 Transform:
@@ -598,6 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485779450}
+  - component: {fileID: 485779451}
   m_Layer: 0
   m_Name: Nothing
   m_TagString: Untagged
@@ -614,12 +615,33 @@ Transform:
   m_GameObject: {fileID: 485779449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 238.19998, y: 134, z: 0}
+  m_LocalPosition: {x: 238.2, y: 129.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &485779451
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485779449}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2404a695ae6146141a7057ad1724e55d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &683348950
 GameObject:
   m_ObjectHideFlags: 0
