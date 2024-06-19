@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Panko
   transitionTime: 1.5
-  nextScene: {fileID: 11400000, guid: 68718e596c957af41ae27b0c82aa0f5c, type: 2}
+  nextScene: {fileID: 11400000, guid: 5a5ce4afa1a3f4e48af4e4c69f49a267, type: 2}

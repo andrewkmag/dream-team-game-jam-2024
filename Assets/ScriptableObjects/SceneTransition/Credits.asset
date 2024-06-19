@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Credits
   transitionTime: 0
-  nextScene: {fileID: 0}
+  nextScene: {fileID: 11400000, guid: 61390b9aa84d6034599dc9a4e8eb7663, type: 2}
