@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isDead;
     [SerializeField] private Vector3 checkpointPosition;
     [SerializeField] private int requiredItemsRemaining;
+    [SerializeField] public int collectedItems;
     [SerializeField] private bool requisiteAchieved;
     [SerializeField] private ScenesScrObj nextScene;
 
@@ -66,6 +67,8 @@ public class GameManager : MonoBehaviour
     public static event Action OnPause;
 
     public static event Action OnResume;
+
+    public static event Action OnUpdateJamCount;
 
     #endregion
 
@@ -136,6 +139,9 @@ public class GameManager : MonoBehaviour
     public void CollectedItem(int val)
     {
         requiredItemsRemaining = val;
+        collectedItems++;
+        OnUpdateJamCount?.Invoke();
+        
         ReadyToLeave();
     }
 

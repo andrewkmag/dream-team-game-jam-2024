@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: -2371470044413674029}
   m_Layer: 0
   m_Name: Jam
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,16 +160,17 @@ MonoBehaviour:
   cinemachineVirtualCamera: {fileID: 4374250796218914909}
   animator: {fileID: 8080250101122184649}
   pauseManager: {fileID: 0}
-  moveSpeed: 8
-  sprintSpeed: 2
-  verticalTerminalSpeed: 40
-  gravity: -14
-  dashSpeed: 11
+  mapManager: {fileID: 0}
+  moveSpeed: 2
+  sprintSpeed: 2.5
+  verticalTerminalSpeed: 15
+  gravity: -30
+  dashSpeed: 2.7
   dashTime: 0.1
   remainingDashes: 2
   dashCooldown: 3
   dashTimeout: 0.5
-  jumpHeight: 4
+  jumpHeight: 0.2
   jumpTimeout: 0.3
   fallTimeout: 0.15
   playerGrounded: 1
@@ -473,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 4138815096551334079}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19382484, y: -0.00082813785, z: 0.00016361654, w: 0.9810358}
-  m_LocalPosition: {x: 0, y: 3.1, z: -4.029999}
+  m_LocalPosition: {x: 0, y: 3.1000001, z: -4.029999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
