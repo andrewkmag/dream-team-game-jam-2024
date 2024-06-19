@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
 
         Scene scene = SceneManager.GetActiveScene();
 
-        if (scene.name == "Sweetsylvania")
+        if (scene.name == "Sweetsvylania")
         {
             Time.timeScale = 0;
 
@@ -124,9 +124,17 @@ public class DialogueManager : MonoBehaviour
 
         //remove the dialogue screen
         animator.SetBool("isOpen", false);
-        
+
         // stop the ships animation in previous scene
-        shipAnimator.SetBool("StopShip", true);
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name != "EndingScene")
+        {
+            shipAnimator.SetBool("StopShip", true);
+        }
+        else if (scene.name != "EndingScene")
+        {
+            shipAnimator.SetBool("StopShip", true);
+        }
 
         shakingShip.SetBool("isBeingBoarded", true);
 
