@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
     #region Fields
 
     [SerializeField] private ScenesScrObj actualScene;
-    [SerializeField] private float gravity;
     [SerializeField] private bool isPaused;
     [SerializeField] private bool isDead;
     [SerializeField] private Vector3 checkpointPosition;
@@ -175,13 +174,14 @@ public class GameManager : MonoBehaviour
 
     private void TransitionToNextScene()
     {
+        if(nextScene==null) return;
         nextScene.TransitionScene();
     }
 
     private void GetSceneValues(ScenesScrObj sceneSo)
     {
         actualScene = sceneSo;
-        //gravity = sceneSo.Gravity; // We can add any number of variables and load them from the controllers
+        nextScene = sceneSo.NextScene; // We can add any number of variables and load them from the controllers
         IsDead = false;
     }
 

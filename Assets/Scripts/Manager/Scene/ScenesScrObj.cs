@@ -10,7 +10,16 @@ public class ScenesScrObj : ScriptableObject
     
     [SerializeField] private ScenesScrObj nextScene;
     #endregion
-    
+
+    #region Properties
+
+    public ScenesScrObj NextScene
+    {
+        get => nextScene;
+        set => nextScene = value;
+    }
+
+    #endregion
     #region Events
 
     public delegate void StartSceneChange(ScenesScrObj sceneSo);
@@ -26,14 +35,17 @@ public class ScenesScrObj : ScriptableObject
     
     public void ChangeScene()
     {
+        if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
         OnChange?.Invoke(sceneName);
     }
     
     public void TransitionScene()
     {
+        if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
         OnTransition?.Invoke(sceneName,transitionTime);
+        
     }
 
     #endregion
