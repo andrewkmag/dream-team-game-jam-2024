@@ -152,13 +152,24 @@ public class DialogueManager : MonoBehaviour
                 yield return new WaitForSecondsRealtime(1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            else if (firstScene != "Scene")
+
+            if (firstScene == "EndScene")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
+            if (firstScene != "SecondScene")
             {
                 yield return new WaitForSecondsRealtime(24);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
             }
-            
+        }
+
+        if (firstScene == "CreditScene")
+        {
+            yield return new WaitForSecondsRealtime(24);
+            SceneManager.LoadScene("MainMenu");
+
         }
     }
 
