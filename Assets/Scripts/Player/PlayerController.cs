@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private Animator animator;
     [SerializeField] private PauseManager pauseManager;
+    [SerializeField] private MapManager mapManager;
 
     #endregion
 
@@ -402,7 +403,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Pause Mechanics
+    #region Pause and Map Callbacks
     private void HandlePause()
     {
         if (pauseManager != null)
@@ -411,7 +412,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void HandleMap()
+    {         
+        if (mapManager != null)
+        {
+            mapManager.ToggleMap();
+        }
+    }
     #endregion
 
     #region Debug Helpers

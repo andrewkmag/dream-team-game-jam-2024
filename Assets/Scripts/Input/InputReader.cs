@@ -12,6 +12,7 @@ namespace eXplorerJam.Input
         public event Action<Vector2> MoveEvent;
         public event Action<bool> SprintEvent;
         public event Action PauseEvent;
+        public event Action MapEvent;
 
         // Local variables
         private Controls _controls;
@@ -111,6 +112,14 @@ namespace eXplorerJam.Input
             {
                 pause = !pause;
                 PauseEvent?.Invoke();
+            }
+        }
+
+        public void OnMap(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                MapEvent?.Invoke();
             }
         }
     }

@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject optionsMenuUI;
+    [SerializeField] private PlayerHUDManager playerHUDManager;
 
     [Header("Settings")]
     [SerializeField] private Button resumeButton;
@@ -45,10 +46,13 @@ public class PauseManager : MonoBehaviour
         if (isPaused)
         {
             ShowPauseMenu();
+            playerHUDManager.HideHud();
+
         }
         else
         {
             HidePauseMenu();
+            playerHUDManager.ShowHud();
         }
     }
 
@@ -78,6 +82,7 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = false;
         HidePauseMenu();
+        playerHUDManager.ShowHud();
     }
 
     private void GoToMainMenu()

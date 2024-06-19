@@ -15,25 +15,25 @@ public class PlayerHUDManager : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe to the collectable collected event
-        if (CollectableManager.Instance != null)
+        if (GameManager.Instance != null)
         {
-            CollectableManager.Instance.OnCollectableCollected += IncrementJarCount;
+            GameManager.OnUpdateJamCount += IncrementJarCount;
         }
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the collectable collected event
-        if (CollectableManager.Instance != null)
+        // Subscribe to the collectable collected event
+        if (GameManager.Instance != null)
         {
-            CollectableManager.Instance.OnCollectableCollected -= IncrementJarCount;
+            GameManager.OnUpdateJamCount += IncrementJarCount;
         }
     }
 
     private void Awake()
     {
         // Set the current jar count to 0
-        currentJarCount = 0;
+        currentJarCount = -4;
         UpdateJarCountText();
     }
 
@@ -50,5 +50,17 @@ public class PlayerHUDManager : MonoBehaviour
     {
         // Update the current jar count text
         currentJarCountText.text = currentJarCount.ToString();
+    }
+
+    public void HideHud()
+    {
+        // Hide the player HUD
+        playerHUD.SetActive(false);
+    }
+
+    public void ShowHud()
+    {
+        // Show the player HUD
+        playerHUD.SetActive(true);
     }
 }
