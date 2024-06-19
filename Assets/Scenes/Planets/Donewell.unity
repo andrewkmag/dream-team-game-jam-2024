@@ -432,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 194288496}
   optionsMenuUI: {fileID: 0}
+  playerHUDManager: {fileID: 0}
   resumeButton: {fileID: 1278185165}
   mainMenuButton: {fileID: 1256589360}
   optionsButton: {fileID: 1007433083}
@@ -1642,6 +1643,11 @@ PrefabInstance:
     - target: {fileID: 3675942347975325546, guid: e8e7005bcebfd2c42b6aa30f245592aa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766589357326015218, guid: e8e7005bcebfd2c42b6aa30f245592aa,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4498409810184170487, guid: e8e7005bcebfd2c42b6aa30f245592aa,
@@ -5290,7 +5296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f27556441f4a0244a961a05b569d10d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb0be1a5249da244c856e90442c0ae88, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7622,6 +7628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.005701194
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
         type: 3}

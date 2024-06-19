@@ -644,7 +644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f27556441f4a0244a961a05b569d10d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7bb18dbde57dd4941a43d97a659dd081, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2982,6 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1954343023}
   optionsMenuUI: {fileID: 0}
+  playerHUDManager: {fileID: 0}
   resumeButton: {fileID: 403114760}
   mainMenuButton: {fileID: 216212297}
   optionsButton: {fileID: 1589061472}
@@ -14147,6 +14148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 1216631589284216837, guid: 564d7335d80c2f14ab7a05d120ee476b,
         type: 3}
