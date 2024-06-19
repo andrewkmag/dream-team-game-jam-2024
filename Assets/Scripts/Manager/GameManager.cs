@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,9 +6,12 @@ public class GameManager : MonoBehaviour
     #region Fields
 
     [SerializeField] private ScenesScrObj actualScene;
-    [SerializeField] private float gravity;
     [SerializeField] private bool isPaused;
     [SerializeField] private bool isDead;
+    [SerializeField] private Vector3 checkpointPosition;
+    [SerializeField] private int requiredItemsRemaining;
+    [SerializeField] private bool requisiteAchieved;
+    [SerializeField] private ScenesScrObj nextScene;
 
     #endregion
 
@@ -27,12 +31,28 @@ public class GameManager : MonoBehaviour
         set => isDead = value;
     }
 
+    public Vector3 CheckpointPosition
+    {
+        get => checkpointPosition;
+        set => checkpointPosition = value;
+    }
+
     #endregion
 
     #region Constants
 
     const float PAUSED_TIME = 0;
+    const float NO_REMAINING = 0;
     const float RESUMED_TIME = 1;
+    private const int LEAVE_OPTION = 0;
+
+
+#if UNITY_EDITOR
+    private const float SPHERE_RAD = 0.5f;
+    private const int HANDLE_CONTROL = 0;
+
+    private readonly Color _handleNodeColor = new Color(0, 255, 0);
+#endif
 
     #endregion
 
@@ -85,6 +105,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        if (nextScene == null)
+        {
+            Debug.LogWarning("GameManager needs an scene script");
+        }
+
+        checkpointPosition = Vector3.zero;
     }
 
     private void Start()
@@ -94,6 +121,11 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"Add a scriptable scene object to the Game Manager to Start");
         }
 
+        if (checkpointPosition == Vector3.zero)
+        {
+            checkpointPosition = transform.position;
+        }
+
         IsPaused = false;
     }
 
@@ -101,10 +133,55 @@ public class GameManager : MonoBehaviour
 
     #region Methods
 
+    public void CollectedItem(int val)
+    {
+        requiredItemsRemaining = val;
+        ReadyToLeave();
+    }
+
+    public void RequisiteAchived(bool val)
+    {
+        requisiteAchieved = val;
+        ReadyToLeave();
+    }
+
+    public void ReadyToLeave()
+    {
+        if (!(requiredItemsRemaining <= NO_REMAINING) || !requisiteAchieved) return;
+        var button = ContextualUIManager.Instace.ShowContextualOption(
+            "You collected all the items and acomplished your mission",
+            "Leave now",
+            "Use the ship");
+        button[LEAVE_OPTION].onClick.AddListener(TransitionToNextScene);
+    }
+
+    public void SpaceshipUse()
+    {
+        if (!(requiredItemsRemaining <= NO_REMAINING) || !requisiteAchieved)
+        {
+            var button = ContextualUIManager.Instace.ShowContextualButton(
+                "You need to acomplish your missions first",
+                "Understood");
+        }
+        else
+        {
+            var button = ContextualUIManager.Instace.ShowContextualButton(
+                "You collected all the items and acomplished your mission",
+                "Leave now");
+            button.onClick.AddListener(TransitionToNextScene);
+        }
+    }
+
+    private void TransitionToNextScene()
+    {
+        if(nextScene==null) return;
+        nextScene.TransitionScene();
+    }
+
     private void GetSceneValues(ScenesScrObj sceneSo)
     {
         actualScene = sceneSo;
-        gravity = sceneSo.Gravity; // We can add any number of variables and load them from the controllers
+        nextScene = sceneSo.NextScene; // We can add any number of variables and load them from the controllers
         IsDead = false;
     }
 
@@ -114,6 +191,8 @@ public class GameManager : MonoBehaviour
         IsDead = true;
         OnDeath?.Invoke();
         PauseGame();
+        var button = ContextualUIManager.Instace.ShowContextualButton("You died", "Respawn");
+        button.onClick.AddListener(() => HealthManager.Instance.Respawn());
     }
 
     private void PauseGame()
@@ -137,6 +216,22 @@ public class GameManager : MonoBehaviour
         OnRespawn?.Invoke();
         PauseGame();
     }
+
+    #endregion
+
+    #region Debug
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (checkpointPosition == null) return;
+        Handles.color = _handleNodeColor;
+
+        Handles.SphereHandleCap(HANDLE_CONTROL, checkpointPosition, Quaternion.identity,
+            SPHERE_RAD,
+            EventType.Repaint);
+    }
+#endif
 
     #endregion
 }

@@ -17,7 +17,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float viewDistance;
     [SerializeField] private float attackDistance;
-    [SerializeField] private LayerMask viewMask;
     [SerializeField] private float viewAngle = 90;
     [SerializeField] private Transform pathHolder;
     [SerializeField] private bool comeAndGo;
@@ -28,7 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Vector3 targetWaypoint;
     [SerializeField] private int targetWaypointIndex;
     private Transform[] waypoints;
-    private bool _reverse;
+    private bool reverse;
 
     #endregion
 
@@ -177,12 +176,12 @@ public class Enemy : MonoBehaviour
             return nextWaypointIndex;
         }
 
-        if (!_reverse)
+        if (!reverse)
         {
             var nextWaypointIndex = currentWaypointIndex + ONE_ELEMENT;
             if (nextWaypointIndex >= waypointsQty - ZERO_INIT_ADJUSTMENT)
             {
-                _reverse = !_reverse;
+                reverse = !reverse;
             }
 
             return nextWaypointIndex;
@@ -192,7 +191,7 @@ public class Enemy : MonoBehaviour
             var nextWaypointIndex = currentWaypointIndex - ONE_ELEMENT;
             if (nextWaypointIndex <= INITIAL_ARRAY)
             {
-                _reverse = !_reverse;
+                reverse = !reverse;
             }
 
             return nextWaypointIndex;

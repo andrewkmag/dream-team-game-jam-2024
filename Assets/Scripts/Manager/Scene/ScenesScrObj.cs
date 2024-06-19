@@ -7,26 +7,19 @@ public class ScenesScrObj : ScriptableObject
 
     [SerializeField] private string sceneName;
     [SerializeField] private float transitionTime;
-    [SerializeField] private float gravity;
-    [SerializeField] private int[] planets;
+    
+    [SerializeField] private ScenesScrObj nextScene;
     #endregion
 
     #region Properties
 
-    public float Gravity
+    public ScenesScrObj NextScene
     {
-        get => gravity;
-        set => gravity = value;
-    }
-    
-    public int[] Planets
-    {
-        get => planets;
-        set => planets = value;
+        get => nextScene;
+        set => nextScene = value;
     }
 
     #endregion
-    
     #region Events
 
     public delegate void StartSceneChange(ScenesScrObj sceneSo);
@@ -42,14 +35,17 @@ public class ScenesScrObj : ScriptableObject
     
     public void ChangeScene()
     {
+        if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
         OnChange?.Invoke(sceneName);
     }
     
     public void TransitionScene()
     {
+        if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
         OnTransition?.Invoke(sceneName,transitionTime);
+        
     }
 
     #endregion

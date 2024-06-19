@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PooledShots : MonoBehaviour
@@ -32,6 +34,16 @@ public class PooledShots : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnDeath += DeactivateAllPooled;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnDeath += DeactivateAllPooled;
+    }
+
     public GameObject GetPooledObject()
     {
         for (var i = INITIAL_ARRAY; i < amountToPool; i++)
@@ -41,7 +53,14 @@ public class PooledShots : MonoBehaviour
                 return pooledObjects[i];
             }
         }
-
         return null;
+    }
+
+    public void DeactivateAllPooled()
+    {
+        foreach (var go in pooledObjects.Where(go => go.activeInHierarchy))
+        {
+            go.SetActive(false);
+        }
     }
 }

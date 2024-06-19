@@ -157,6 +157,11 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void Start()
+    {
+        PlayerSpawn();
+    }
+
     private void Update()
     {
         GroundedCheck(); // Check if the player is grounded
@@ -359,10 +364,18 @@ public class PlayerController : MonoBehaviour
     
     private void PlayerRespawn()
     {
+        PlayerSpawn();
         PlayerResume();
         AnimPlayerRespawn();
     }
-    #endregion
+    
+    private void PlayerSpawn()
+    {
+        if (GameManager.Instance == null) return;
+        characterController.enabled = false;
+        transform.position = GameManager.Instance.CheckpointPosition;
+        characterController.enabled =true;
+    }
 
     private void PlayerPause()
     {
@@ -373,6 +386,8 @@ public class PlayerController : MonoBehaviour
     {
         inputReader.ResumeInputs();
     }
+    
+    #endregion
     
     #region Player AnimationTriggers
 
