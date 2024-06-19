@@ -25,11 +25,17 @@ EditorBuildSettings:
     guid: 3b26137f0582d124eb98ee907ce2ed69
   - enabled: 1
     path: Assets/Scenes/UI Stuff/Map2.unity
-    guid: b54b6ceb507d97e4985d4905b47b9f83
+    guid: 4d33056c4fa272043b447c3355fb6d5c
   - enabled: 0
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
+  - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map3.unity
+    guid: b54b6ceb507d97e4985d4905b47b9f83
   - enabled: 0
     path: Assets/Scenes/Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
+  - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map4.unity
+    guid: 9b40586f68d04f84187491ad298a3d9a
   m_configObjects: {}
