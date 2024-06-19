@@ -6,7 +6,7 @@ public class FirstCheckpoint : MonoBehaviour
 {
     #region Fields
 
-    private static FirstCheckpoint Instance { get; set; }
+    public static FirstCheckpoint Instance { get; set; }
 
     #endregion
 
@@ -31,6 +31,11 @@ public class FirstCheckpoint : MonoBehaviour
             GameManager.Instance.CheckpointPosition = transform.position + Vector3.up;
         }
     }
+
+    // public Vector3 GetPosition()
+    // {
+    //     return transform.position + Vector3.up;
+    // }
 
     #endregion
 }

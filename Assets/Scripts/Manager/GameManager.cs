@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public static event Action OnDeath;
     public static event Action OnRespawn;
+    public static event Action OnSpawn;
 
     public static event Action OnPause;
 
@@ -182,6 +183,8 @@ public class GameManager : MonoBehaviour
     {
         if(nextScene==null) return;
         nextScene.TransitionScene();
+        //checkpointPosition = FirstCheckpoint.Instance.GetPosition();
+        PlayerSpawn();
     }
 
     private void GetSceneValues(ScenesScrObj sceneSo)
@@ -221,6 +224,11 @@ public class GameManager : MonoBehaviour
         IsDead = false;
         OnRespawn?.Invoke();
         PauseGame();
+    }
+    
+    private void PlayerSpawn()
+    {
+        OnRespawn?.Invoke();
     }
 
     #endregion

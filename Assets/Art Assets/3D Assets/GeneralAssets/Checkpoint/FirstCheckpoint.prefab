@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1826850881711287287}
   - component: {fileID: 6011485289272265999}
   - component: {fileID: 8982428476720660075}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirstCheckpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4043339797743797226}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -10.14, y: 1.94, z: 4.95}
   m_LocalScale: {x: 1.5, y: 0.25, z: 1.5}
   m_ConstrainProportionsScale: 0

@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
     
     private static readonly int OnDeath = Animator.StringToHash("onDeath");
     private static readonly int OnRespawn = Animator.StringToHash("onRespawn");
+    private static readonly int OnSpawn = Animator.StringToHash("OnSpawn");
 
     #endregion
 
@@ -174,6 +175,7 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.OnDeath += PlayerDeath;
         GameManager.OnRespawn += PlayerRespawn;
+        GameManager.OnSpawn += PlayerSpawn;
         GameManager.OnPause += PlayerPause;
         GameManager.OnResume += PlayerResume;
     }
@@ -181,7 +183,8 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnDeath -= PlayerDeath;
-        GameManager.OnRespawn += PlayerRespawn;
+        GameManager.OnRespawn -= PlayerRespawn;
+        GameManager.OnSpawn -= PlayerSpawn;
         GameManager.OnPause -= PlayerPause;
         GameManager.OnResume -= PlayerResume;
     }
