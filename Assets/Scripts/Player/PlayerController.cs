@@ -154,8 +154,8 @@ public class PlayerController : MonoBehaviour
         freeFallAnimationParameterId = Animator.StringToHash("FreeFall");
         groundAnimationParameterId = Animator.StringToHash("Grounded");
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void Start()
