@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
 
     public void CollectedItem(int val)
     {
+        Debug.Log("Collected item");
         requiredItemsRemaining = val;
         collectedItems++;
         OnUpdateJamCount?.Invoke();
@@ -182,6 +184,12 @@ public class GameManager : MonoBehaviour
     {
         if(nextScene==null) return;
         nextScene.TransitionScene();
+
+        Debug.Log(nextScene.ToString());
+        if (nextScene.ToString() == "EndingScene")
+        {
+            SceneManager.LoadScene(7);
+        }
     }
 
     private void GetSceneValues(ScenesScrObj sceneSo)

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHUDManager : MonoBehaviour
@@ -19,11 +20,19 @@ public class PlayerHUDManager : MonoBehaviour
     public int currentJarCount;
     public int currentJarImageCount;
 
+    private GameManager gameManager;
+
     private void OnEnable()
     {
         // Subscribe to the collectable collected event
         if (GameManager.Instance != null)
         {
+            Debug.Log("Subscribing to jam count event");
+            GameManager.OnUpdateJamCount += IncrementJarCount;
+        } else
+        {
+            Debug.Log("GameManager is null");
+            gameManager = FindObjectOfType<GameManager>();
             GameManager.OnUpdateJamCount += IncrementJarCount;
         }
     }
@@ -39,9 +48,21 @@ public class PlayerHUDManager : MonoBehaviour
 
     private void Awake()
     {
-        // Set the current jar count to 0
-        currentJarCount = -4;
-        currentJarImageCount = -4;
+        if (SceneManager.GetActiveScene().name == "Sweetsvylvania")
+        {
+            Debug.Log("Scene is Sweetsvylvania");
+            currentJarCount = -4;
+            currentJarImageCount = -4;
+        }
+        else
+        {
+            Debug.Log("Scene is not: " + SceneManager.GetActiveScene().name);
+            currentJarCount = 0;
+            currentJarImageCount = 0;
+
+        }
+
+
 
         if (currentJarImageCount < 1)
         {
@@ -52,6 +73,7 @@ public class PlayerHUDManager : MonoBehaviour
         }
         UpdateJarCountText();
         UpdateJarImageText();
+
     }
 
     private void IncrementJarCount()
@@ -73,7 +95,7 @@ public class PlayerHUDManager : MonoBehaviour
 
     private void UpdateJarImageText()
     {
-        Debug.Log("Updating jar image text" + currentJarImageCount);
+        Debug.Log("Updating jar image text = " + currentJarImageCount);
         // Update jar icons
         if (currentJarImageCount == 0)
         {

@@ -17,16 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Planets/Sweetsvylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Planets/Soyturn.unity
     guid: 3b26137f0582d124eb98ee907ce2ed69
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
   - enabled: 1
     path: Assets/Scenes/EndingScene/EndingScene.unity
     guid: df819608d67a91643b1fa40bd4c06d59
+  - enabled: 1
+    path: Assets/Scenes/EndingScene/Credits.unity
+    guid: d50602b932fb8aa4084d14a9e0d3c1bc
   m_configObjects: {}
