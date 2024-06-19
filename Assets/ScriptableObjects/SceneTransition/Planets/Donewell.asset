@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Donewell
   m_EditorClassIdentifier: 
   sceneName: Donewell
-  transitionTime: 0
-  gravity: 0
-  planets: 
+  transitionTime: 2
+  nextScene: {fileID: 11400000, guid: 7b73d020c2c4d764ba99a6c2f3c79768, type: 2}

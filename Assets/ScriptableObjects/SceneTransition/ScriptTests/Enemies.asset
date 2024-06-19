@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Enemies
   transitionTime: 2
-  gravity: 0
-  planets: 
+  nextScene: {fileID: 11400000, guid: 45a2f95bfba7ed6439a94ad9aa9b36fd, type: 2}

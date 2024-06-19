@@ -5,19 +5,24 @@ public class HealthManager : MonoBehaviour
 {
     #region Fields
 
-    [Header("Health variables")]
-    [SerializeField] private Transform heartContainersParent;
+    [Header("Health variables")] [SerializeField]
+    private Transform heartContainersParent;
+
     [SerializeField] private int startingContainers;
-    
-    [Header("Debug")]
-    [SerializeField] private bool invincible;
-    
-    [Header("Readonly")]
-    [SerializeField] private int maxContainers;
+
+    [Header("Debug")] [SerializeField] private bool invincible;
+
+    [Header("Readonly")] [SerializeField] private int maxContainers;
     [SerializeField] private int currentContainers;
     [SerializeField] private int currentHealth;
     [SerializeField] private HeartContainer[] pooledHealthContainers;
     [SerializeField] private bool isdead;
+
+    #endregion
+
+    #region Properties
+
+    public static HealthManager Instance { get; private set; }
 
     #endregion
 
@@ -37,7 +42,6 @@ public class HealthManager : MonoBehaviour
     public static event Action OnDeath;
     public static event Action OnRespawn;
 
-
     #endregion
 
     #region UnityMethods
@@ -52,6 +56,18 @@ public class HealthManager : MonoBehaviour
         Shoot.OnPlayerHit -= TakeDamage;
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    
     private void Start()
     {
         maxContainers = HeartPooling.SharedInstance.amountToPool;
@@ -99,7 +115,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(invincible) return;
+        if (invincible) return;
         if (isdead) return;
         if (currentHealth <= MIN_HEALTH)
         {
@@ -118,7 +134,7 @@ public class HealthManager : MonoBehaviour
         currentHealth++;
         UpdateHealth();
     }
-    
+
     public void Kill()
     {
         if (isdead) return;
@@ -127,7 +143,7 @@ public class HealthManager : MonoBehaviour
         currentHealth = NO_HEALTH;
         UpdateHealth();
     }
-    
+
     public void Respawn()
     {
         if (!isdead) return;
@@ -135,12 +151,12 @@ public class HealthManager : MonoBehaviour
         OnRespawn?.Invoke();
         HealAll();
     }
-    
+
     public void HealAll()
     {
         if (isdead) return;
         if (currentHealth >= currentContainers) return;
-        currentHealth=currentContainers;
+        currentHealth = currentContainers;
         UpdateHealth();
     }
 

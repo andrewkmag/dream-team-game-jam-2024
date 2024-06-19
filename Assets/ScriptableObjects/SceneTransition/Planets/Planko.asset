@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Planko
   m_EditorClassIdentifier: 
   sceneName: Planko
-  transitionTime: 0
-  gravity: 0
-  planets: 
+  transitionTime: 2
+  nextScene: {fileID: 0}
