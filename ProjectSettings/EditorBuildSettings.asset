@@ -18,14 +18,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Planets/Sweetsvylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
   - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map1.unity
+    guid: 74abb3cf25565a945900086ce1650283
+  - enabled: 1
     path: Assets/Scenes/Planets/Soyturn.unity
     guid: 3b26137f0582d124eb98ee907ce2ed69
+  - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map2.unity
+    guid: a7adac0697fb7c64cb58891514101142
   - enabled: 1
     path: Assets/Scenes/Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
   - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map3.unity
+    guid: 6e3f9aba6d9a91343a3b4b4bfdb7a571
+  - enabled: 1
     path: Assets/Scenes/Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
+  - enabled: 1
+    path: Assets/Scenes/UI Stuff/Map4.unity
+    guid: aee408c2a61f57d44b864437ad0b8efa
   - enabled: 1
     path: Assets/Scenes/EndingScene/EndingScene.unity
     guid: df819608d67a91643b1fa40bd4c06d59
