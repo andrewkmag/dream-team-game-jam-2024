@@ -49,11 +49,13 @@ public class HealthManager : MonoBehaviour
     private void OnEnable()
     {
         Shoot.OnPlayerHit += TakeDamage;
+        KillBox.OnDeath += DamageAll;
     }
 
     private void OnDisable()
     {
         Shoot.OnPlayerHit -= TakeDamage;
+        KillBox.OnDeath -= DamageAll;
     }
 
     private void Awake()
@@ -150,6 +152,15 @@ public class HealthManager : MonoBehaviour
         isdead = false;
         OnRespawn?.Invoke();
         HealAll();
+    }
+    
+    public void DamageAll()
+    {
+        if (invincible) return;
+        if (isdead) return;
+        currentHealth = MIN_HEALTH;
+        UpdateHealth();
+        Kill();
     }
 
     public void HealAll()

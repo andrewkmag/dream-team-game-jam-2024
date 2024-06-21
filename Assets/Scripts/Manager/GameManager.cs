@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
         get => maxItemsRequired;
         set => maxItemsRequired = value;
     }
+    
+    public bool RequisiteAchieved
+    {
+        get => requisiteAchieved;
+        set => requisiteAchieved = value;
+    }
 
     #endregion
 
@@ -80,6 +86,8 @@ public class GameManager : MonoBehaviour
     public static event Action OnResume;
 
     public static event Action OnUpdateJamCount;
+    
+    public static event Action OnUpdateSibling;
 
     #endregion
 
@@ -95,8 +103,8 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         ScenesScrObj.OnSceneChange -= GetSceneValues;
-        HealthManager.OnDeath += PlayerDeath;
-        HealthManager.OnRespawn += PlayerRespawn;
+        HealthManager.OnDeath -= PlayerDeath;
+        HealthManager.OnRespawn -= PlayerRespawn;
     }
 
     private void Reset()
@@ -151,6 +159,7 @@ public class GameManager : MonoBehaviour
     public void RequisiteAchived(bool val)
     {
         requisiteAchieved = val;
+        OnUpdateSibling?.Invoke();
         ReadyToLeave();
     }
 
@@ -186,6 +195,7 @@ public class GameManager : MonoBehaviour
         if(nextScene==null) return;
         nextScene.TransitionScene();
         OnUpdateJamCount?.Invoke();
+        OnUpdateSibling?.Invoke();
         PlayerSpawn();
     }
 

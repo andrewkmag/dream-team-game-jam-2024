@@ -23,3 +23,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 55cfeb3c0a266804ca405a84dc873f84, type: 3}
   - name: JamJar100
     sprite: {fileID: 21300000, guid: 5372b939c0985e842adc06652228f074, type: 3}
+  - name: SiblingLocked
+    sprite: {fileID: 21300000, guid: 69d87d7273d72fe41ada6c564cc92354, type: 3}
+  - name: SiblingUnlocked
+    sprite: {fileID: 21300000, guid: ce2bc75d08d11d54fbdce3d80d03b5f1, type: 3}
