@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isDead;
     [SerializeField] private Vector3 checkpointPosition;
     [SerializeField] private int requiredItemsRemaining;
-    [SerializeField] public int collectedItems;
+    [SerializeField] private int maxItemsRequired;
     [SerializeField] private bool requisiteAchieved;
     [SerializeField] private ScenesScrObj nextScene;
 
@@ -36,6 +36,16 @@ public class GameManager : MonoBehaviour
     {
         get => checkpointPosition;
         set => checkpointPosition = value;
+    }
+    public int RequiredItemsRemaining
+    {
+        get => requiredItemsRemaining;
+        set => requiredItemsRemaining = value;
+    }
+    public int MaxItemsRequired
+    {
+        get => maxItemsRequired;
+        set => maxItemsRequired = value;
     }
 
     #endregion
@@ -133,9 +143,8 @@ public class GameManager : MonoBehaviour
     public void CollectedItem(int val)
     {
         requiredItemsRemaining = val;
-        collectedItems++;
+        maxItemsRequired=(Mathf.Max(maxItemsRequired,val));
         OnUpdateJamCount?.Invoke();
-        
         ReadyToLeave();
     }
 
@@ -176,6 +185,7 @@ public class GameManager : MonoBehaviour
     {
         if(nextScene==null) return;
         nextScene.TransitionScene();
+        OnUpdateJamCount?.Invoke();
         PlayerSpawn();
     }
 
