@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int requiredItemsRemaining;
     [SerializeField] private int maxItemsRequired;
     [SerializeField] private bool requisiteAchieved;
-    [SerializeField] private ScenesScrObj nextScene;
 
     #endregion
 
@@ -127,11 +126,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        if (nextScene == null)
-        {
-            Debug.LogWarning("GameManager needs an scene script");
-        }
     }
 
     private void Start()
@@ -192,8 +186,8 @@ public class GameManager : MonoBehaviour
 
     private void TransitionToNextScene()
     {
-        if(nextScene==null) return;
-        nextScene.TransitionScene();
+        if(actualScene.NextScene==null) return;
+        actualScene.NextScene.TransitionNextScene();
         OnUpdateJamCount?.Invoke();
         OnUpdateSibling?.Invoke();
         PlayerSpawn();
@@ -202,7 +196,6 @@ public class GameManager : MonoBehaviour
     private void GetSceneValues(ScenesScrObj sceneSo)
     {
         actualScene = sceneSo;
-        nextScene = sceneSo.NextScene; // We can add any number of variables and load them from the controllers
         IsDead = false;
     }
 

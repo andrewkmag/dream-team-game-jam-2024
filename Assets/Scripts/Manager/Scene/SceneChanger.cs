@@ -2,15 +2,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class SceneChanger : MonoBehaviour
 {
     #region Fields
 
     private static SceneChanger _instance;
-    [SerializeField] private Animator animator;
-    private static readonly int Start = Animator.StringToHash("Start");
-    private static readonly int End = Animator.StringToHash("End");
 
     #endregion
 
@@ -18,20 +14,13 @@ public class SceneChanger : MonoBehaviour
 
     private void OnEnable()
     {
-        ScenesScrObj.OnChange += ChangeScene;
-        ScenesScrObj.OnTransition += TransitionScene;
+        ScenesScrObj.OnTransition += ChangeScene;
     }
 
 
     private void OnDisable()
     {
-        ScenesScrObj.OnChange -= ChangeScene;
-        ScenesScrObj.OnTransition += TransitionScene;
-    }
-
-    private void Reset()
-    {
-        GetAnimator();
+        ScenesScrObj.OnTransition += ChangeScene;
     }
 
     private void Awake()
@@ -40,11 +29,10 @@ public class SceneChanger : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
-            GetAnimator();
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
@@ -55,27 +43,6 @@ public class SceneChanger : MonoBehaviour
     private static void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-
-    private void TransitionScene(string sceneName, float transitionTime)
-    {
-        StartCoroutine(Transitioning(sceneName, transitionTime, animator));
-    }
-
-    private static IEnumerator Transitioning(string sceneName, float transitionTime, Animator animator)
-    {
-        animator.SetTrigger(Start);
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(sceneName);
-        animator.SetTrigger(End);
-    }
-
-    private void GetAnimator()
-    {
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
     }
 
     #endregion

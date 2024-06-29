@@ -6,7 +6,6 @@ public class ScenesScrObj : ScriptableObject
     #region Fields
 
     [SerializeField] private string sceneName;
-    [SerializeField] private float transitionTime;
     
     [SerializeField] private ScenesScrObj nextScene;
     #endregion
@@ -23,30 +22,28 @@ public class ScenesScrObj : ScriptableObject
     #region Events
 
     public delegate void StartSceneChange(ScenesScrObj sceneSo);
-    public delegate void StartAction(string sceneName);
-    public delegate void StartTransition(string sceneName, float transition);
+    public delegate void StartTransition(string sceneName);
     public static event StartSceneChange OnSceneChange;
-    public static event StartAction OnChange;
     public static event StartTransition OnTransition;
     
     #endregion
-
-    #region Methods
     
-    public void ChangeScene()
-    {
-        if(nextScene==null) return;
-        OnSceneChange?.Invoke(this);
-        OnChange?.Invoke(sceneName);
-    }
+    #region Methods
     
     public void TransitionScene()
     {
-        Debug.Log($"Transition to {nextScene.sceneName}");
+        Debug.Log($"Transition to {sceneName}");
+        if(sceneName==null) return;
+        OnSceneChange?.Invoke(this);
+        OnTransition?.Invoke(sceneName);
+    }
+    
+    public void TransitionNextScene()
+    {
+        Debug.Log($"Transition to next {nextScene.sceneName}");
         if(nextScene==null) return;
         OnSceneChange?.Invoke(this);
-        OnTransition?.Invoke(sceneName,transitionTime);
-        
+        OnTransition?.Invoke(sceneName);
     }
 
     #endregion
