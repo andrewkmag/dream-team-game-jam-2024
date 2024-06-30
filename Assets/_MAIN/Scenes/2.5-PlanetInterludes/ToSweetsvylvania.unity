@@ -1173,9 +1173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a143078f9dc8a448bf2c71de8d83a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetLocked1: {fileID: 621254243}
+  planetLocked: {fileID: 621254243}
   ship: {fileID: 621254245}
   initialShipPos: {fileID: 621254245}
+  showNextPlanetEvent: 2
+  moveShipEvent: 5
 --- !u!1 &1763261986
 GameObject:
   m_ObjectHideFlags: 0

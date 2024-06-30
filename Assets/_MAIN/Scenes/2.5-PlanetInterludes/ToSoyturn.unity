@@ -1031,9 +1031,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a143078f9dc8a448bf2c71de8d83a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetLocked1: {fileID: 2957696793406696012}
+  planetLocked: {fileID: 2957696793406696012}
   ship: {fileID: 2957696793406696011}
   initialShipPos: {fileID: 2957696793406696010}
+  showNextPlanetEvent: 2
+  moveShipEvent: 3
 --- !u!1 &1763261986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,16 +1067,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - name: Console
-    sentence: Sweetsvylania was discovered only 150 years ago by Nessa Lee-Tollhouse.
+    sentence: The youngest planet in the Carbo galaxy
   - name: Console
-    sentence: Has been dated as one of the oldest planets in the Carbo galaxy.
+    sentence: Soyturn is also the most newly discovered, having only been officially
+      noted as existing in this system 43 years ago.
   - name: Console
-    sentence: It is the only planet in the galaxy to spin clockwise.
-  - name: Console
-    sentence: It is also the home planet of the Mochi, the beings tasked with patrolling
-      this galaxy.
-  - name: Console
-    sentence: Next station Sweetsvylania!
+    sentence: It has also never been fully charted, due to its stifling gravity and
+      has been deemed off limits by the Mochi.
 --- !u!4 &1763261988
 Transform:
   m_ObjectHideFlags: 0
