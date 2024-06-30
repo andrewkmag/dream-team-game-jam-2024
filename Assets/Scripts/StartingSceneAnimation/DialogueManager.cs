@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
     private void OnDisable()
     {
         DialogueOnStart.OnDialoguesTrigger -= StartDialogue;
-        DialogueOnTriggerEnter.OnDialoguesTrigger += StartDialogueWorld;
+        DialogueOnTriggerEnter.OnDialoguesTrigger -= StartDialogueWorld;
     }
 
     private void Awake()
@@ -152,7 +152,6 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        Debug.Log($"AAAAAAAA END DIALOGUE {_inWorldDialogue}");
         if (_inWorldDialogue)
         {
             ExitDialogueWorldMode();
