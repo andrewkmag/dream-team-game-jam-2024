@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Start_Scene
   m_EditorClassIdentifier: 
   sceneName: Start_Scene
-  nextScene: {fileID: 11400000, guid: 2c5ba5d9dabe7e84b870d3e15f1d5ff7, type: 2}
+  nextScene: {fileID: 11400000, guid: 8a9efa7952992b940aca479d40526d19, type: 2}

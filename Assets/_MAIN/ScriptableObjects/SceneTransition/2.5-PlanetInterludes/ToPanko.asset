@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
-  m_Name: Donewell
+  m_Name: ToPanko
   m_EditorClassIdentifier: 
-  sceneName: Donewell
-  nextScene: {fileID: 11400000, guid: 2403a1eaf1eba3f47885e3940dd8d497, type: 2}
+  sceneName: ToPanko
+  nextScene: {fileID: 11400000, guid: 7b73d020c2c4d764ba99a6c2f3c79768, type: 2}

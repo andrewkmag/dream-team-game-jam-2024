@@ -15,17 +15,26 @@ EditorBuildSettings:
     path: Assets/_MAIN/Scenes/1.-StartingAnimations/2_Start_Scene.unity
     guid: 96e57cb368fbbfd4eac6094a6fd1947e
   - enabled: 1
+    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToSweetsvylvania.unity
+    guid: 741a114512ada5f409021c33689ea50f
+  - enabled: 1
     path: Assets/_MAIN/Scenes/2.-Planets/Sweetsvylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
   - enabled: 1
-    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/SweetsvylvaniaInter.unity
-    guid: 741a114512ada5f409021c33689ea50f
+    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToSoyturn.unity
+    guid: a6a6ab308b253d244b37668fac5fdd35
   - enabled: 1
     path: Assets/_MAIN/Scenes/2.-Planets/Soyturn.unity
     guid: 3b26137f0582d124eb98ee907ce2ed69
   - enabled: 1
+    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToDonewell.unity
+    guid: 4a01568de8cd9f74c9b6b222e0fc862a
+  - enabled: 1
     path: Assets/_MAIN/Scenes/2.-Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToPanko.unity
+    guid: d725b8e71d49e1640b9c736b3d5c9010
   - enabled: 1
     path: Assets/_MAIN/Scenes/2.-Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b

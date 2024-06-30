@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SweetTransitionAnim : MonoBehaviour
+public class ToNextPlanet : MonoBehaviour
 {
     #region Fields
 
     [SerializeField] private Image planetLocked1;
     [SerializeField] private GameObject ship;
+    [SerializeField] private GameObject initialShipPos;
 
     private Vector2 endPosition;
     private float timeToTarget;
@@ -50,6 +51,7 @@ public class SweetTransitionAnim : MonoBehaviour
     {
         planetLocked1.enabled = true;
         endPosition = planetLocked1.transform.position;
+        ship.transform.position = initialShipPos.transform.position;
     }
 
     private void EndDialogue()
