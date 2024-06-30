@@ -317,7 +317,7 @@ public class PlayerController : MonoBehaviour
                 fallTimeoutDelta -= Time.deltaTime;
             } else
             {
-                Debug.Log("Jam is free falling");
+                //Debug.Log("Jam is free falling");
                 animator.SetBool(freeFallAnimationParameterId, true);
             }
         }
@@ -330,14 +330,14 @@ public class PlayerController : MonoBehaviour
             }
 
             fallTimeoutDelta = fallTimeout;
-            Debug.Log("Jam is grounded");
+            //Debug.Log("Jam is grounded");
             animator.SetBool(jumpAnimationParameterId, false);
             animator.SetBool(freeFallAnimationParameterId, false);
         }
 
         if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
         {
-            Debug.Log("Jam is Jumping");
+            //Debug.Log("Jam is Jumping");
             animator.SetBool(jumpAnimationParameterId, true);
             remainingJumps--;
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);

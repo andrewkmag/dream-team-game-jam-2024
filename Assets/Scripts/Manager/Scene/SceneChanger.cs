@@ -2,49 +2,37 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class SceneChanger : MonoBehaviour
 {
-    #region Fields
+    #region Properties
 
-    private static SceneChanger _instance;
-    [SerializeField] private Animator animator;
-    private static readonly int Start = Animator.StringToHash("Start");
-    private static readonly int End = Animator.StringToHash("End");
+    public static SceneChanger Instance { get; private set; }
 
     #endregion
-
+    
     #region Unity Methods
 
     private void OnEnable()
     {
-        ScenesScrObj.OnChange += ChangeScene;
-        ScenesScrObj.OnTransition += TransitionScene;
+        ScenesScrObj.OnSceneChange += LoadScene;
     }
 
 
     private void OnDisable()
     {
-        ScenesScrObj.OnChange -= ChangeScene;
-        ScenesScrObj.OnTransition += TransitionScene;
-    }
-
-    private void Reset()
-    {
-        GetAnimator();
+        ScenesScrObj.OnSceneChange += LoadScene;
     }
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-            GetAnimator();
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -52,30 +40,19 @@ public class SceneChanger : MonoBehaviour
 
     #region Methods
 
-    private static void ChangeScene(string sceneName)
+    private static void LoadScene(ScenesScrObj scenesScrObj)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scenesScrObj.name);
     }
-
-    private void TransitionScene(string sceneName, float transitionTime)
+    
+    public void LoadGameManagerActualScene()
     {
-        StartCoroutine(Transitioning(sceneName, transitionTime, animator));
+        GameManager.Instance.ActualScene.LoadThisScene();
     }
-
-    private static IEnumerator Transitioning(string sceneName, float transitionTime, Animator animator)
+    
+    public void LoadGameManagerNextScene()
     {
-        animator.SetTrigger(Start);
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(sceneName);
-        animator.SetTrigger(End);
-    }
-
-    private void GetAnimator()
-    {
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
+        GameManager.Instance.ActualScene.LoadNextScene();
     }
 
     #endregion
