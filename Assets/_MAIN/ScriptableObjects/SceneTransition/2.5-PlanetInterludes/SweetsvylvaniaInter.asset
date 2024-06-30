@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
+  m_Name: SweetsvylvaniaInter
+  m_EditorClassIdentifier: 
+  sceneName: SweetsvylvaniaInter
+  nextScene: {fileID: 11400000, guid: 45a2f95bfba7ed6439a94ad9aa9b36fd, type: 2}
