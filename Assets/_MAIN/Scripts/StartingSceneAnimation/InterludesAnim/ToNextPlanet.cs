@@ -6,12 +6,15 @@ public class ToNextPlanet : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private Image planetLocked1;
+    [SerializeField] private Image planetLocked;
     [SerializeField] private GameObject ship;
     [SerializeField] private GameObject initialShipPos;
+    [SerializeField] private int showNextPlanetEvent=2;
+    [SerializeField] private int moveShipEvent=5;
+    
 
-    private Vector2 endPosition;
-    private float timeToTarget;
+    private Vector2 _endPosition;
+    private float _timeToTarget;
 
     #endregion
 
@@ -20,8 +23,6 @@ public class ToNextPlanet : MonoBehaviour
     private const float WAIT_ANIMATION_TIME = 1f;
     private const float TIME_TO_TARGET = 1f;
 
-    private const int FIRST_DIALOGUE_EVENT = 2;
-    private const int SECOND_DIALOGUE_EVENT = 5;
     private const int VISIBLE = 1;
     private const int INVISIBLE = 0;
 
@@ -49,8 +50,8 @@ public class ToNextPlanet : MonoBehaviour
 
     private void StartDialogue()
     {
-        planetLocked1.enabled = true;
-        endPosition = planetLocked1.transform.position;
+        planetLocked.enabled = true;
+        _endPosition = planetLocked.transform.position;
         ship.transform.position = initialShipPos.transform.position;
     }
 
@@ -61,16 +62,13 @@ public class ToNextPlanet : MonoBehaviour
 
     private void DialogueShow(int dialogueN)
     {
-        switch (dialogueN)
+        if (dialogueN == showNextPlanetEvent)
         {
-            case FIRST_DIALOGUE_EVENT:
-                StartCoroutine(FadeImage(planetLocked1));
-                break;
-            case SECOND_DIALOGUE_EVENT:
-                StartCoroutine(SpriteMoveTowards(ship.transform.position, endPosition));
-                break;
-            default:
-                break;
+            StartCoroutine(FadeImage(planetLocked));
+        }
+        if (dialogueN == moveShipEvent)
+        {
+            StartCoroutine(SpriteMoveTowards(ship.transform.position, _endPosition));
         }
     }
 
