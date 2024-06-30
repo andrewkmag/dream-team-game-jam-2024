@@ -2,18 +2,26 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueOnStart : MonoBehaviour
 {
-    [SerializeField]
-    private Dialogue[] dialogues;
+    #region Fields
+
+    [SerializeField] private Dialogue[] dialogues;
+
+    #endregion
 
     #region Events
 
     public static event System.Action<Dialogue[]> OnDialoguesTrigger;
 
     #endregion
+
+    #region UnityMethods
+
     private void Start()
     {
         OnDialoguesTrigger?.Invoke(dialogues);
     }
+
+    #endregion
 }

@@ -8,8 +8,9 @@ public class DialogueManager : MonoBehaviour
 {
     #region Fields
 
-    [Header("References")]
-    [SerializeField] private Image dialogueBox;
+    [Header("References")] [SerializeField]
+    private Image dialogueBox;
+
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Image nameBox;
     [SerializeField] private TextMeshProUGUI nameText;
@@ -21,10 +22,11 @@ public class DialogueManager : MonoBehaviour
     private Queue<Dialogue> _dialogueQueue;
 
     public float typingSpeed = DEFAULT_TYPING_SPEED;
-    private int actualDialogue;
+    private int _actualDialogue;
+    private bool _inWorldDialogue;
 
     #endregion
-    
+
     #region Constants
 
     private const int STARTING_DIALOGUE = 0;
@@ -33,12 +35,15 @@ public class DialogueManager : MonoBehaviour
     private const int DIALOGUEBOX_STICKY = 1;
     private const int DIALOGUEBOX_NORMAL = 0;
     private const float DEFAULT_TYPING_SPEED = 0.1f;
+    private const float TIME_STOP = 0;
+    private const float TIME_CONTINUE = 1;
 
     #endregion
 
     #region Events
 
     public delegate void Animation();
+
     public delegate void AnimationEvent(int dialogueN);
 
     public static event Animation OnEndDialogue;
@@ -53,13 +58,15 @@ public class DialogueManager : MonoBehaviour
 
     private void OnEnable()
     {
-        DialogueTrigger.OnDialoguesTrigger += StartDialogue;
+        DialogueOnStart.OnDialoguesTrigger += StartDialogue;
+        DialogueOnTriggerEnter.OnDialoguesTrigger += StartDialogueWorld;
     }
 
 
     private void OnDisable()
     {
-        DialogueTrigger.OnDialoguesTrigger -= StartDialogue;
+        DialogueOnStart.OnDialoguesTrigger -= StartDialogue;
+        DialogueOnTriggerEnter.OnDialoguesTrigger += StartDialogueWorld;
     }
 
     private void Awake()
@@ -91,12 +98,19 @@ public class DialogueManager : MonoBehaviour
         contextBttnText.enabled = true;
     }
 
+    private void StartDialogueWorld(Dialogue[] dialogues)
+    {
+        _inWorldDialogue = true;
+        EnterDialogueWorldMode();
+        StartDialogue(dialogues);
+    }
+
     private void StartDialogue(Dialogue[] dialogues)
     {
         ShowDialogueBox();
         OnStartDialogue?.Invoke();
         _dialogueQueue = new Queue<Dialogue>();
-        actualDialogue = STARTING_DIALOGUE;
+        _actualDialogue = STARTING_DIALOGUE;
         foreach (var dialogue in dialogues)
         {
             _dialogueQueue.Enqueue(dialogue);
@@ -107,8 +121,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        actualDialogue++;
-        OnDialogueShow?.Invoke(actualDialogue);
+        _actualDialogue++;
+        OnDialogueShow?.Invoke(_actualDialogue);
         if (_dialogueQueue.Count <= NO_SENTENCTES)
         {
             EndDialogue();
@@ -132,13 +146,37 @@ public class DialogueManager : MonoBehaviour
         foreach (var letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSecondsRealtime (typingSpeed);
         }
     }
 
-    private static void EndDialogue()
+    private void EndDialogue()
     {
+        Debug.Log($"AAAAAAAA END DIALOGUE {_inWorldDialogue}");
+        if (_inWorldDialogue)
+        {
+            ExitDialogueWorldMode();
+        }
+
         OnEndDialogue?.Invoke();
+    }
+
+    private void EnterDialogueWorldMode()
+    {
+        ShowDialogueBox();
+        Time.timeScale = TIME_STOP;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        _inWorldDialogue = true;
+    }
+
+    private void ExitDialogueWorldMode()
+    {
+        HideDialogueBox();
+        Time.timeScale = TIME_CONTINUE;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        _inWorldDialogue = false;
     }
 
     #endregion

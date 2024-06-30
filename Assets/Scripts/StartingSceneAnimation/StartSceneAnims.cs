@@ -25,7 +25,7 @@ public class StartSceneAnims : MonoBehaviour
     private void OnEnable()
     {
         DialogueManager.OnEndDialogue += EndDialogue;
-        DialogueManager.OnStartDialogue -= StartDialogue;
+        DialogueManager.OnStartDialogue += StartDialogue;
     }
 
     private void OnDisable()

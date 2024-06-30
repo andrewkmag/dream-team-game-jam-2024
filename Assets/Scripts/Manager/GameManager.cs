@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
     
     private void PlayerSpawn()
     {
-        OnRespawn?.Invoke();
+        OnSpawn?.Invoke();
     }
 
     #endregion
