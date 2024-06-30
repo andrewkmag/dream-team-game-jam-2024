@@ -27,11 +27,13 @@ public class RequiredCollectable : IsInteractable
             contextText = $"Press e to collect required item";
         }
 
-        ReqCollectablesQty++;
+        ReqCollectablesQty = NO_REMAINING;
+        
     }
 
     protected override void Start()
     {
+        ReqCollectablesQty++;
         base.Start();
         SetContextText(contextText);
         GameManager.Instance.CollectedItem(ReqCollectablesQty);
