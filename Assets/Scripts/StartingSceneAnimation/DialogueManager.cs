@@ -1,83 +1,107 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    #region Fields
 
     [Header("References")]
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private String[] names;
-    [SerializeField] private Sprite[] textSprite;
-    [SerializeField] private Image dialogueName;
+    [SerializeField] private Image dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Image nameBox;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Button contextButton;
+    [SerializeField] private TextMeshProUGUI contextBttnText;
 
-    [SerializeField] private Animator animator;
-    [SerializeField] private Animator shipAnimator;
-    [SerializeField] private Animator shakingShip;
-    [SerializeField] private Animator enemyCharge;
+    [SerializeField] private Sprite[] variableNameSprites;
 
-    [SerializeField] private GameObject backgroundImage;
-    [SerializeField] private GameObject speechBubble1;
-    [SerializeField] private GameObject speechBubble2;
-    [SerializeField] private GameObject speechText2;
-    [SerializeField] private GameObject speechText1;
+    private Queue<Dialogue> _dialogueQueue;
+
+    public float typingSpeed = DEFAULT_TYPING_SPEED;
+    private int actualDialogue;
+
+    #endregion
 
 
-    private Queue<string> sentences;
-    private int diagMatch;
+    #region Constants
 
-    private bool nameArray = true;
-    private bool endedDialogue = false;
+    private const int STARTING_DIALOGUE = 0;
+    private const int NO_SENTENCTES = 0;
+    private const string STICKY_NAME = "Sticky";
+    private const int DIALOGUEBOX_STICKY = 1;
+    private const int DIALOGUEBOX_NORMAL = 0;
+    private const float DEFAULT_TYPING_SPEED = 0.1f;
 
-    public string firstScene;
+    #endregion
 
-    public float typingSpeed = 0.1f;
+    #region Events
 
-    // Start is called before the first frame update
-    void Start()
+    public delegate void Animation();
+    public delegate void AnimationEvent(int dialogueN);
+
+    public static event Animation OnEndDialogue;
+
+    public static event Animation OnStartDialogue;
+
+    public static event AnimationEvent OnDialogueShow;
+
+    #endregion
+
+    #region UnityMethods
+
+    private void OnEnable()
     {
-        sentences = new Queue<string>();
-        diagMatch = 0;
-        nameText.text = names[diagMatch];
+        DialogueTrigger.OnDialoguesTrigger += StartDialogue;
     }
 
-    void Update(){
-        
-        if(diagMatch == 1){
-            dialogueName.sprite = textSprite[1];
-        } else{
-            dialogueName.sprite = textSprite[0];
-        }
 
-        Scene scene = SceneManager.GetActiveScene();
-
-        if (scene.name == "Sweetsylvania")
-        {
-            Time.timeScale = 0;
-
-            if (endedDialogue == true)
-            {
-                Time.timeScale = 1;
-            }
-        }
+    private void OnDisable()
+    {
+        DialogueTrigger.OnDialoguesTrigger -= StartDialogue;
     }
 
-    public void StartDialogue (Dialogue dialogue)
+    private void Awake()
     {
-        animator.SetBool("isOpen", true);
-        
-        sentences.Clear();
+        HideDialogueBox();
+    }
 
-        foreach (string sentence in dialogue.sentences) 
+    #endregion
+
+    #region Methods
+
+    private void HideDialogueBox()
+    {
+        dialogueBox.enabled = false;
+        dialogueText.enabled = false;
+        nameBox.enabled = false;
+        nameText.enabled = false;
+        contextButton.enabled = false;
+        contextBttnText.enabled = false;
+    }
+
+    private void ShowDialogueBox()
+    {
+        dialogueBox.enabled = true;
+        dialogueText.enabled = true;
+        nameBox.enabled = true;
+        nameText.enabled = true;
+        contextButton.enabled = true;
+        contextBttnText.enabled = true;
+    }
+
+    private void StartDialogue(Dialogue[] dialogues)
+    {
+        ShowDialogueBox();
+        OnStartDialogue?.Invoke();
+        _dialogueQueue = new Queue<Dialogue>();
+        actualDialogue = STARTING_DIALOGUE;
+        foreach (var dialogue in dialogues)
         {
-            sentences.Enqueue(sentence);
+            _dialogueQueue.Enqueue(dialogue);
         }
 
         DisplayNextSentence();
@@ -85,81 +109,39 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count < 1)
+        actualDialogue++;
+        OnDialogueShow?.Invoke(actualDialogue);
+        if (_dialogueQueue.Count <= NO_SENTENCTES)
         {
-            nameArray = false;
-            Debug.Log("End of conversation");
             EndDialogue();
             return;
         }
-        if (nameArray) { diagMatch = diagMatch + 1; }
-        nameText.text = names[diagMatch];
 
-        string sentence = sentences.Dequeue();
+        var dialogue = _dialogueQueue.Dequeue();
+
+        nameBox.sprite = dialogue.name.ToUpper().Equals(STICKY_NAME.ToUpper())
+            ? variableNameSprites[DIALOGUEBOX_STICKY]
+            : variableNameSprites[DIALOGUEBOX_NORMAL];
+
+        nameText.text = dialogue.name;
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
-        Debug.Log("Count is: " + sentences.Count);
+        StartCoroutine(TypeSentence(dialogue.sentence));
     }
 
-    IEnumerator TypeSentence (string sentence)
+    private IEnumerator TypeSentence(string sentence)
     {
-        // type sentence in letter by letter
         dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        foreach (var letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
     }
 
-    void EndDialogue()
+    private static void EndDialogue()
     {
-        Debug.Log("Ending the dialogue");
-        speechBubble1.SetActive(false);
-        speechBubble2.SetActive(false);
-        speechText1.SetActive(false);
-        speechText2.SetActive(false);
-
-        endedDialogue = true;
-
-        //remove the dialogue screen
-        animator.SetBool("isOpen", false);
-        
-        // stop the ships animation in previous scene
-        shipAnimator.SetBool("StopShip", true);
-
-        shakingShip.SetBool("isBeingBoarded", true);
-
-        enemyCharge.SetBool("isCharging", true);
-
-        // stop the background image
-        backgroundImage.GetComponent<ImageScroller>().enabled = false;
-
-        StartCoroutine(LoadNextScene());
-
-        Debug.Log(SceneManager.GetActiveScene());
-
-        // load the next scene
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        OnEndDialogue?.Invoke();
     }
 
-    IEnumerator LoadNextScene()
-    {
-        if (endedDialogue == true)
-        {
-            if (firstScene == "Scene")
-            {
-                yield return new WaitForSecondsRealtime(1);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else if (firstScene != "Scene")
-            {
-                yield return new WaitForSecondsRealtime(24);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-            }
-            
-        }
-    }
-
+    #endregion
 }

@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class SceneChanger : MonoBehaviour
 {
-    #region Fields
+    #region Properties
 
-    private static SceneChanger _instance;
+    public static SceneChanger Instance { get; private set; }
 
     #endregion
-
+    
     #region Unity Methods
 
     private void OnEnable()
     {
-        ScenesScrObj.OnTransition += ChangeScene;
+        ScenesScrObj.OnSceneChange += LoadScene;
     }
 
 
     private void OnDisable()
     {
-        ScenesScrObj.OnTransition += ChangeScene;
+        ScenesScrObj.OnSceneChange += LoadScene;
     }
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -40,9 +40,19 @@ public class SceneChanger : MonoBehaviour
 
     #region Methods
 
-    private static void ChangeScene(string sceneName)
+    private static void LoadScene(ScenesScrObj scenesScrObj)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scenesScrObj.name);
+    }
+    
+    public void LoadGameManagerActualScene()
+    {
+        GameManager.Instance.ActualScene.LoadThisScene();
+    }
+    
+    public void LoadGameManagerNextScene()
+    {
+        GameManager.Instance.ActualScene.LoadNextScene();
     }
 
     #endregion

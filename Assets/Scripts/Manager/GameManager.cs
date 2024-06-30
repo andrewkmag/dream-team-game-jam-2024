@@ -53,6 +53,12 @@ public class GameManager : MonoBehaviour
         set => requisiteAchieved = value;
     }
 
+    public ScenesScrObj ActualScene
+    {
+        get => actualScene;
+        set => actualScene = value;
+    }
+
     #endregion
 
     #region Constants
@@ -124,7 +130,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -187,7 +193,7 @@ public class GameManager : MonoBehaviour
     private void TransitionToNextScene()
     {
         if(actualScene.NextScene==null) return;
-        actualScene.NextScene.TransitionNextScene();
+        actualScene.LoadNextScene();
         OnUpdateJamCount?.Invoke();
         OnUpdateSibling?.Invoke();
         PlayerSpawn();

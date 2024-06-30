@@ -458,10 +458,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2276717267456198335, guid: 7ad20db417382ff478b573ac536c3f88,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 517170988}
     - target: {fileID: 6698024663449688423, guid: 7ad20db417382ff478b573ac536c3f88,
         type: 3}
       propertyPath: m_Name
-      value: SceneManager (1)
+      value: SceneManager
       objectReference: {fileID: 0}
     - target: {fileID: 8642276956368179265, guid: 7ad20db417382ff478b573ac536c3f88,
         type: 3}
@@ -518,6 +523,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad20db417382ff478b573ac536c3f88, type: 3}
+--- !u!95 &517170988 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5122107264766819664, guid: 7ad20db417382ff478b573ac536c3f88,
+    type: 3}
+  m_PrefabInstance: {fileID: 490334430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575499042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1613,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 5a5ce4afa1a3f4e48af4e4c69f49a267, type: 2}
         m_TargetAssemblyTypeName: ScenesScrObj, Assembly-CSharp
-        m_MethodName: TransitionScene
+        m_MethodName: LoadThisScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1948,7 +1959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: afc2c5fb0fdff1944a73185f5b5027d8, type: 2}
         m_TargetAssemblyTypeName: ScenesScrObj, Assembly-CSharp
-        m_MethodName: TransitionScene
+        m_MethodName: LoadThisScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

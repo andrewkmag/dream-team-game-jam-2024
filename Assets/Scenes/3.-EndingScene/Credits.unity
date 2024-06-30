@@ -427,7 +427,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 61390b9aa84d6034599dc9a4e8eb7663, type: 2}
         m_TargetAssemblyTypeName: ScenesScrObj, Assembly-CSharp
-        m_MethodName: TransitionScene
+        m_MethodName: LoadThisScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

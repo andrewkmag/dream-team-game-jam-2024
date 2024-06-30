@@ -6,36 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoadSceneOrderTest/MainMenu.unity
+    path: Assets/Scenes/0.-Menu/MainMenu.unity
     guid: 3085b914562765d4e85ba319b53015ca
   - enabled: 1
-    path: Assets/Scenes/StartingAnimations/Start_Scene.unity
+    path: Assets/Scenes/1.-StartingAnimations/Start_Scene.unity
     guid: 1ca0495b04fc592418b02565e407c901
   - enabled: 1
-    path: Assets/Scenes/StartingAnimations/2_Start_Scene.unity
-    guid: c9d4a42972f831741a89b8437e1877e1
+    path: Assets/Scenes/1.-StartingAnimations/2_Start_Scene.unity
+    guid: 96e57cb368fbbfd4eac6094a6fd1947e
   - enabled: 1
-    path: Assets/Scenes/Planets/Sweetsvylvania.unity
+    path: Assets/Scenes/2.-Planets/Sweetsvylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
   - enabled: 1
-    path: Assets/Scenes/UI Stuff/Map.unity
+    path: Assets/Scenes/4.-UI Stuff/Map.unity
     guid: 74abb3cf25565a945900086ce1650283
   - enabled: 1
-    path: Assets/Scenes/Planets/Soyturn.unity
+    path: Assets/Scenes/2.-Planets/Soyturn.unity
     guid: 3b26137f0582d124eb98ee907ce2ed69
   - enabled: 1
-    path: Assets/Scenes/UI Stuff/Map2.unity
+    path: Assets/Scenes/4.-UI Stuff/Map2.unity
     guid: b54b6ceb507d97e4985d4905b47b9f83
   - enabled: 1
-    path: Assets/Scenes/Planets/Donewell.unity
+    path: Assets/Scenes/2.-Planets/Donewell.unity
     guid: 95245afa130b6a046a602eb2a55ac085
   - enabled: 1
-    path: Assets/Scenes/Planets/Panko.unity
+    path: Assets/Scenes/2.-Planets/Panko.unity
     guid: 1c7c0246166ce0e48908d420f8a0e31b
   - enabled: 1
-    path: Assets/Scenes/EndingScene/EndingScene.unity
+    path: Assets/Scenes/3.-EndingScene/EndingScene.unity
     guid: df819608d67a91643b1fa40bd4c06d59
   - enabled: 1
-    path: Assets/Scenes/EndingScene/Credits.unity
+    path: Assets/Scenes/3.-EndingScene/Credits.unity
     guid: d50602b932fb8aa4084d14a9e0d3c1bc
   m_configObjects: {}

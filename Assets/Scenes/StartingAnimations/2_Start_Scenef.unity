@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3464,25 +3464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73024c12e6bd24e4b98587168bb34c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 703976069}
-  names:
-  - 'ENEMY SHIP '
-  - 'ENEMY SHIP '
-  - 'ENEMY SHIP '
-  textSprite:
-  - {fileID: 21300000, guid: 85c7ce07291c9644c82e9eb3632a2a6a, type: 3}
-  dialogueName: {fileID: 1893049287}
+  dialogueBox: {fileID: 0}
   dialogueText: {fileID: 1538375212}
-  animator: {fileID: 895006595}
-  shipAnimator: {fileID: 895006595}
-  shakingShip: {fileID: 1691905396}
-  enemyCharge: {fileID: 1221537002}
-  backgroundImage: {fileID: 1875388299}
-  speechBubble1: {fileID: 1360869108}
-  speechBubble2: {fileID: 582147916}
-  speechText2: {fileID: 1643865895}
-  speechText1: {fileID: 1163408438}
-  firstScene: Scene2
+  nameBox: {fileID: 0}
+  nameText: {fileID: 703976069}
+  contextButton: {fileID: 0}
+  contextBttnText: {fileID: 0}
+  variableNameSprites: []
   typingSpeed: 0.04
 --- !u!4 &1914428866
 Transform:
@@ -3590,16 +3578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f7dacfa02e974e83d684e4cb994a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: 
-    sentences:
-    - This is your final warning!
-    - Those brats aren't even listening! Soldiers, board their ship and take them
-      away!
-  startButton: {fileID: 1975036977}
-  continueButton: {fileID: 556831093}
-  textMeshPro: {fileID: 1538375212}
-  typingSpeed: 0.04
+  dialogues: []
 --- !u!114 &1975036980
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,28 +22,22 @@ public class ScenesScrObj : ScriptableObject
     #region Events
 
     public delegate void StartSceneChange(ScenesScrObj sceneSo);
-    public delegate void StartTransition(string sceneName);
     public static event StartSceneChange OnSceneChange;
-    public static event StartTransition OnTransition;
     
     #endregion
     
     #region Methods
     
-    public void TransitionScene()
+    public void LoadThisScene()
     {
-        Debug.Log($"Transition to {sceneName}");
         if(sceneName==null) return;
         OnSceneChange?.Invoke(this);
-        OnTransition?.Invoke(sceneName);
     }
     
-    public void TransitionNextScene()
+    public void LoadNextScene()
     {
-        Debug.Log($"Transition to next {nextScene.sceneName}");
         if(nextScene==null) return;
-        OnSceneChange?.Invoke(this);
-        OnTransition?.Invoke(sceneName);
+        nextScene.LoadThisScene();
     }
 
     #endregion
