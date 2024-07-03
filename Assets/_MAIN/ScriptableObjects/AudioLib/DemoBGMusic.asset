@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DemoBGMusic
   m_EditorClassIdentifier: 
   GenericLib:
+  - name: Default
+    item: {fileID: 8300000, guid: de1c2689d093a014ba0b2381e700f145, type: 3}
   - name: Animations
     item: {fileID: 8300000, guid: de1c2689d093a014ba0b2381e700f145, type: 3}
   - name: Planets

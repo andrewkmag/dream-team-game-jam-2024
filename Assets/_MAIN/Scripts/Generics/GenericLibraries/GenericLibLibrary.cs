@@ -1,12 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenericLibrary<T> : MonoBehaviour
+public abstract class GenericLibrary<T> : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private GenericLibScriptableObject<T> GenericLib;
+    protected GenericLibScriptableObject<T> genericLib;
     [SerializeField] private readonly Dictionary<string, T> _GenericDic = new Dictionary<string, T>();
 
     #endregion
@@ -31,23 +32,29 @@ public class GenericLibrary<T> : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            if (GenericLib == null) return;
-            var names = GenericLib.GetStringArr();
-            var items = GenericLib.GetGenericArr();
-            for (var index = FIRST_ARRAY; index < GenericLib.GetSize(); index++)
+            getGenericScriptableObject();
+            if (genericLib == null) return;
+            var names = genericLib.GetStringArr();
+            var items = genericLib.GetGenericArr();
+            
+            for (var index = FIRST_ARRAY; index < genericLib.GetSize(); index++)
             {
                 _GenericDic.Add(names[index], items[index]);
             }
+
+            getGenericScriptableObject();
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
     #endregion
 
     #region Methods
+
+    protected abstract void getGenericScriptableObject();
+
     public T GetGeneric(string categoty, string keyname)
     {
         var key = categoty + keyname;
