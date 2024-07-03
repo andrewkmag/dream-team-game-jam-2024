@@ -66,18 +66,18 @@ public class PlayerHUDManager : MonoBehaviour
 
         currentJarCountImage.sprite = percentage switch
         {
-            < PERCENT_25 => SpriteLibrary.Instance.GetSprite("JamJar", "0"),
-            < PERCENT_50 => SpriteLibrary.Instance.GetSprite("JamJar", "25"),
-            < PERCENT_75 => SpriteLibrary.Instance.GetSprite("JamJar", "50"),
-            _ => percentage < PERCENT_100 ? SpriteLibrary.Instance.GetSprite("JamJar", "75") :
-                percentage >= PERCENT_100 ? SpriteLibrary.Instance.GetSprite("JamJar", "100") :
+            < PERCENT_25 => SpriteLibrary.Instance.GetGeneric("JamJar", "0"),
+            < PERCENT_50 => SpriteLibrary.Instance.GetGeneric("JamJar", "25"),
+            < PERCENT_75 => SpriteLibrary.Instance.GetGeneric("JamJar", "50"),
+            _ => percentage < PERCENT_100 ? SpriteLibrary.Instance.GetGeneric("JamJar", "75") :
+                percentage >= PERCENT_100 ? SpriteLibrary.Instance.GetGeneric("JamJar", "100") :
                 currentJarCountImage.sprite
         };
     }
     
     private void UpdateSiblingImage()
     {
-        siblingImage.sprite = SpriteLibrary.Instance.GetSprite("Sibling", GameManager.Instance.RequisiteAchieved ? "Unlocked" : "Locked");
+        siblingImage.sprite = SpriteLibrary.Instance.GetGeneric("Sibling", GameManager.Instance.RequisiteAchieved ? "Unlocked" : "Locked");
     }
     
     public void HideHud()
