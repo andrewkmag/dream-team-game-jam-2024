@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad8d69359d4d504d8295f0eede1f27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GenericLib: {fileID: 11400000, guid: d93696dbc2d4d9e49a0c736a7cc075d2, type: 2}
+  audioClipLib: {fileID: 11400000, guid: d93696dbc2d4d9e49a0c736a7cc075d2, type: 2}
 --- !u!82 &1608288751
 AudioSource:
   m_ObjectHideFlags: 0
