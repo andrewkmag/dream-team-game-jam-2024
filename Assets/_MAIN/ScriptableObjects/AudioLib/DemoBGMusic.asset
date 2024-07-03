@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62534e16b1163f48b0666f2530e77f1, type: 3}
+  m_Name: DemoBGMusic
+  m_EditorClassIdentifier: 
+  GenericLib:
+  - name: Animations
+    item: {fileID: 8300000, guid: de1c2689d093a014ba0b2381e700f145, type: 3}
+  - name: Planets
+    item: {fileID: 8300000, guid: 1db27aad405e89943a01b13f76d117de, type: 3}
