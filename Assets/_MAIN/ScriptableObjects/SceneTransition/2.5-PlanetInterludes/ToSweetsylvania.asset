@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcfc4564329b125478566b923112faed, type: 3}
-  m_Name: ToSweetsvylvania
+  m_Name: ToSweetsylvania
   m_EditorClassIdentifier: 
-  sceneName: ToSweetsvylvania
+  sceneName: ToSweetsylvania
   nextScene: {fileID: 11400000, guid: 45a2f95bfba7ed6439a94ad9aa9b36fd, type: 2}
