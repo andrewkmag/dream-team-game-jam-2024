@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class GenericLibrary<T> : MonoBehaviour
 {
     #region Fields
 
     protected GenericLibScriptableObject<T> genericLib;
-    [SerializeField] private readonly Dictionary<string, T> _GenericDic = new Dictionary<string, T>();
+    private readonly Dictionary<string, T> _genericDic = new Dictionary<string, T>();
 
     #endregion
 
@@ -39,7 +37,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
             
             for (var index = FIRST_ARRAY; index < genericLib.GetSize(); index++)
             {
-                _GenericDic.Add(names[index], items[index]);
+                _genericDic.Add(names[index], items[index]);
             }
 
             getGenericScriptableObject();
@@ -58,7 +56,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
     public T GetGeneric(string categoty, string keyname)
     {
         var key = categoty + keyname;
-        if (_GenericDic.TryGetValue(key, out var value))
+        if (_genericDic.TryGetValue(key, out var value))
         {
             return value;
         }
@@ -71,7 +69,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
 
     public T GetGeneric(string key)
     {
-        if (_GenericDic.TryGetValue(key, out var value))
+        if (_genericDic.TryGetValue(key, out var value))
         {
             return value;
         }

@@ -1,14 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(AudioClipLibrary))]
 public class BackgroundMusicManager : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private AudioClipLibrary audioClipLib;
     [SerializeField] private AudioSource audioSource;
+
+    #endregion
+
+    #region UnityMethods
 
     private void Reset()
     {
@@ -23,12 +26,19 @@ public class BackgroundMusicManager : MonoBehaviour
         PlayBgMusic();
     }
 
+    #endregion
+
+    #region Methods
+
     private void PlayBgMusic()
     {
         audioSource.Play();
     }
+
     private void PauseBgMusic()
     {
         audioSource.Pause();
     }
+
+    #endregion
 }
