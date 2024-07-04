@@ -14,12 +14,23 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button quitButton;
+    
+    private SoundManager _soundManager;
 
     // Local variables
     private bool isPaused;
 
+    #region Constants
+
+    private const string MENU_SOUND_CAT = "Menu";
+    private const string PAUSE_SOUND_KEY = "Pause";
+
+    #endregion
     private void Awake()
     {
+        // Find the sound manager
+        _soundManager = gameObject.GetOrAdd<SoundManager>();
+        
         // Find the pause menu UI in the scene
         pauseMenuUI = GameObject.Find("PauseMenu");
 
@@ -45,12 +56,14 @@ public class PauseManager : MonoBehaviour
 
         if (isPaused)
         {
+            _soundManager.PlaySound(MENU_SOUND_CAT+PAUSE_SOUND_KEY);
             ShowPauseMenu();
             playerHUDManager.HideHud();
 
         }
         else
         {
+            _soundManager.PlaySound(MENU_SOUND_CAT+PAUSE_SOUND_KEY);
             HidePauseMenu();
             playerHUDManager.ShowHud();
         }

@@ -92,9 +92,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        _soundManager = GetComponent<SoundManager>();
-        if (_soundManager == null)
-            Debug.LogWarning($"Audio error, {gameObject.name} is mising a soundManager");
+        _soundManager = gameObject.GetOrAdd<SoundManager>();
         HideDialogueBox();
     }
 

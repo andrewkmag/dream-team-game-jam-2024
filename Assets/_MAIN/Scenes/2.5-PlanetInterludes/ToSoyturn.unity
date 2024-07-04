@@ -747,7 +747,7 @@ PrefabInstance:
     - target: {fileID: 359267549035224880, guid: 6305c90c733f0864fa6ebc46de7abd9a,
         type: 3}
       propertyPath: m_Name
-      value: BGMusicManager
+      value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
         type: 3}

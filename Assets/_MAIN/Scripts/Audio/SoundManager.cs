@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,6 +19,11 @@ public class SoundManager : MonoBehaviour
     #region UnityMethods
 
     private void Reset()
+    {
+        audioSource = gameObject.GetOrAdd<AudioSource>();
+    }
+
+    private void Awake()
     {
         audioSource = gameObject.GetOrAdd<AudioSource>();
     }
