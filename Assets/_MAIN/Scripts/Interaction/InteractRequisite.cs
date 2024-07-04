@@ -49,7 +49,7 @@ public class InteractRequisite : IsInteractable
         base.DoInteraction();
         GameManager.Instance.RequisiteAchived(true);
         EndInteract();
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     #endregion

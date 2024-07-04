@@ -1,22 +1,21 @@
 using System;
-using UnityEngine;
 
 [Serializable]
-public class SpriteElemClass
+public class GenericLibElemClass <T>
 {
     #region Fields
     
     public string name;
-    public Sprite sprite;
+    public T item;
 
     #endregion
 
     #region Constructor
 
-    public SpriteElemClass(string name, Sprite sprite)
+    public GenericLibElemClass(string name, T item)
     {
         this.name = name;
-        this.sprite = sprite;
+        this.item = item;
     }
 
     #endregion

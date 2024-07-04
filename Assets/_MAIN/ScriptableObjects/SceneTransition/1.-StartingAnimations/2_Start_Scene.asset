@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 2_Start_Scene
   nextScene: {fileID: 11400000, guid: 2c5ba5d9dabe7e84b870d3e15f1d5ff7, type: 2}
+  song: Animation

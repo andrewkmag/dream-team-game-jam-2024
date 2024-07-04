@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Soyturn
   nextScene: {fileID: 11400000, guid: 46a460cf3044e534485741920cc25d80, type: 2}
+  song: Planets

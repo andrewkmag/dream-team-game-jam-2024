@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         requisiteAchieved = val;
         OnUpdateSibling?.Invoke();
-        ReadyToLeave();
+        //ReadyToLeave();
     }
 
     public void ReadyToLeave()

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: ToPanko
   nextScene: {fileID: 11400000, guid: 7b73d020c2c4d764ba99a6c2f3c79768, type: 2}
+  song: Animation

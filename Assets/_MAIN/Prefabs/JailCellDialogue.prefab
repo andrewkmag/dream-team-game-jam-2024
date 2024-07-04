@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.64
+      value: 1.7258103
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.969263
+      value: 28.24349
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.75
+      value: -37.79282
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
@@ -71,48 +71,34 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       propertyPath: m_Name
-      value: JailCell 1
+      value: JailCellDialogue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a327b477871a1b4e86883a8a10752c8,
+    - targetCorrespondingSourceObject: {fileID: 8950595739988889703, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1197713868089871108}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a327b477871a1b4e86883a8a10752c8,
+      addedObject: {fileID: 3805586908859292766}
+    - targetCorrespondingSourceObject: {fileID: 8950595739988889703, guid: 5a327b477871a1b4e86883a8a10752c8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2683477566659904807}
+      addedObject: {fileID: 5788023897816255601}
   m_SourcePrefab: {fileID: 100100000, guid: 5a327b477871a1b4e86883a8a10752c8, type: 3}
---- !u!1 &336755130915234236 stripped
+--- !u!1 &8384554303504419978 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a327b477871a1b4e86883a8a10752c8,
+  m_CorrespondingSourceObject: {fileID: 8950595739988889703, guid: 5a327b477871a1b4e86883a8a10752c8,
     type: 3}
   m_PrefabInstance: {fileID: 607155612365823213}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1197713868089871108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336755130915234236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572daa0d23ed11c40a71e2d77c0546e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contextText: Press e to Interact with main objective
-  requisiteInteracted: 0
---- !u!136 &2683477566659904807
+--- !u!136 &3805586908859292766
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336755130915234236}
+  m_GameObject: {fileID: 8384554303504419978}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -129,3 +115,18 @@ CapsuleCollider:
   m_Height: 3.707519
   m_Direction: 1
   m_Center: {x: 0.0044124126, y: 1.6732619, z: -0.071172714}
+--- !u!114 &5788023897816255601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384554303504419978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3896167cbe6226a4f8985060fffe5dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextText: Press e to rescue your sibling
+  requisiteInteracted: 0
+  dialogues: []

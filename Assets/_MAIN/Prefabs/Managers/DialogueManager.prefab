@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73024c12e6bd24e4b98587168bb34c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueImg: {fileID: 0}
+  dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
-  nameImg: {fileID: 0}
+  nameBox: {fileID: 0}
   nameText: {fileID: 0}
   contextButton: {fileID: 0}
   contextBttnText: {fileID: 0}

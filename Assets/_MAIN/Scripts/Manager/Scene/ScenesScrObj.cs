@@ -8,6 +8,8 @@ public class ScenesScrObj : ScriptableObject
     [SerializeField] private string sceneName;
     
     [SerializeField] private ScenesScrObj nextScene;
+
+    [SerializeField] private string song;
     #endregion
 
     #region Properties
@@ -16,6 +18,12 @@ public class ScenesScrObj : ScriptableObject
     {
         get => nextScene;
         set => nextScene = value;
+    }
+    
+    public string Song
+    {
+        get => song;
+        set => song = value;
     }
 
     #endregion

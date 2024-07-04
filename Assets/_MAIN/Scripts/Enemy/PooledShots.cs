@@ -41,7 +41,7 @@ public class PooledShots : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.OnDeath += DeactivateAllPooled;
+        GameManager.OnDeath -= DeactivateAllPooled;
     }
 
     public GameObject GetPooledObject()
