@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/_MAIN/Scenes/1.-StartingAnimations/2_Start_Scene.unity
     guid: 96e57cb368fbbfd4eac6094a6fd1947e
   - enabled: 1
-    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToSweetsvylvania.unity
+    path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToSweetsylvania.unity
     guid: 741a114512ada5f409021c33689ea50f
   - enabled: 1
-    path: Assets/_MAIN/Scenes/2.-Planets/Sweetsvylvania.unity
+    path: Assets/_MAIN/Scenes/2.-Planets/Sweetsylvania.unity
     guid: 73175ad4b40991242a1285e843aa2889
   - enabled: 1
     path: Assets/_MAIN/Scenes/2.5-PlanetInterludes/ToSoyturn.unity
