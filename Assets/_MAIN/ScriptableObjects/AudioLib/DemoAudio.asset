@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62534e16b1163f48b0666f2530e77f1, type: 3}
-  m_Name: DemoSounds
+  m_Name: DemoAudio
   m_EditorClassIdentifier: 
   GenericLib:
+  - name: BGDefault
+    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
+  - name: BGAnimation
+    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
+  - name: BGPlanets
+    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
   - name: DialogueCharacter
     item: {fileID: 8300000, guid: 706d49e9f0e162a4faf9baa5846bd14b, type: 3}
   - name: DialogueEnemy

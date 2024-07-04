@@ -62,7 +62,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Key not found");
+            Debug.LogWarning($"$Key {key} not found");
             return default;
         }
     }
@@ -75,7 +75,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Key not found");
+            Debug.LogWarning($"$Key {key} not found");
             return default;
         }
     }

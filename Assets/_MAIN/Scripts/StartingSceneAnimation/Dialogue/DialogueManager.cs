@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private Button contextButton;
     [SerializeField] private TextMeshProUGUI contextBttnText;
+    private SoundManager _soundManager;
+    private int whosTalking;
 
     [SerializeField] private Sprite[] variableNameSprites;
 
@@ -31,12 +33,31 @@ public class DialogueManager : MonoBehaviour
 
     private const int STARTING_DIALOGUE = 0;
     private const int NO_SENTENCTES = 0;
+    
+    private const string JAM_NAME = "Jam";
+    private const string JELLY_NAME = "Jelly";
+    private const string RAZZ_NAME = "Razz";
+    private const string BARRY_NAME = "Barry";
+    private const string ENEMY_NAME = "The Mochi";
     private const string STICKY_NAME = "Sticky";
+    private const string CONSOLE_NAME = "Console";
+    private const string EVERYONE_NAME = "Everyone";
+    
     private const int DIALOGUEBOX_STICKY = 1;
     private const int DIALOGUEBOX_NORMAL = 0;
     private const float DEFAULT_TYPING_SPEED = 0.1f;
     private const float TIME_STOP = 0;
     private const float TIME_CONTINUE = 1;
+    
+    private const int CHARACTER_TALK = 0;
+    private const int ENEMY_TALK = 1;
+    private const int CONSOLE_TALK = 2;
+    private const int STICKY_TALK = 3;
+    
+    private const string DIALOGUE_SOUND_CAT = "Dialogue";
+    private const string CHAR_SOUND_KEY = "Character";
+    private const string ENEMY_SOUND_KEY = "Enemy";
+    private const string CONSOLE_SOUND_KEY = "Console";
 
     #endregion
 
@@ -71,6 +92,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        _soundManager = GetComponent<SoundManager>();
+        if (_soundManager == null)
+            Debug.LogWarning($"Audio error, {gameObject.name} is mising a soundManager");
         HideDialogueBox();
     }
 
@@ -131,23 +155,58 @@ public class DialogueManager : MonoBehaviour
 
         var dialogue = _dialogueQueue.Dequeue();
 
-        nameBox.sprite = dialogue.name.ToUpper().Equals(STICKY_NAME.ToUpper())
+        whosTalking = WhoIsTalking(dialogue.name);
+        nameBox.sprite = whosTalking == STICKY_TALK
             ? variableNameSprites[DIALOGUEBOX_STICKY]
             : variableNameSprites[DIALOGUEBOX_NORMAL];
 
         nameText.text = dialogue.name;
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(dialogue.sentence));
     }
 
+    private static int WhoIsTalking(string dialogueName)
+    {
+        return dialogueName switch
+        {
+            STICKY_NAME => STICKY_TALK,
+            JAM_NAME => CHARACTER_TALK,
+            JELLY_NAME => CHARACTER_TALK,
+            RAZZ_NAME => CHARACTER_TALK,
+            BARRY_NAME => CHARACTER_TALK,
+            EVERYONE_NAME => CHARACTER_TALK,
+            ENEMY_NAME => ENEMY_TALK,
+            CONSOLE_NAME => CONSOLE_TALK,
+            _ => CONSOLE_TALK
+        };
+    }
+
     private IEnumerator TypeSentence(string sentence)
     {
+        switch (whosTalking)
+        {
+            case STICKY_TALK:
+            case CHARACTER_TALK:
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+CHAR_SOUND_KEY);
+                break;
+            case ENEMY_TALK:
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+ENEMY_SOUND_KEY);
+                break;
+            case CONSOLE_TALK:
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+CONSOLE_SOUND_KEY);
+                break;
+            default:
+                break;
+        }
+
         dialogueText.text = "";
         foreach (var letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSecondsRealtime (typingSpeed);
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
+        _soundManager.StopSound();
     }
 
     private void EndDialogue()

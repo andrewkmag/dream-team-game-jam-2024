@@ -823,6 +823,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318735102}
   m_CullTransparentMesh: 1
+--- !u!1001 &379685509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 359267549035224880, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_Name
+      value: BGMusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646076651337287702, guid: 6305c90c733f0864fa6ebc46de7abd9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6305c90c733f0864fa6ebc46de7abd9a, type: 3}
 --- !u!1 &469578594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,14 +1711,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - name: ENEMY SHIP
+  - name: The Mochi
     sentence: 'Attention! You are currently aboard a vessel unregistered in this
       territory! '
-  - name: ENEMY SHIP
+  - name: The Mochi
     sentence: Surrender your vessel for inspection or face imprisonment!
-  - name: ENEMY SHIP
+  - name: The Mochi
     sentence: This is your final warning!
-  - name: ENEMY SHIP
+  - name: The Mochi
     sentence: Those brats aren't even listening! Soldiers, board their ship and take
       them away!
 --- !u!4 &868043479
@@ -1923,6 +1991,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167440677679296151, guid: f82d9e4926c19ba44afffed250d7a815,
+        type: 3}
+      propertyPath: audioClipLib
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7353503100245786979, guid: f82d9e4926c19ba44afffed250d7a815,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3542,3 +3615,4 @@ SceneRoots:
   - {fileID: 868043479}
   - {fileID: 287633106}
   - {fileID: 1067936698}
+  - {fileID: 379685509}

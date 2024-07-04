@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -6,8 +7,18 @@ public class BackgroundMusicManager : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private AudioClipLibrary audioClipLib;
+    [SerializeField] private AudioClipLibrary backgroundMusicLib;
     [SerializeField] private AudioSource audioSource;
+
+    #endregion
+
+    #region Constants
+
+    private const float VOLUME_BG = .1f;
+    private const string BG_MUSIC_CAT = "BG"; 
+    private const string DEFAULT_MUSIC = "Default";
+    private const string ANIMATION_MUSIC = "Animation";
+    private const string PLANETS_MUSIC = "Planets";
 
     #endregion
 
@@ -15,27 +26,33 @@ public class BackgroundMusicManager : MonoBehaviour
 
     private void Reset()
     {
-        audioClipLib = gameObject.GetOrAdd<AudioClipLibrary>();
+        backgroundMusicLib = gameObject.GetOrAdd<AudioClipLibrary>();
         audioSource = gameObject.GetOrAdd<AudioSource>();
     }
 
     private void Start()
     {
-        audioSource.clip = audioClipLib.GetGeneric("Default");
         audioSource.loop = true;
-        PlayBgMusic();
+        audioSource.volume = VOLUME_BG;
+        BgMusicPlay(BG_MUSIC_CAT+DEFAULT_MUSIC);
     }
 
     #endregion
 
     #region Methods
 
-    private void PlayBgMusic()
+    private void BgMusicPlay(string musicName)
     {
+        audioSource.clip = backgroundMusicLib.GetGeneric(musicName);
         audioSource.Play();
     }
 
-    private void PauseBgMusic()
+    private void BgMusicStop()
+    {
+        audioSource.Stop();
+    }
+    
+    private void BgMusicPause()
     {
         audioSource.Pause();
     }
