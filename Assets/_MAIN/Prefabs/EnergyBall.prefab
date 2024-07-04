@@ -9848,8 +9848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b815f5208bdfe8419e108af7c915af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  lifespan: 7
+  speed: 7
+  lifespan: 10
 --- !u!54 &568293433815166534
 Rigidbody:
   m_ObjectHideFlags: 0

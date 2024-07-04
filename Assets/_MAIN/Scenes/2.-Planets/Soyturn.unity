@@ -5216,6 +5216,41 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0644482, y: 1.0644474, z: 0.8469428}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!21 &116104110
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Height Fog Global
+  m_Shader: {fileID: 4800000, guid: 3a7ef1b66bafb7a448a880ef76d2e6e6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3001
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AdvancedCat: 1
+    - _Banner: 1
+    - _DirectionalCat: 1
+    - _FogCat: 1
+    - _HeightFogGlobal: 1
+    - _IsHeightFogShader: 1
+    - _NoiseCat: 1
+    - _SkyboxCat: 1
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1 &116280195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cde4acca4fb1e46ac853661ff96d68,
@@ -7786,6 +7821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
+      propertyPath: viewAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
       propertyPath: shootCooldown
       value: 0.7
       objectReference: {fileID: 0}
@@ -8836,7 +8876,7 @@ MonoBehaviour:
   renderPriority: 1
   manualPositionAndScale: 0
   styledSpace0: 0
-  overrideMaterial: {fileID: 1446602497}
+  overrideMaterial: {fileID: 1710747871}
   overrideCamToVolumeDistance: Infinity
   overrideVolumeDistanceFade: 0
   version: 0
@@ -8860,7 +8900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 684766142}
+  - {fileID: 1344552951}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16042,75 +16082,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2046013518}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &380301665
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Override
-  m_Shader: {fileID: 4800000, guid: a3a3bc8785681554d9558e2ea68f100e, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _AdvancedCat: 1
-    - _Banner: 1
-    - _DirectionalCat: 1
-    - _DirectionalFalloff: 2
-    - _DirectionalIntensity: 1
-    - _FarDistanceHeight: 0
-    - _FarDistanceOffset: 0
-    - _FogAxisMode: 1
-    - _FogCameraMode: 0
-    - _FogCat: 1
-    - _FogColorDuo: 1
-    - _FogDistanceEnd: 100
-    - _FogDistanceFalloff: 2
-    - _FogDistanceStart: 0
-    - _FogHeightEnd: 100
-    - _FogHeightFalloff: 2
-    - _FogHeightStart: 0
-    - _FogIntensity: 1
-    - _FogLayersMode: 0
-    - _IsHeightFogPreset: 1
-    - _IsHeightFogShader: 1
-    - _JitterIntensity: 1
-    - _NoiseCat: 1
-    - _NoiseDistanceEnd: 50
-    - _NoiseIntensity: 1
-    - _NoiseMax: 1
-    - _NoiseMin: 0
-    - _NoiseModeBlend: 1
-    - _NoiseScale: 30
-    - _SkyboxCat: 1
-    - _SkyboxFogBottom: 0
-    - _SkyboxFogFalloff: 1
-    - _SkyboxFogFill: 1
-    - _SkyboxFogHeight: 1
-    - _SkyboxFogIntensity: 1
-    - _SkyboxFogOffset: 0
-    m_Colors:
-    - _DirectionalColor: {r: 1, g: 0.7793103, b: 0.5, a: 1}
-    - _DirectionalDir: {r: 0, g: 0, b: 0, a: 0}
-    - _FogAxisOption: {r: 0, g: 0, b: 0, a: 0}
-    - _FogColorEnd: {r: 0.8862745, g: 1.443137, b: 2, a: 1}
-    - _FogColorStart: {r: 0.4411765, g: 0.722515, b: 1, a: 1}
-    - _NoiseSpeed: {r: 0.5, g: 0, b: 0.5, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &382151246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d1d57c01d6cc548459d3e8f700b6760c,
@@ -22782,6 +22753,75 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1439367463}
   m_SourcePrefab: {fileID: 100100000, guid: d1d57c01d6cc548459d3e8f700b6760c, type: 3}
+--- !u!21 &532839587
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Override
+  m_Shader: {fileID: 4800000, guid: a3a3bc8785681554d9558e2ea68f100e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AdvancedCat: 1
+    - _Banner: 1
+    - _DirectionalCat: 1
+    - _DirectionalFalloff: 2
+    - _DirectionalIntensity: 1
+    - _FarDistanceHeight: 0
+    - _FarDistanceOffset: 0
+    - _FogAxisMode: 1
+    - _FogCameraMode: 0
+    - _FogCat: 1
+    - _FogColorDuo: 1
+    - _FogDistanceEnd: 100
+    - _FogDistanceFalloff: 2
+    - _FogDistanceStart: 0
+    - _FogHeightEnd: 100
+    - _FogHeightFalloff: 2
+    - _FogHeightStart: 0
+    - _FogIntensity: 1
+    - _FogLayersMode: 0
+    - _IsHeightFogPreset: 1
+    - _IsHeightFogShader: 1
+    - _JitterIntensity: 1
+    - _NoiseCat: 1
+    - _NoiseDistanceEnd: 50
+    - _NoiseIntensity: 1
+    - _NoiseMax: 1
+    - _NoiseMin: 0
+    - _NoiseModeBlend: 1
+    - _NoiseScale: 30
+    - _SkyboxCat: 1
+    - _SkyboxFogBottom: 0
+    - _SkyboxFogFalloff: 1
+    - _SkyboxFogFill: 1
+    - _SkyboxFogHeight: 1
+    - _SkyboxFogIntensity: 1
+    - _SkyboxFogOffset: 0
+    m_Colors:
+    - _DirectionalColor: {r: 1, g: 0.7793103, b: 0.5, a: 1}
+    - _DirectionalDir: {r: 0, g: 0, b: 0, a: 0}
+    - _FogAxisOption: {r: 0, g: 0, b: 0, a: 0}
+    - _FogColorEnd: {r: 0.8862745, g: 1.443137, b: 2, a: 1}
+    - _FogColorStart: {r: 0.4411765, g: 0.722515, b: 1, a: 1}
+    - _NoiseSpeed: {r: 0.5, g: 0, b: 0.5, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &534538257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27896,41 +27936,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0644482, y: 1.0644474, z: 0.8469428}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!21 &684766142
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Height Fog Global
-  m_Shader: {fileID: 4800000, guid: 3a7ef1b66bafb7a448a880ef76d2e6e6, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _AdvancedCat: 1
-    - _Banner: 1
-    - _DirectionalCat: 1
-    - _FogCat: 1
-    - _HeightFogGlobal: 1
-    - _IsHeightFogShader: 1
-    - _NoiseCat: 1
-    - _SkyboxCat: 1
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1001 &685569651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28780,12 +28785,12 @@ PrefabInstance:
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
       propertyPath: viewAngle
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
       propertyPath: viewDistance
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
@@ -28795,7 +28800,7 @@ PrefabInstance:
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
       propertyPath: attackDistance
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3706883418519382526, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
@@ -44566,13 +44571,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
+      propertyPath: turnSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
       propertyPath: viewAngle
-      value: 90
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
       propertyPath: viewDistance
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
@@ -44582,7 +44592,7 @@ PrefabInstance:
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
       propertyPath: attackDistance
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3706883418519382526, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
@@ -52896,6 +52906,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 65181948}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1344552951
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Height Fog Global
+  m_Shader: {fileID: 4800000, guid: 3a7ef1b66bafb7a448a880ef76d2e6e6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3001
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AdvancedCat: 1
+    - _Banner: 1
+    - _DirectionalCat: 1
+    - _FogCat: 1
+    - _HeightFogGlobal: 1
+    - _IsHeightFogShader: 1
+    - _NoiseCat: 1
+    - _SkyboxCat: 1
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1346441333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56886,75 +56931,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 274489951}
   m_SourcePrefab: {fileID: 100100000, guid: 47cde4acca4fb1e46ac853661ff96d68, type: 3}
---- !u!21 &1446602497
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Override
-  m_Shader: {fileID: 4800000, guid: a3a3bc8785681554d9558e2ea68f100e, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _AdvancedCat: 1
-    - _Banner: 1
-    - _DirectionalCat: 1
-    - _DirectionalFalloff: 2
-    - _DirectionalIntensity: 1
-    - _FarDistanceHeight: 0
-    - _FarDistanceOffset: 0
-    - _FogAxisMode: 1
-    - _FogCameraMode: 0
-    - _FogCat: 1
-    - _FogColorDuo: 1
-    - _FogDistanceEnd: 100
-    - _FogDistanceFalloff: 2
-    - _FogDistanceStart: 0
-    - _FogHeightEnd: 100
-    - _FogHeightFalloff: 2
-    - _FogHeightStart: 0
-    - _FogIntensity: 1
-    - _FogLayersMode: 0
-    - _IsHeightFogPreset: 1
-    - _IsHeightFogShader: 1
-    - _JitterIntensity: 1
-    - _NoiseCat: 1
-    - _NoiseDistanceEnd: 50
-    - _NoiseIntensity: 1
-    - _NoiseMax: 1
-    - _NoiseMin: 0
-    - _NoiseModeBlend: 1
-    - _NoiseScale: 30
-    - _SkyboxCat: 1
-    - _SkyboxFogBottom: 0
-    - _SkyboxFogFalloff: 1
-    - _SkyboxFogFill: 1
-    - _SkyboxFogHeight: 1
-    - _SkyboxFogIntensity: 1
-    - _SkyboxFogOffset: 0
-    m_Colors:
-    - _DirectionalColor: {r: 1, g: 0.7793103, b: 0.5, a: 1}
-    - _DirectionalDir: {r: 0, g: 0, b: 0, a: 0}
-    - _FogAxisOption: {r: 0, g: 0, b: 0, a: 0}
-    - _FogColorEnd: {r: 0.8862745, g: 1.443137, b: 2, a: 1}
-    - _FogColorStart: {r: 0.4411765, g: 0.722515, b: 1, a: 1}
-    - _NoiseSpeed: {r: 0.5, g: 0, b: 0.5, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &1446789477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a57303ed9925fb40b2acddcd11cbf1c,
@@ -58328,41 +58304,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1826436798}
   m_SourcePrefab: {fileID: 100100000, guid: 47cde4acca4fb1e46ac853661ff96d68, type: 3}
---- !u!21 &1491448714
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Height Fog Global
-  m_Shader: {fileID: 4800000, guid: 3a7ef1b66bafb7a448a880ef76d2e6e6, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _AdvancedCat: 1
-    - _Banner: 1
-    - _DirectionalCat: 1
-    - _FogCat: 1
-    - _HeightFogGlobal: 1
-    - _IsHeightFogShader: 1
-    - _NoiseCat: 1
-    - _SkyboxCat: 1
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1 &1491787277 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c9b6108db2581d2438e348d029bee0e1,
@@ -66615,6 +66556,75 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 810457097}
   m_SourcePrefab: {fileID: 100100000, guid: 9a57303ed9925fb40b2acddcd11cbf1c, type: 3}
+--- !u!21 &1710747871
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Override
+  m_Shader: {fileID: 4800000, guid: a3a3bc8785681554d9558e2ea68f100e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AdvancedCat: 1
+    - _Banner: 1
+    - _DirectionalCat: 1
+    - _DirectionalFalloff: 2
+    - _DirectionalIntensity: 1
+    - _FarDistanceHeight: 0
+    - _FarDistanceOffset: 0
+    - _FogAxisMode: 1
+    - _FogCameraMode: 0
+    - _FogCat: 1
+    - _FogColorDuo: 1
+    - _FogDistanceEnd: 100
+    - _FogDistanceFalloff: 2
+    - _FogDistanceStart: 0
+    - _FogHeightEnd: 100
+    - _FogHeightFalloff: 2
+    - _FogHeightStart: 0
+    - _FogIntensity: 1
+    - _FogLayersMode: 0
+    - _IsHeightFogPreset: 1
+    - _IsHeightFogShader: 1
+    - _JitterIntensity: 1
+    - _NoiseCat: 1
+    - _NoiseDistanceEnd: 50
+    - _NoiseIntensity: 1
+    - _NoiseMax: 1
+    - _NoiseMin: 0
+    - _NoiseModeBlend: 1
+    - _NoiseScale: 30
+    - _SkyboxCat: 1
+    - _SkyboxFogBottom: 0
+    - _SkyboxFogFalloff: 1
+    - _SkyboxFogFill: 1
+    - _SkyboxFogHeight: 1
+    - _SkyboxFogIntensity: 1
+    - _SkyboxFogOffset: 0
+    m_Colors:
+    - _DirectionalColor: {r: 1, g: 0.7793103, b: 0.5, a: 1}
+    - _DirectionalDir: {r: 0, g: 0, b: 0, a: 0}
+    - _FogAxisOption: {r: 0, g: 0, b: 0, a: 0}
+    - _FogColorEnd: {r: 0.8862745, g: 1.443137, b: 2, a: 1}
+    - _FogColorStart: {r: 0.4411765, g: 0.722515, b: 1, a: 1}
+    - _NoiseSpeed: {r: 0.5, g: 0, b: 0.5, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1714484862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 962c0851baed3844e8be302628970630,
@@ -71478,13 +71488,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
+      propertyPath: turnSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
+      propertyPath: viewAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
       propertyPath: pathHolder
       value: 
       objectReference: {fileID: 1410232900}
     - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
+      propertyPath: viewDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
       propertyPath: shootCooldown
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601229145879771824, guid: b5c8733f5e14af64fae00e6447e62929,
+        type: 3}
+      propertyPath: attackDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3706883418519382526, guid: b5c8733f5e14af64fae00e6447e62929,
         type: 3}
@@ -72610,7 +72640,7 @@ MonoBehaviour:
   renderPriority: 1
   manualPositionAndScale: 0
   styledSpace0: 0
-  overrideMaterial: {fileID: 380301665}
+  overrideMaterial: {fileID: 532839587}
   overrideCamToVolumeDistance: Infinity
   overrideVolumeDistanceFade: 0
   version: 0
@@ -72634,7 +72664,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1491448714}
+  - {fileID: 116104110}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
