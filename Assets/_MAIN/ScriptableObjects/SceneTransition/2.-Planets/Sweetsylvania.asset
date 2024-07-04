@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Sweetsylvania
   nextScene: {fileID: 11400000, guid: d6663a1865433fb44b2485fb9381b3ec, type: 2}
+  song: Planets

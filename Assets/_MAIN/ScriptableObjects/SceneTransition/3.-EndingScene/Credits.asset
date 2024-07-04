@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Credits
   m_EditorClassIdentifier: 
   sceneName: Credits
-  transitionTime: 2
   nextScene: {fileID: 0}
+  song: Animation

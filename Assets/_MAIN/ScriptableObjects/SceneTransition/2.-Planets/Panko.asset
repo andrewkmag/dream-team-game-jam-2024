@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Panko
   nextScene: {fileID: 11400000, guid: 68718e596c957af41ae27b0c82aa0f5c, type: 2}
+  song: Planets

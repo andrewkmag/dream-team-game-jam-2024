@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GenericLib:
   - name: BGDefault
-    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
+    item: {fileID: 8300000, guid: de1c2689d093a014ba0b2381e700f145, type: 3}
   - name: BGAnimation
-    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
+    item: {fileID: 8300000, guid: de1c2689d093a014ba0b2381e700f145, type: 3}
   - name: BGPlanets
-    item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}
+    item: {fileID: 8300000, guid: 1db27aad405e89943a01b13f76d117de, type: 3}
   - name: DialogueCharacter
     item: {fileID: 8300000, guid: 706d49e9f0e162a4faf9baa5846bd14b, type: 3}
   - name: DialogueEnemy
     item: {fileID: 8300000, guid: 93e347a1dba4ba14f9ab477813f30930, type: 3}
+  - name: DialogueConsole
+    item: {fileID: 8300000, guid: 118a41b5c3a0f1141914ec546aeff4f3, type: 3}
   - name: CharacterWalk
     item: {fileID: 8300000, guid: 0165d3c92dd4af84e9b7d14c875d97d8, type: 3}
   - name: CharacterRun

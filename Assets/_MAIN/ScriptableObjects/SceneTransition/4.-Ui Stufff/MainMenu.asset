@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MainMenu
   m_EditorClassIdentifier: 
   sceneName: MainMenu
-  transitionTime: 2
   nextScene: {fileID: 0}
+  song: Animation
