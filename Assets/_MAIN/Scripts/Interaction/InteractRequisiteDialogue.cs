@@ -1,12 +1,20 @@
 using UnityEngine;
 
-public class InteractRequisite : IsInteractable
+public class InteractRequisiteDialogue : IsInteractable
 {
     #region Fields
 
     [SerializeField] private string contextText = $"Press e to Interact with main objective";
     [SerializeField] private bool requisiteInteracted;
-    private static InteractRequisite instance;
+    private static InteractRequisiteDialogue instance;
+    [SerializeField] private Dialogue[] dialogues;
+
+    #endregion
+
+    #region Events
+
+    public static event System.Action<Dialogue[]> OnDialoguesTrigger;
+
     #endregion
 
     #region Constants
@@ -27,7 +35,6 @@ public class InteractRequisite : IsInteractable
         {
             Destroy(gameObject);
         }
-
     }
 
     protected override void Start()
@@ -44,11 +51,12 @@ public class InteractRequisite : IsInteractable
 
     protected override void DoInteraction()
     {
-        if(requisiteInteracted) return;
+        if (requisiteInteracted) return;
+        OnDialoguesTrigger?.Invoke(dialogues);
         requisiteInteracted = true;
         base.DoInteraction();
-        GameManager.Instance.RequisiteAchived(true);
         EndInteract();
+        GameManager.Instance.RequisiteAchived(true);
         Destroy(gameObject);
     }
 

@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviour
 
     private const int STARTING_DIALOGUE = 0;
     private const int NO_SENTENCTES = 0;
-    
+
     private const string JAM_NAME = "Jam";
     private const string JELLY_NAME = "Jelly";
     private const string RAZZ_NAME = "Razz";
@@ -42,18 +42,18 @@ public class DialogueManager : MonoBehaviour
     private const string STICKY_NAME = "Sticky";
     private const string CONSOLE_NAME = "Console";
     private const string EVERYONE_NAME = "Everyone";
-    
+
     private const int DIALOGUEBOX_STICKY = 1;
     private const int DIALOGUEBOX_NORMAL = 0;
     private const float DEFAULT_TYPING_SPEED = 0.1f;
     private const float TIME_STOP = 0;
     private const float TIME_CONTINUE = 1;
-    
+
     private const int CHARACTER_TALK = 0;
     private const int ENEMY_TALK = 1;
     private const int CONSOLE_TALK = 2;
     private const int STICKY_TALK = 3;
-    
+
     private const string DIALOGUE_SOUND_CAT = "Dialogue";
     private const string CHAR_SOUND_KEY = "Character";
     private const string ENEMY_SOUND_KEY = "Enemy";
@@ -81,6 +81,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueOnStart.OnDialoguesTrigger += StartDialogue;
         DialogueOnTriggerEnter.OnDialoguesTrigger += StartDialogueWorld;
+        InteractRequisiteDialogue.OnDialoguesTrigger += StartDialogueWorld;
     }
 
 
@@ -88,6 +89,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueOnStart.OnDialoguesTrigger -= StartDialogue;
         DialogueOnTriggerEnter.OnDialoguesTrigger -= StartDialogueWorld;
+        InteractRequisiteDialogue.OnDialoguesTrigger -= StartDialogueWorld;
     }
 
     private void Awake()
@@ -186,13 +188,13 @@ public class DialogueManager : MonoBehaviour
         {
             case STICKY_TALK:
             case CHARACTER_TALK:
-                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+CHAR_SOUND_KEY);
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT + CHAR_SOUND_KEY);
                 break;
             case ENEMY_TALK:
-                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+ENEMY_SOUND_KEY);
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT + ENEMY_SOUND_KEY);
                 break;
             case CONSOLE_TALK:
-                _soundManager.PlaySound(DIALOGUE_SOUND_CAT+CONSOLE_SOUND_KEY);
+                _soundManager.PlaySound(DIALOGUE_SOUND_CAT + CONSOLE_SOUND_KEY);
                 break;
             default:
                 break;
@@ -204,6 +206,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
+
         _soundManager.StopSound();
     }
 
