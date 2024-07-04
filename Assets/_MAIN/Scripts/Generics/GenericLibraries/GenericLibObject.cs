@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Cinemachine.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GenericLibScriptableObject", menuName = "ScriptableObjects/GenericLib")]
