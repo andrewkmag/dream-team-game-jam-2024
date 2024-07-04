@@ -72,9 +72,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool playerGrounded = true;
 
+    [Tooltip("Number of max jumps")]
+    [SerializeField]
+    private int maxJumps = MAX_JUMPS;
+    
     [Tooltip("Number of avaliable jumps")]
     [SerializeField]
-    private int remainingJumps = MAX_JUMPS;
+    private int remainingJumps = 0;
 
     [Tooltip("Useful for rough ground")] [SerializeField]
     private float groundedOffset = -0.14f;
@@ -360,7 +364,7 @@ public class PlayerController : MonoBehaviour
             if (verticalSpeed < 0.0f)
             {
                 verticalSpeed = -2f;
-                remainingJumps = MAX_JUMPS;
+                remainingJumps = maxJumps;
             }
 
             fallTimeoutDelta = fallTimeout;
