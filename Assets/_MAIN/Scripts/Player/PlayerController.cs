@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
     private Transform virtualCameraTransform;
 
     private bool isSprinting;
+    private bool isWalking;
+    private bool walkingSoundActive;
     private float dashTimeoutDelta;
     private float dashCooldownDelta;
     private float jumpTimeoutDelta;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
         // Find the sound manager
         _soundManager = gameObject.GetOrAdd<SoundManager>();
+        _soundManager.ActivateLoop();
         
         // Subscribe to the MoveEvent specified in InputReader.cs
         inputReader.MoveEvent += HandleMove;
@@ -248,18 +251,29 @@ public class PlayerController : MonoBehaviour
             desiredMoveDirection.Normalize();
         }
 
-        float sprintSpeedMultiplier = isSprinting ? sprintSpeed : 1f;
+        var sprintSpeedMultiplier = isSprinting ? sprintSpeed : 1f;
 
-
-        if (isSprinting)
+        isWalking = finalMoveDirection.magnitude > 0;
+        
+        if(isWalking && playerGrounded && !walkingSoundActive)
         {
-            _soundManager.PlaySound(PLAYER_SOUND_CAT + WALK_SOUND_KEY);
+            if (isSprinting)
+            {
+                _soundManager.PlaySound(PLAYER_SOUND_CAT + RUN_SOUND_KEY);
+            }
+            else
+            {
+                _soundManager.PlaySound(PLAYER_SOUND_CAT + WALK_SOUND_KEY);
+            }
+
+            walkingSoundActive = true;
         }
         else
         {
-            _soundManager.PlaySound(PLAYER_SOUND_CAT + RUN_SOUND_KEY);
+            walkingSoundActive = false;
+            _soundManager.PauseSound();
         }
-
+        
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
@@ -358,7 +372,7 @@ public class PlayerController : MonoBehaviour
         if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
         {
             //Debug.Log("Jam is Jumping");
-            _soundManager.PlaySoundExternally(PLAYER_SOUND_CAT+JUMP_SOUND_KEY,transform);
+            SoundManager.PlaySoundExternally(PLAYER_SOUND_CAT+JUMP_SOUND_KEY,transform);
             animator.SetBool(jumpAnimationParameterId, true);
             remainingJumps--;
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);

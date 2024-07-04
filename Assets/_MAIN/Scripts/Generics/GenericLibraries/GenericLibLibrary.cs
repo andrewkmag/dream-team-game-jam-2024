@@ -30,7 +30,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            getGenericScriptableObject();
+            GetGenericScriptableObject();
             if (genericLib == null) return;
             var names = genericLib.GetStringArr();
             var items = genericLib.GetGenericArr();
@@ -40,7 +40,7 @@ public abstract class GenericLibrary<T> : MonoBehaviour
                 _genericDic.Add(names[index], items[index]);
             }
 
-            getGenericScriptableObject();
+            GetGenericScriptableObject();
         }
         else
         {
@@ -51,33 +51,17 @@ public abstract class GenericLibrary<T> : MonoBehaviour
 
     #region Methods
 
-    protected abstract void getGenericScriptableObject();
+    protected abstract void GetGenericScriptableObject();
 
     public T GetGeneric(string categoty, string keyname)
     {
         var key = categoty + keyname;
-        if (_genericDic.TryGetValue(key, out var value))
-        {
-            return value;
-        }
-        else
-        {
-            Debug.LogWarning($"$Key {key} not found");
-            return default;
-        }
+        return _genericDic.TryGetValue(key, out var value) ? value : default;
     }
 
     public T GetGeneric(string key)
     {
-        if (_genericDic.TryGetValue(key, out var value))
-        {
-            return value;
-        }
-        else
-        {
-            Debug.LogWarning($"$Key {key} not found");
-            return default;
-        }
+        return _genericDic.TryGetValue(key, out var value) ? value : default;
     }
     #endregion
 }

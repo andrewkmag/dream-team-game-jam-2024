@@ -44,6 +44,16 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void ActivateLoop()
+    {
+        audioSource.loop = true;
+    }
+    
+    public void DeactivateLoop()
+    {
+        audioSource.loop = false;
+    }
+
     public void PauseSound()
     {
         audioSource.Pause();
@@ -54,10 +64,15 @@ public class SoundManager : MonoBehaviour
         audioSource.Stop();
     }
 
-    public void PlaySoundExternally(string soundName, Transform spawnTransform)
+    public static void PlaySoundExternally(string soundName, Transform spawnTransform)
     {
-        var sound = new GameObject();
-        sound.transform.position = spawnTransform.position;
+        var sound = new GameObject
+        {
+            transform =
+            {
+                position = spawnTransform.position
+            }
+        };
         var asource =sound.GetOrAdd<AudioSource>();
         asource.clip = AudioClipLibrary.Instance.GetGeneric(soundName);
         asource.Play();

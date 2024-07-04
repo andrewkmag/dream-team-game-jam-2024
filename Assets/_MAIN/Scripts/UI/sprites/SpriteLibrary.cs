@@ -10,7 +10,7 @@ public class SpriteLibrary : GenericLibrary<Sprite>
 
     #region Methods
 
-    protected override void getGenericScriptableObject()
+    protected override void GetGenericScriptableObject()
     {
         genericLib = spriteLib;
     }
