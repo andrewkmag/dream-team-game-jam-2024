@@ -25,11 +25,11 @@ MonoBehaviour:
     item: {fileID: 8300000, guid: 93e347a1dba4ba14f9ab477813f30930, type: 3}
   - name: DialogueConsole
     item: {fileID: 8300000, guid: 118a41b5c3a0f1141914ec546aeff4f3, type: 3}
-  - name: CharacterWalk
+  - name: PlayerWalk
     item: {fileID: 8300000, guid: 0165d3c92dd4af84e9b7d14c875d97d8, type: 3}
-  - name: CharacterRun
+  - name: PlayerRun
     item: {fileID: 8300000, guid: 426b4774f5a003246a557df6d070f966, type: 3}
-  - name: CharacterJump
+  - name: PlayerJump
     item: {fileID: 8300000, guid: 0ec8bff09b526fc4291331f26a288b0c, type: 3}
   - name: MenuPause
     item: {fileID: 8300000, guid: 42ca8e4162dbf4b41b9e8e997b3557e2, type: 3}

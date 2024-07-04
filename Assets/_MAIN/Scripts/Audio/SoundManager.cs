@@ -56,11 +56,13 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundExternally(string soundName, Transform spawnTransform)
     {
-        var audioSourceExt = Instantiate(audioSource, spawnTransform.position, Quaternion.identity);
-        audioSource.clip = AudioClipLibrary.Instance.GetGeneric(soundName);
-        audioSource.Play();
-        var clipLenght = audioSource.clip.length;
-        Destroy(audioSource.gameObject,clipLenght);
+        var sound = new GameObject();
+        sound.transform.position = spawnTransform.position;
+        var asource =sound.GetOrAdd<AudioSource>();
+        asource.clip = AudioClipLibrary.Instance.GetGeneric(soundName);
+        asource.Play();
+        var clipLenght = asource.clip.length;
+        Destroy(sound,clipLenght);
     }
 
     #endregion

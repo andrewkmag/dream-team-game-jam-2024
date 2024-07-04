@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private PauseManager pauseManager;
     [SerializeField] private MapManager mapManager;
+    
+    private SoundManager _soundManager;
 
     #endregion
 
@@ -127,6 +129,11 @@ public class PlayerController : MonoBehaviour
     private const float ZERO_X = 0f;
     private const float ZERO_Z = 0f;
 
+    private const string PLAYER_SOUND_CAT = "Player";
+    private const string WALK_SOUND_KEY = "Walk";
+    private const string RUN_SOUND_KEY = "Run";
+    private const string JUMP_SOUND_KEY = "Jump";
+    
     #endregion
 
     #region Unity Methods
@@ -135,6 +142,9 @@ public class PlayerController : MonoBehaviour
     {
         pauseManager = FindObjectOfType<PauseManager>();
 
+        // Find the sound manager
+        _soundManager = gameObject.GetOrAdd<SoundManager>();
+        
         // Subscribe to the MoveEvent specified in InputReader.cs
         inputReader.MoveEvent += HandleMove;
         inputReader.SprintEvent += HandleSprint;
@@ -240,6 +250,16 @@ public class PlayerController : MonoBehaviour
 
         float sprintSpeedMultiplier = isSprinting ? sprintSpeed : 1f;
 
+
+        if (isSprinting)
+        {
+            _soundManager.PlaySound(PLAYER_SOUND_CAT + WALK_SOUND_KEY);
+        }
+        else
+        {
+            _soundManager.PlaySound(PLAYER_SOUND_CAT + RUN_SOUND_KEY);
+        }
+
         // Move the player and consider jumping by applying the vertical speed in the final vector
         characterController.Move(finalMoveDirection * (moveSpeed * sprintSpeedMultiplier * Time.deltaTime) +
                                  new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime);
@@ -338,6 +358,7 @@ public class PlayerController : MonoBehaviour
         if (inputReader.jump && jumpTimeoutDelta <= 0.0f && remainingJumps > NO_REMAINING)
         {
             //Debug.Log("Jam is Jumping");
+            _soundManager.PlaySoundExternally(PLAYER_SOUND_CAT+JUMP_SOUND_KEY,transform);
             animator.SetBool(jumpAnimationParameterId, true);
             remainingJumps--;
             verticalSpeed = Mathf.Sqrt(jumpHeight * -2f * gravity);
